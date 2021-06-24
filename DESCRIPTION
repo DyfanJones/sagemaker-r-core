@@ -1,0 +1,35 @@
+Package: R6sagemaker.local
+Type: Package
+Title: R6sagemaker local session class
+Version: 0.1.0
+Authors@R: c(person("Dyfan", "Jones", email="dyfan.r.jones@gmail.com", role= c("aut", "cre")),
+             person("Amazon.com, Inc.", role = "cph"))
+Description: `R6sagemaker` local session class.
+Imports:
+    httr,
+    lgr,
+    urltools,
+    utils,
+    paws,
+    processx,
+    fs,
+    jsonlite,
+    R6,
+    R6sagemaker.common
+Suggests:
+    yaml,
+    crayon,
+    testthat,
+    readr
+Remotes: DyfanJones/sagemaker-r-common
+License: Apache License (>= 2.0)
+Encoding: UTF-8
+RoxygenNote: 7.1.1
+Collate: 
+    'local_utils.R'
+    'local_data.R'
+    'r_utils.R'
+    'local_image.R'
+    'local_session.R'
+    'local_entities.R'
+    'zzz.R'
