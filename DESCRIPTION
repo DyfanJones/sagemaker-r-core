@@ -15,13 +15,16 @@ Imports:
     fs,
     jsonlite,
     R6,
-    R6sagemaker.common
+    R6sagemaker.common,
+    R6sagemaker.mlcore
 Suggests:
     yaml,
     crayon,
     testthat,
     readr
-Remotes: DyfanJones/sagemaker-r-common
+Remotes:
+    DyfanJones/sagemaker-r-common,
+    DyfanJones/sagemaker-r-mlcore
 License: Apache License (>= 2.0)
 Encoding: UTF-8
 RoxygenNote: 7.1.1

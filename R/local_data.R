@@ -5,11 +5,11 @@
 
 #' @import R6
 #' @import R6sagemaker.common
+#' @importFrom R6sagemaker.mlcore read_records_io
 #' @importFrom urltools url_parse
 #' @import utils
 #' @importFrom fs path
 
-# TODO: require protobuff serialization!
 
 #' @title Return an Instance of :class:`sagemaker.local.data.DataSource`.
 #' @description The instance can handle the provided data_source URI.
@@ -236,23 +236,26 @@ LineSplitter = R6Class("LineSplitter",
 )
 
 # Move to package with read_recordio method in
-# class RecordIOSplitter(Splitter):
-#   """Split using Amazon Recordio.
-#     Not useful for string content.
-#     """
-#
-# def split(self, file):
-#   """Split a file into records using a specific strategy
-#         This RecordIOSplitter splits the data into individual RecordIO
-#         records.
-#         Args:
-#             file (str): path to the file to split
-#         Returns: generator for the individual records that were split from
-#         the file
-#         """
-# with open(file, "rb") as f:
-#   for record in sagemaker.amazon.common.read_recordio(f):
-#   yield record
+
+#' @title Split using Amazon Recordio.
+#' @description Not useful for string content.
+#' @export
+RecordIOSplitter = R6Class("RecordIOSplitter",
+  inherit = Splitter,
+  public = list(
+
+    #' @description Split a file into records using a specific strategy
+    #'              This RecordIOSplitter splits the data into individual RecordIO
+    #'              records.
+    #' @param file (str): path to the file to split
+    #' @return generator for the individual records that were split from
+    #'              the file
+    split = function(file){
+      f = readBin(file, what = "raw", n = file.size(file))
+      R6sagemaker.mlcore::read_records_io(f)
+    }
+  )
+)
 
 #' @title BatchStrategy class
 #' @keywords internal
