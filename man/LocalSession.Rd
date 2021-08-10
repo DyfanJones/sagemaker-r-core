@@ -2,11 +2,11 @@
 % Please edit documentation in R/local_session.R
 \name{LocalSession}
 \alias{LocalSession}
-\title{A LocalSession class definition.}
+\title{A SageMaker ``Session`` class for Local Mode.}
 \description{
-A LocalSession class definition.
+A SageMaker ``Session`` class for Local Mode.
 
-A LocalSession class definition.
+A SageMaker ``Session`` class for Local Mode.
 }
 \section{Super class}{
 \code{\link[R6sagemaker.common:Session]{R6sagemaker.common::Session}} -> \code{LocalSession}
@@ -95,9 +95,14 @@ A LocalSession class definition.
 \if{html}{\out{<a id="method-new"></a>}}
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
-Initialize LocalSession class
+This class provides alternative Local Mode implementations for the functionality of
+             :class:`~sagemaker.session.Session`.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LocalSession$new(paws_credentials = NULL, s3_endpoint_url = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LocalSession$new(
+  paws_credentials = NULL,
+  s3_endpoint_url = NULL,
+  disable_local_code = FALSE
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -105,7 +110,12 @@ Initialize LocalSession class
 \describe{
 \item{\code{paws_credentials}}{(PawsCredentials): The underlying AWS credentails passed to paws SDK.}
 
-\item{\code{s3_endpoint_url}}{(str):}
+\item{\code{s3_endpoint_url}}{(str): Override the default endpoint URL for Amazon S3, if set
+(default: None).}
+
+\item{\code{disable_local_code}}{(bool): Set ``True`` to override the default AWS configuration
+chain to disable the ``local.local_code`` setting, which may not be supported for
+some SDK features (default: False).}
 }
 \if{html}{\out{</div>}}
 }

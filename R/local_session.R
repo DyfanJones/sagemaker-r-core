@@ -316,18 +316,28 @@ LocalSagemakerRuntimeClient = R6Class("LocalSagemakerRuntimeClient",
   lock_objects=F
 )
 
-#' @title A LocalSession class definition.
+#' @title A SageMaker ``Session`` class for Local Mode.
 #' @export
 LocalSession = R6Class("LocalSession",
   inherit = R6sagemaker.common::Session,
   public = list(
 
-    #' @description Initialize LocalSession class
+    #' @description This class provides alternative Local Mode implementations for the functionality of
+    #'              :class:`~sagemaker.session.Session`.
     #' @param paws_credentials (PawsCredentials): The underlying AWS credentails passed to paws SDK.
-    #' @param s3_endpoint_url (str):
+    #' @param s3_endpoint_url (str): Override the default endpoint URL for Amazon S3, if set
+    #'              (default: None).
+    #' @param disable_local_code (bool): Set ``True`` to override the default AWS configuration
+    #'              chain to disable the ``local.local_code`` setting, which may not be supported for
+    #'              some SDK features (default: False).
     initialize = function(paws_credentials=NULL,
-                          s3_endpoint_url=NULL){
+                          s3_endpoint_url=NULL,
+                          disable_local_code=FALSE){
       self$s3_endpoint_url = s3_endpoint_url
+      # We use this local variable to avoid disrupting the __init__->_initialize API of the
+      # parent class... But overwriting it after constructor won't do anything, so prefix _ to
+      # discourage external use:
+      private$.disable_local_code = disable_local_code
       super$initialize(paws_credentials)
       if(Sys.info()[["sysname"]] == "Windows")
         LOGGER$warn("Windows Support for Local Mode is Experimental")
@@ -346,6 +356,7 @@ LocalSession = R6Class("LocalSession",
     }
   ),
   private = list(
+    .disable_local_code = NULL,
     .initialize = function(paws_credentials,
                            sagemaker_client,
                            sagemaker_runtime_client,
@@ -369,6 +380,8 @@ LocalSession = R6Class("LocalSession",
       if (fs::file_exists(sagemaker_config_file)){
         read_yaml = pkg_method("read_yaml", "yaml")
         self$config = read_yaml(sagemaker_config_file)
+        if(private$.disable_local_code && "local" %in% names(self$config))
+          self$config[["local"]][["local_code"]] = FALSE
       }
     }
   ),
