@@ -110,7 +110,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
       )
       compose_command = private$.compose()
 
-      if (.ecr_login_if_needed(self$sagemaker_session$paws_credentials, self$image))
+      if (.ecr_login_if_needed(self$sagemaker_session$paws_session, self$image))
         .pull_image(self$image)
 
       process = processx::process$new(
@@ -194,7 +194,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
       )
       compose_command = private$.compose()
 
-      if (.ecr_login_if_needed(self$sagemaker_session$paws_credentials, self$image))
+      if (.ecr_login_if_needed(self$sagemaker_session$paws_session, self$image))
         .pull_image(self$image)
 
       process = processx::process$new(
@@ -247,8 +247,8 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
       # Update path to mount location
       environment[[toupper(model_parameters$DIR_PARAM_NAME)]] = "/opt/ml/code"
 
-      if (.ecr_login_if_needed(self.sagemaker_session.boto_session, self$image))
-        .pull_image(self.image)
+      if (.ecr_login_if_needed(self$sagemaker_session$paws_session, self$image))
+        .pull_image(self$image)
 
       private$.generate_compose_file(
         "serve", additional_env_vars=environment, additional_volumes=volumes
@@ -955,7 +955,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
 # Args:
 #   boto_session:
 #   image:
-.ecr_login_if_needed = function(paws_cred=NULL, image=NULL){
+.ecr_login_if_needed = function(paws_sess=NULL, image=NULL){
   sm_regex = regexec(ECR_URI_PATTERN, image)
   sagemaker_match = unlist(regmatches(image, sm_regex))
   if (islistempty(sagemaker_match))
@@ -965,13 +965,13 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
   if (length(.check_output("docker", sprintf("images -q %s", image))) == 0)
     return(FALSE)
 
-  if (is.null(paws_cred))
+  if (is.null(paws_sess))
     RuntimeError$new(
-      "Paws credentials is required to login to ECR. ",
+      "PawsSession is required to login to ECR. ",
       sprintf("Please pull the image: %s manually.", image)
     )
 
-  ecr = paws::ecr(paws_cred)
+  ecr = paws_sess$client("ecr")
   auth = ecr$get_authorization_token(registryIds=list(split_str(image, "\\.")[1]))
   authorization_data = auth[["authorizationData"]][[1]]
 

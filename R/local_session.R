@@ -22,7 +22,7 @@ LocalSagemakerClient = R6Class("LocalSagemakerClient",
     #' @param sagemaker_session (sagemaker.session.Session): a session to use to read configurations
     #'              from, and use its boto client.
     initialize = function(sagemaker_session=NULL){
-      self$sagemaker_session = sagemaker_session %||% LocalSession()
+      self$sagemaker_session = sagemaker_session %||% LocalSession$new()
     },
 
     #' @description Creates a processing job in Local Mode
@@ -324,13 +324,13 @@ LocalSession = R6Class("LocalSession",
 
     #' @description This class provides alternative Local Mode implementations for the functionality of
     #'              :class:`~sagemaker.session.Session`.
-    #' @param paws_credentials (PawsCredentials): The underlying AWS credentails passed to paws SDK.
+    #' @param paws_session (PawsSession): The underlying AWS credentails passed to paws SDK.
     #' @param s3_endpoint_url (str): Override the default endpoint URL for Amazon S3, if set
     #'              (default: None).
     #' @param disable_local_code (bool): Set ``True`` to override the default AWS configuration
     #'              chain to disable the ``local.local_code`` setting, which may not be supported for
     #'              some SDK features (default: False).
-    initialize = function(paws_credentials=NULL,
+    initialize = function(paws_session=NULL,
                           s3_endpoint_url=NULL,
                           disable_local_code=FALSE){
       self$s3_endpoint_url = s3_endpoint_url
@@ -338,7 +338,7 @@ LocalSession = R6Class("LocalSession",
       # parent class... But overwriting it after constructor won't do anything, so prefix _ to
       # discourage external use:
       private$.disable_local_code = disable_local_code
-      super$initialize(paws_credentials)
+      super$initialize(paws_session)
       if(Sys.info()[["sysname"]] == "Windows")
         LOGGER$warn("Windows Support for Local Mode is Experimental")
     },
@@ -357,13 +357,13 @@ LocalSession = R6Class("LocalSession",
   ),
   private = list(
     .disable_local_code = NULL,
-    .initialize = function(paws_credentials,
+    .initialize = function(paws_session,
                            sagemaker_client,
                            sagemaker_runtime_client,
                            ...){
-      self$paws_credentials = if(inherits(paws_credentials, "PawsCredentials")) paws_credentials else PawsCredentials$new()
+      self$paws_session = if(inherits(paws_session, "PawsSession")) paws_session else PawsSession$new()
 
-      if (is.null(self$paws_credentials$credentials$region))
+      if (is.null(self$paws_session$credentials$region))
         ValueError$new(
           "Must setup local AWS configuration with a region supported by SageMaker.")
 
@@ -372,7 +372,7 @@ LocalSession = R6Class("LocalSession",
       self$local_mode = TRUE
 
       if (!is.null(self$s3_endpoint_url)){
-        cred = self$paws_credentials$credentials
+        cred = self$paws_session$credentials
         cred$endpoint = self$s3_endpoint_url
         self$s3 = paws::s3(config = cred)
       }

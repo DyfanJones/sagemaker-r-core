@@ -99,7 +99,7 @@ This class provides alternative Local Mode implementations for the functionality
              :class:`~sagemaker.session.Session`.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LocalSession$new(
-  paws_credentials = NULL,
+  paws_session = NULL,
   s3_endpoint_url = NULL,
   disable_local_code = FALSE
 )}\if{html}{\out{</div>}}
@@ -108,7 +108,7 @@ This class provides alternative Local Mode implementations for the functionality
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{paws_credentials}}{(PawsCredentials): The underlying AWS credentails passed to paws SDK.}
+\item{\code{paws_session}}{(PawsSession): The underlying AWS credentails passed to paws SDK.}
 
 \item{\code{s3_endpoint_url}}{(str): Override the default endpoint URL for Amazon S3, if set
 (default: None).}
