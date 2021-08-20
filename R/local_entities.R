@@ -290,14 +290,14 @@ HEALTH_CHECK_TIMEOUT_LIMIT = 120
       }
 
       # Apply Defaults if none was provided
-      kwargs = modifyList(kwargs, .invoke(private$.get_required_defaults, kwargs))
+      kwargs = modifyList(kwargs, do.call(private$.get_required_defaults, kwargs))
 
       self$start_time = Sys.time()
       self$batch_strategy = kwargs[["BatchStrategy"]]
       self$environment = kwargs["Environment"]
 
       # run the batch inference requests
-      .invoke(private$.perform_batch_inference, list(input_data, output_data, kwargs))
+      do.call(private$.perform_batch_inference, list(input_data, output_data, kwargs))
       self$end_time = Sys.time()
       self$state = private$.COMPLETED
     },
