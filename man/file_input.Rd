@@ -9,6 +9,13 @@ Amazon SageMaker channel configuration for FILE data sources, used in local mode
 Amazon SageMaker channel configuration for FILE data sources, used in local mode.
 }
 \keyword{internal}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{config}}{Place holder}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

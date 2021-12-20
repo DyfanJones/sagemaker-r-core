@@ -393,6 +393,10 @@ LocalSession = R6Class("LocalSession",
 file_input = R6Class("file_input",
   public = list(
 
+    #' @field config
+    #' Place holder
+    config = NULL,
+
     #' @description Create a definition for input data used by an SageMaker training job in local mode.
     #' @param fileUri (str):
     #' @param content_type (str):

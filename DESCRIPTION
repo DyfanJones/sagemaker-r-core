@@ -27,7 +27,7 @@ Remotes:
     DyfanJones/sagemaker-r-mlcore
 License: Apache License (>= 2.0)
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Collate: 
     'local_utils.R'
     'local_data.R'
