@@ -10,7 +10,7 @@
 #' @import fs
 #' @import paws
 #' @import R6
-#' @import R6sagemaker.common
+#' @import sagemaker.common
 
 CONTAINER_PREFIX = "algo"
 DOCKER_COMPOSE_FILENAME = "docker-compose.yaml"

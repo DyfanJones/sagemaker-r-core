@@ -8,7 +8,7 @@ If a single record does not fit within the payload specified it will
              throw a RuntimeError.
 }
 \section{Super class}{
-\code{\link[R6sagemaker.local:BatchStrategy]{R6sagemaker.local::BatchStrategy}} -> \code{SingleRecordStrategy}
+\code{\link[sagemaker.local:BatchStrategy]{sagemaker.local::BatchStrategy}} -> \code{SingleRecordStrategy}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -20,7 +20,7 @@ If a single record does not fit within the payload specified it will
 \if{html}{
 \out{<details open ><summary>Inherited methods</summary>}
 \itemize{
-\item \out{<span class="pkg-link" data-pkg="R6sagemaker.local" data-topic="BatchStrategy" data-id="initialize">}\href{../../R6sagemaker.local/html/BatchStrategy.html#method-initialize}{\code{R6sagemaker.local::BatchStrategy$initialize()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.local" data-topic="BatchStrategy" data-id="initialize">}\href{../../sagemaker.local/html/BatchStrategy.html#method-initialize}{\code{sagemaker.local::BatchStrategy$initialize()}}\out{</span>}
 }
 \out{</details>}
 }

@@ -9,7 +9,7 @@ Split records by new line.
 Split records by new line.
 }
 \section{Super class}{
-\code{\link[R6sagemaker.local:Splitter]{R6sagemaker.local::Splitter}} -> \code{LineSplitter}
+\code{\link[sagemaker.local:Splitter]{sagemaker.local::Splitter}} -> \code{LineSplitter}
 }
 \section{Methods}{
 \subsection{Public methods}{

@@ -7,7 +7,7 @@
 Does not split records, essentially reads the whole file.
 }
 \section{Super class}{
-\code{\link[R6sagemaker.local:Splitter]{R6sagemaker.local::Splitter}} -> \code{NoneSplitter}
+\code{\link[sagemaker.local:Splitter]{sagemaker.local::Splitter}} -> \code{NoneSplitter}
 }
 \section{Methods}{
 \subsection{Public methods}{

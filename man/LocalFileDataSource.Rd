@@ -7,7 +7,7 @@
 Represents a data source within the local filesystem.
 }
 \section{Super class}{
-\code{\link[R6sagemaker.local:DataSource]{R6sagemaker.local::DataSource}} -> \code{LocalFileDataSource}
+\code{\link[sagemaker.local:DataSource]{sagemaker.local::DataSource}} -> \code{LocalFileDataSource}
 }
 \section{Methods}{
 \subsection{Public methods}{

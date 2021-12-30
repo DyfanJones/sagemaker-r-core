@@ -1,6 +1,6 @@
-Package: R6sagemaker.local
+Package: sagemaker.local
 Type: Package
-Title: R6sagemaker local session class
+Title: sagemaker local session class
 Version: 0.1.0
 Authors@R: c(person("Dyfan", "Jones", email="dyfan.r.jones@gmail.com", role= c("aut", "cre")),
              person("Amazon.com, Inc.", role = "cph"))
@@ -15,8 +15,8 @@ Imports:
     fs,
     jsonlite,
     R6,
-    R6sagemaker.common,
-    R6sagemaker.mlcore
+    sagemaker.common,
+    sagemaker.mlcore
 Suggests:
     yaml,
     crayon,

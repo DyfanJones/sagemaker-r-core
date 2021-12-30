@@ -3,7 +3,7 @@
 
 #' @importFrom urltools url_parse
 #' @import fs
-#' @import R6sagemaker.common
+#' @import sagemaker.common
 
 #' @title Creates intermediate directory structure for relative_path.
 #' @description Create all the intermediate directories required for relative_path to
@@ -40,8 +40,8 @@ move_to_destination = function(source,
     final_uri = destination
   } else if (parsed_uri$scheme == "s3"){
     bucket = parsed_uri$domain
-    path = R6sagemaker.common::s3_path_join(parsed_uri$path, job_name)
-    final_uri = R6sagemaker.common::s3_path_join("s3://", bucket, path)
+    path = sagemaker.common::s3_path_join(parsed_uri$path, job_name)
+    final_uri = sagemaker.common::s3_path_join("s3://", bucket, path)
     sagemaker_session$upload_data(source, bucket, path)
   } else {
     ValueError$new(sprintf("Invalid destination URI, must be s3:// or file://, got: %s",destination))

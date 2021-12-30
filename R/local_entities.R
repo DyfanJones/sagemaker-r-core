@@ -10,7 +10,7 @@
 #' @import fs
 #' @import jsonlite
 #' @import R6
-#' @import R6sagemaker.common
+#' @import sagemaker.common
 
 .UNUSED_ARN = "local:arn-does-not-matter"
 HEALTH_CHECK_TIMEOUT_LIMIT = 120

@@ -4,10 +4,10 @@
 #' @include local_utils.R
 
 #' @import R6
-#' @import R6sagemaker.common
-#' @importFrom R6sagemaker.mlcore read_records_io
+#' @import sagemaker.common
+#' @importFrom sagemaker.mlcore read_records_io
 #' @importFrom urltools url_parse
-#' @import utils
+#' @importFrom utils object.size
 #' @importFrom fs path
 
 
@@ -252,7 +252,7 @@ RecordIOSplitter = R6Class("RecordIOSplitter",
     #'              the file
     split = function(file){
       f = readBin(file, what = "raw", n = file.size(file))
-      R6sagemaker.mlcore::read_records_io(f)
+      sagemaker.mlcore::read_records_io(f)
     }
   )
 )
@@ -337,7 +337,7 @@ SingleRecordStrategy = R6Class("SingleRecordStrategy",
   size_in_bytes = size * 1024 * 1024
   if (size == 0)
     return(TRUE)
-  return(object.size(payload) < size_in_bytes)
+  return(utils::object.size(payload) < size_in_bytes)
 }
 
 #' @title Check if a payload is within the size in MB threshold.
