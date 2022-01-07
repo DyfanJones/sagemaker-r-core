@@ -9,6 +9,7 @@
 
 #' @import fs
 #' @import jsonlite
+#' @importFrom httr content handle GET
 #' @import R6
 #' @import sagemaker.common
 

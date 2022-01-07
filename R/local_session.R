@@ -8,7 +8,7 @@
 #' @import R6
 #' @import sagemaker.common
 #' @import fs
-#' @import httr
+#' @importFrom httr handle add_headers POST
 
 #' @title A SageMakerClient that implements the API calls locally.
 #' @description Used for doing local training and hosting local endpoints. It still needs access to
@@ -298,7 +298,7 @@ LocalSagemakerRuntimeClient = R6Class("LocalSagemakerRuntimeClient",
                                InferenceId=NULL){
       url = sprintf("http://localhost:%s/invocations", self$serving_port)
       # set up pool of handles
-      h = handle(url)
+      h = httr::handle(url)
       headers = list()
 
       headers[["Content-type"]] = ContentType
@@ -307,9 +307,9 @@ LocalSagemakerRuntimeClient = R6Class("LocalSagemakerRuntimeClient",
       headers[["X-Amzn-SageMaker-Target-Model"]] = TargetModel
       headers[["X-Amzn-SageMaker-Target-Variant"]] = TargetVariant
       headers[["X-Amzn-SageMaker-Inference-Id"]] = InferenceId
-      headers = do.call(add_headers, headers)
+      headers = do.call(httr::add_headers, headers)
 
-      r = POST(handle = h, body = Body, config = headers)
+      r = httr::POST(handle = h, body = Body, config = headers)
       return(list("Body"=r, "ContentType"=Accept))
     }
   ),
