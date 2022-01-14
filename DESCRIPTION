@@ -15,20 +15,21 @@ Imports:
     fs,
     jsonlite,
     R6,
-    sagemaker.common,
-    sagemaker.mlcore
+    sagemaker.common
 Suggests:
     yaml,
     crayon,
     testthat,
+    RProtoBuf,
     readr
 Remotes:
-    DyfanJones/sagemaker-r-common,
-    DyfanJones/sagemaker-r-mlcore
+    DyfanJones/sagemaker-r-common
 License: Apache License (>= 2.0)
 Encoding: UTF-8
 RoxygenNote: 7.1.2
 Collate: 
+    'amazon_record_pb2.R'
+    'amazon_common.R'
     'local_utils.R'
     'local_data.R'
     'r_utils.R'

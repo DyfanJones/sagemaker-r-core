@@ -17,3 +17,8 @@ sys_set_env <- function(key, value){
   names(config_env) = key
   do.call(Sys.setenv, config_env)
 }
+
+pkg_name = function(){
+  env <- topenv(environment())
+  get0(".packageName", envir = env, inherits = FALSE)
+}

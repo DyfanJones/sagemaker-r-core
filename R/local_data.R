@@ -2,10 +2,10 @@
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/local/data.py
 
 #' @include local_utils.R
+#' @include amazon_common.R
 
 #' @import R6
 #' @import sagemaker.common
-#' @importFrom sagemaker.mlcore read_records_io
 #' @importFrom urltools url_parse
 #' @importFrom utils object.size
 #' @importFrom fs path
