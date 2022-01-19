@@ -25,7 +25,7 @@ test_that("test git clone repo succeed", {
     `fs::file_temp` = mock_fun(REPO_DIR),
     `processx::run` = mock_fun(),
     {
-      ret = sagemaker.common::git_clone_repo(git_config, entry_point, source_dir, dependencies)
+      ret = sagemaker.core::git_clone_repo(git_config, entry_point, source_dir, dependencies)
       expect_equal(ret$entry_point, entry_point)
       expect_equal(ret$source_dir, "/tmp/repo_dir/source_dir")
       expect_equal(ret$dependencies, list("/tmp/repo_dir/foo", "/tmp/repo_dir/bar"))
@@ -69,7 +69,7 @@ test_that("test git clone repo branch not exist", {
   with_mock(
     `processx::run` = mock_fun(side_effect = function(...) stop()),
     {
-      expect_error(sagemaker.common::git_clone_repo(git_config, entry_point, source_dir, dependencies))
+      expect_error(sagemaker.core::git_clone_repo(git_config, entry_point, source_dir, dependencies))
     }
   )
 })
@@ -82,7 +82,7 @@ test_that("test git clone repo commit not exist", {
   with_mock(
     `processx::run` = mock_fun(side_effect = function(...) stop()),
     {
-      expect_error(sagemaker.common::git_clone_repo(git_config, entry_point, source_dir, dependencies))
+      expect_error(sagemaker.core::git_clone_repo(git_config, entry_point, source_dir, dependencies))
     }
   )
 })
@@ -101,7 +101,7 @@ test_that("test git clone repo entry point not exist", {
     `processx::run` = mock_fun(),
     {
       expect_error(
-        sagemaker.common::git_clone_repo(git_config, entry_point, source_dir, dependencies),
+        sagemaker.core::git_clone_repo(git_config, entry_point, source_dir, dependencies),
         "Entry point does not exist in the repo."
       )
     }
@@ -122,7 +122,7 @@ test_that("test git clone repo source dir not exist", {
     `processx::run` = mock_fun(),
     {
       expect_error(
-        sagemaker.common::git_clone_repo(git_config, entry_point, source_dir, dependencies),
+        sagemaker.core::git_clone_repo(git_config, entry_point, source_dir, dependencies),
         "Source directory does not exist in the repo."
       )
     }
@@ -171,7 +171,7 @@ test_that("test_git_clone_repo_with_username_password_no_2fa", {
     `fs::file_temp` = mock_fun(REPO_DIR),
     `processx::run` = mock_run,
     {
-      ret = sagemaker.common::git_clone_repo(git_config=git_config, entry_point=entry_point)
+      ret = sagemaker.core::git_clone_repo(git_config=git_config, entry_point=entry_point)
       args = mock_run(..return_value_all = T)
       expect_equal(args[[1]], list(
         "git",
@@ -210,7 +210,7 @@ test_that("test_git_clone_repo_with_token_no_2fa", {
     `fs::file_temp` = mock_fun(REPO_DIR),
     `processx::run` = mock_run,
     {
-      ret = sagemaker.common::git_clone_repo(git_config=git_config, entry_point=entry_point)
+      ret = sagemaker.core::git_clone_repo(git_config=git_config, entry_point=entry_point)
       args = mock_run(..return_value_all = T)
       expect_equal(args[[1]], list(
         "git",
@@ -251,7 +251,7 @@ test_that("test_git_clone_repo_with_token_2fa", {
     `processx::run` = mock_run,
     {
       expect_warning(
-        {ret = sagemaker.common::git_clone_repo(git_config=git_config, entry_point=entry_point)},
+        {ret = sagemaker.core::git_clone_repo(git_config=git_config, entry_point=entry_point)},
         "Using token for authentication, other credentials will be ignored."
       )
       args = mock_run(..return_value_all = T)
@@ -284,7 +284,7 @@ test_that("test_git_clone_repo_ssh", {
     `fs::file_temp` = mock_fun(REPO_DIR),
     `fs::is_file` = mock_fun(TRUE),
     {
-      ret = sagemaker.common::git_clone_repo(git_config, entry_point)
+      ret = sagemaker.core::git_clone_repo(git_config, entry_point)
       expect_equal(mock_chmod(..return_value = T)$mode, "511")
       expect_equal(ret$entry_point, "/tmp/repo_dir/entry_point")
       expect_null(ret$source_dir)
@@ -311,7 +311,7 @@ test_that("test_git_clone_repo_with_token_no_2fa_unnecessary_creds_provided", {
     `fs::is_file` = mock_fun(TRUE),
     {
       expect_warning(
-        {ret = sagemaker.common::git_clone_repo(git_config, entry_point)},
+        {ret = sagemaker.core::git_clone_repo(git_config, entry_point)},
         "Using token for authentication, other credentials will be ignored."
       )
       args = mock_run(..return_value_all = T)
@@ -347,7 +347,7 @@ test_that("test_git_clone_repo_with_token_2fa_unnecessary_creds_provided", {
     `fs::is_file` = mock_fun(TRUE),
     {
       expect_warning(
-        {ret = sagemaker.common::git_clone_repo(git_config, entry_point)},
+        {ret = sagemaker.core::git_clone_repo(git_config, entry_point)},
         "Using token for authentication, other credentials will be ignored."
       )
       args = mock_run(..return_value_all = T)
@@ -380,7 +380,7 @@ test_that("test_git_clone_repo_codecommit_https_with_username_and_password", {
     `fs::file_temp` = mock_fun(REPO_DIR),
     `fs::is_file` = mock_fun(TRUE),
     {
-      ret = sagemaker.common::git_clone_repo(git_config, entry_point)
+      ret = sagemaker.core::git_clone_repo(git_config, entry_point)
       args = mock_run(..return_value_all = T)
       expect_equal(args[[1]],list(
         "git",
