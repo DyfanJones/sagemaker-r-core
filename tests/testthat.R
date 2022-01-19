@@ -1,4 +1,4 @@
 library(testthat)
-library(sagemaker.local)
+library(sagemaker.core)
 
-test_check("sagemaker.local")
+test_check("sagemaker.core")
