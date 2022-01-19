@@ -7,8 +7,10 @@ Authors@R: c(person("Dyfan", "Jones", email="dyfan.r.jones@gmail.com", role= c("
 Description: Contains core classes, methods and functions that support `AWS Sagemaker R Software
              Development Kit (SDK)`.
 Imports:
+    data.table,
     httr,
     lgr,
+    methods,
     urltools,
     utils,
     paws,
@@ -19,7 +21,9 @@ Imports:
 Suggests:
     yaml,
     crayon,
+    Matrix,
     testthat,
+    mockthat,
     RProtoBuf,
     readr
 License: Apache License (>= 2.0)

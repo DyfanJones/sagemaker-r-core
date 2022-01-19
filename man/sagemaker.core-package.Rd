@@ -6,7 +6,7 @@
 \alias{sagemaker.core-package}
 \title{r6 sagemaker: this is just a placeholder}
 \description{
-`R6sagemaker` local session class.
+Contains core classes, methods and functions that support `AWS Sagemaker R Software Development Kit (SDK)`.
 }
 \author{
 \strong{Maintainer}: Dyfan Jones \email{dyfan.r.jones@gmail.com}
