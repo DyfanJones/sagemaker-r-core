@@ -6,12 +6,12 @@
 #' @include local_utils.R
 #' @include local_session.R
 #' @include r_utils.R
+#' @include error.R
 
-#' @import fs
 #' @import jsonlite
 #' @importFrom httr content handle GET
+#' @importFrom fs path_abs path_rel
 #' @import R6
-#' @import sagemaker.common
 
 .UNUSED_ARN = "local:arn-does-not-matter"
 HEALTH_CHECK_TIMEOUT_LIMIT = 120
@@ -400,7 +400,7 @@ HEALTH_CHECK_TIMEOUT_LIMIT = 120
       if (!is.null(root_dir))
         root_dir = fs::path_abs(root_dir)
 
-      working_dir = tempfile(tmpdir=root_dir)
+      working_dir = temp_dir(root_dir)
       return(working_dir)
     },
 

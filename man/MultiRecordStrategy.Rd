@@ -7,7 +7,7 @@
 Will group up as many records as possible within the payload specified.
 }
 \section{Super class}{
-\code{\link[sagemaker.local:BatchStrategy]{sagemaker.local::BatchStrategy}} -> \code{MultiRecordStrategy}
+\code{\link[sagemaker.core:BatchStrategy]{sagemaker.core::BatchStrategy}} -> \code{MultiRecordStrategy}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -19,7 +19,7 @@ Will group up as many records as possible within the payload specified.
 \if{html}{
 \out{<details open ><summary>Inherited methods</summary>}
 \itemize{
-\item \out{<span class="pkg-link" data-pkg="sagemaker.local" data-topic="BatchStrategy" data-id="initialize">}\href{../../sagemaker.local/html/BatchStrategy.html#method-initialize}{\code{sagemaker.local::BatchStrategy$initialize()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="BatchStrategy" data-id="initialize">}\href{../../sagemaker.core/html/BatchStrategy.html#method-initialize}{\code{sagemaker.core::BatchStrategy$initialize()}}\out{</span>}
 }
 \out{</details>}
 }

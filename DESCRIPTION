@@ -1,10 +1,11 @@
-Package: sagemaker.local
+Package: sagemaker.core
 Type: Package
-Title: sagemaker local session class
+Title: Sagemaker core classes, methods and functions
 Version: 0.1.0
 Authors@R: c(person("Dyfan", "Jones", email="dyfan.r.jones@gmail.com", role= c("aut", "cre")),
              person("Amazon.com, Inc.", role = "cph"))
-Description: `R6sagemaker` local session class.
+Description: Contains core classes, methods and functions that support `AWS Sagemaker R Software
+             Development Kit (SDK)`.
 Imports:
     httr,
     lgr,
@@ -14,25 +15,39 @@ Imports:
     processx,
     fs,
     jsonlite,
-    R6,
-    sagemaker.common
+    R6
 Suggests:
     yaml,
     crayon,
     testthat,
     RProtoBuf,
     readr
-Remotes:
-    DyfanJones/sagemaker-r-common
 License: Apache License (>= 2.0)
 Encoding: UTF-8
 RoxygenNote: 7.1.2
 Collate: 
     'amazon_record_pb2.R'
     'amazon_common.R'
+    'error.R'
+    'r_utils.R'
+    'utils.R'
+    'apiutils_paws_functions.R'
+    'apiutils_base_types.R'
+    'apiutils_utils.R'
+    'deprecations.R'
+    'image_uris.R'
+    'fw_utils.R'
+    'git_utils.R'
+    'input.R'
+    's3.R'
     'local_utils.R'
     'local_data.R'
-    'r_utils.R'
+    'pkg_variables.R'
+    'studio.R'
+    'vpc_utils.R'
+    'paws_session.R'
+    'logs.R'
+    'session.R'
     'local_image.R'
     'local_session.R'
     'local_entities.R'

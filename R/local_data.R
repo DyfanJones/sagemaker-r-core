@@ -1,14 +1,14 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/local/data.py
 
+#' @include error.R
+#' @include r_utils.R
 #' @include local_utils.R
 #' @include amazon_common.R
 
 #' @import R6
-#' @import sagemaker.common
-#' @importFrom urltools url_parse
 #' @importFrom utils object.size
-#' @importFrom fs path
+#' @importFrom fs path path_abs dir_exists is_dir dir_ls
 
 
 #' @title Return an Instance of :class:`sagemaker.local.data.DataSource`.
@@ -19,7 +19,7 @@
 #'              interact with S3 if required.
 #' @return sagemaker.local.data.DataSource: an Instance of a Data Source
 get_data_source_instance = function(data_source, sagemaker_session){
-  parsed_uri = url_parse(data_source)
+  parsed_uri = parse_url(data_source)
   if (parsed_uri$scheme == "file")
     return(LocalFileDataSource$new(fs::path(parsed_uri$domain, parsed_uri$path)))
   if (parsed_uri$scheme == "s3")
@@ -99,7 +99,7 @@ LocalFileDataSource = R6Class("LocalFileDataSource",
       if (fs::is_dir(self$root_path)){
         return(lapply(
           fs::dir_ls(self$root_path, type = "file"),
-          function(x) fs::path(self$root_path,x))
+          function(x) fs::path(self$root_path, x))
         )
       }
       return(list(self$root_path))
@@ -137,7 +137,7 @@ S3DataSource = R6Class("S3DataSource",
       if (!is.null(root_dir))
         root_dir = fs::path_abs(root_dir)
 
-      working_dir = tempfile.mkdtemp(dir=root_dir %||% tempdir())
+      working_dir = temp_dir(root_dir)
       # Docker cannot mount Mac OS /var folder properly see
       # https://forums.docker.com/t/var-folders-isnt-mounted-properly/9600
       # Only apply this workaround if the user didn't provide an alternate storage root dir.
