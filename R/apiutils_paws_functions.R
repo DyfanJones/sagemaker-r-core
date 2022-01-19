@@ -7,39 +7,36 @@
 #' @import R6
 #' @importFrom tools toTitleCase
 
+#' @title PawsFunctions class
+#' @description Class to convert lists to Paws api calls.
+#' @export
 PawsFunctions = R6Class("PawsFunctions",
   public = list(
 
-    # Convert a snake case string to camel case.
-    # Args:
-    #   snake_case (str): String to convert to camel case.
-    # Returns:
-    #   str: String converted to camel case.
+    #' @description Convert a snake case string to camel case.
+    #' @param snake_case (str): String to convert to camel case.
+    #' @return (str): String converted to camel case.
     to_camel_case = function(snake_case){
       return(paste(toTitleCase(split_str(snake_case, "_")), collapse = ""))
     },
 
-    # Convert a camel case string to snake case.
-    # Args:
-    #   name (str): String to convert to snake case.
-    # Returns:
-    #   str: String converted to snake case.
+    #' @description Convert a camel case string to snake case.
+    #' @param name (str): String to convert to snake case.
+    #' @return (str): String converted to snake case.
     to_snake_case = function(name){
       s1 = gsub("(.)([A-Z][a-z]+)", "\\1_\\2", name)
       return(tolower(gsub("([a-z0-9])([A-Z])", "\\1_\\2", s1)))
     },
 
-    # Convert an UpperCamelCase boto response to a snake case representation.
-    # Args:
-    #   boto_dict (dict[str, ?]): A boto response dictionary.
-    # boto_name_to_member_name (dict[str, str]):  A map from boto name to snake_case name.
-    # If a given boto name is not in the map then a default mapping is applied.
-    # member_name_to_type (dict[str, (_base_types.ApiObject, boolean)]): A map from snake case
-    # name to a type description tuple. The first element of the tuple, a subclass of
-    # ApiObject, is the type of the mapped object. The second element indicates whether the
-    # mapped element is a collection or singleton.
-    # Returns:
-    #   dict: Boto response in snake case.
+    #' @description Convert an UpperCamelCase paws response to a snake case representation.
+    #' @param paws_list (list[str, ?]): A paws response dictionary.
+    #' @param paws_name_to_member_name (dict[str, str]):  A map from paws name to snake_case name.
+    #'              If a given paws name is not in the map then a default mapping is applied.
+    #' @param member_name_to_type (list[str, (ApiObject, boolean)]): A map from snake case
+    #'              name to a type description tuple. The first element of the tuple, a subclass of
+    #'              ApiObject, is the type of the mapped object. The second element indicates whether the
+    #'              mapped element is a collection or singleton.
+    #' @return list: Paws response in snake case.
     from_paws = function(paws_list,
                          paws_name_to_member_name,
                          member_name_to_type){
@@ -74,12 +71,14 @@ PawsFunctions = R6Class("PawsFunctions",
       return(from_paws_values)
     },
 
-    #Convert a dict of of snake case names to values into a boto UpperCamelCase representation.
-    # Args:
-    #   member_vars dict[str, ?]: A map from snake case name to value.
-    # member_name_to_boto_name dict[str, ?]: A map from snake_case name to boto name.
-    # Returns:
-    #   dict: boto dict converted to snake case
+    #' @description Convert a dict of of snake case names to values into a paws UpperCamelCase representation.
+    #' @param member_vars (list[str, ?]): A map from snake case name to value.
+    #' @param member_name_to_paws_name (list[str, ?]): A map from snake_case name to paws name.
+    #' @param member_name_to_type (list): A map from UpperCamelCase
+    #'              name to a type description tuple. The first element of the tuple, a subclass of
+    #'              ApiObject, is the type of the mapped object. The second element indicates whether the
+    #'              mapped element is a collection or singleton.
+    #' @return (list): paws dict converted to snake case
     to_paws = function(member_vars,
                        member_name_to_paws_name,
                        member_name_to_type){

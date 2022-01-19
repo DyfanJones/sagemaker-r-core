@@ -11,6 +11,7 @@
 #'              python members. Clients invoke to_boto on an instance of ApiObject to transform the ApiObject
 #'              into a boto representation. Clients invoke from_boto on a sub-class of ApiObject to
 #'              instantiate an instance of that class from a boto representation.
+#' @export
 ApiObject = R6Class("ApiObject",
   public = list(
 
