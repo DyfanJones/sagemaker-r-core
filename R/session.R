@@ -3452,26 +3452,33 @@ pipeline_container_def <- function(models, instance_type=NULL){
 #' @param accelerator_type (str): Type of Elastic Inference accelerator for this production variant.
 #'              For example, 'ml.eia1.medium'.
 #'              For more information: \url{https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}
+#' @param serverless_inference_config (list): Specifies configuration dict related to serverless
+#'              endpoint. The dict is converted from sagemaker.model_monitor.ServerlessInferenceConfig
+#'              object (default: None)
 #' @return dict[str, str]: An SageMaker ``ProductionVariant`` description
 #' @export
 production_variant <- function(model_name,
-                               instance_type,
-                               initial_instance_count=1,
+                               instance_type=NULL,
+                               initial_instance_count=NULL,
                                variant_name="AllTraffic",
                                initial_weight=1,
-                               accelerator_type=NULL){
+                               accelerator_type=NULL,
+                               serverless_inference_config=NULL){
 
   production_variant_configuration = list(
     ModelName = model_name,
-    InstanceType = instance_type,
-    InitialInstanceCount  = initial_instance_count,
     VariantName = variant_name,
-    InitialVariantWeight =  initial_weight)
-
-  production_variant_configuration["AcceleratorType"] = accelerator_type
-
+    InitialVariantWeight =  initial_weight
+  )
+  production_variant_configuration[["AcceleratorType"]] = accelerator_type
+  if(!is.null(serverless_inference_config)){
+    production_variant_configuration[["ServerlessConfig"]] = serverless_inference_config
+  } else {
+    initial_instance_count = initial_instance_count %||% 1
+    production_variant_configuration[["InitialInstanceCount"]] = initial_instance_count
+    production_variant_configuration[["InstanceType"]] = instance_type
+  }
   return(production_variant_configuration)
-
 }
 
 .deployment_entity_exists <- function(describe_fn){

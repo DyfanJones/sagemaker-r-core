@@ -6,11 +6,12 @@
 \usage{
 production_variant(
   model_name,
-  instance_type,
-  initial_instance_count = 1,
+  instance_type = NULL,
+  initial_instance_count = NULL,
   variant_name = "AllTraffic",
   initial_weight = 1,
-  accelerator_type = NULL
+  accelerator_type = NULL,
+  serverless_inference_config = NULL
 )
 }
 \arguments{
@@ -31,6 +32,10 @@ ml.c4.8xlarge'.}
 \item{accelerator_type}{(str): Type of Elastic Inference accelerator for this production variant.
 For example, 'ml.eia1.medium'.
 For more information: \url{https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}}
+
+\item{serverless_inference_config}{(list): Specifies configuration dict related to serverless
+endpoint. The dict is converted from sagemaker.model_monitor.ServerlessInferenceConfig
+object (default: None)}
 }
 \value{
 dict[str, str]: An SageMaker ``ProductionVariant`` description
