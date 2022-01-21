@@ -321,7 +321,7 @@ LocalSagemakerRuntimeClient = R6Class("LocalSagemakerRuntimeClient",
 #' @title A SageMaker ``Session`` class for Local Mode.
 #' @export
 LocalSession = R6Class("LocalSession",
-  inherit = sagemaker.common::Session,
+  inherit = Session,
   public = list(
 
     #' @description This class provides alternative Local Mode implementations for the functionality of

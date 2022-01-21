@@ -987,9 +987,9 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
   return(TRUE)
 }
 
-# Invokes the docker pull command for the given image.
-# Args:
-#   image:
+#' @title Invokes the docker pull command for the given image.
+#' @param image (str): pull docker image
+#' @export
 .pull_image = function(image){
   pull_image_command = trimws(sprintf("pull %s", image))
   LOGGER$info("docker command: docker %s", pull_image_command)

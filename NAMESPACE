@@ -3,6 +3,7 @@
 S3method(print,Enum)
 export(.append_project_tags)
 export(.aws_partition)
+export(.pull_image)
 export(.region_supports_debugger)
 export(.region_supports_profiler)
 export(.validate_smdataparallel_args)
