@@ -369,7 +369,12 @@ repack_model <- function(inference_script,
   .save_model(repacked_model_uri, tmp_model_path, sagemaker_session, kms_key=kms_key)
 }
 
-# tar function to use system tar
+#' @title tar archive file and directories
+#' @param tarfile The pathname of the tar file.
+#' @param src file or sub directory to be tar archived.
+#' @param compress character string giving the type of compression to be used (default gzip).
+#' @param ... extra parameters to be passes to \code{\link[utils]{tar}}
+#' @export
 tar_subdir <- function(tarfile, src, compress = "gzip", ...){
   if(any(fs::is_file(src))){
     src_dir = unique(dirname(src))
@@ -388,8 +393,7 @@ tar_subdir <- function(tarfile, src, compress = "gzip", ...){
   setwd(src_dir)
   on.exit(setwd(current_dir))
 
-  tar_path = Sys.getenv("tar")
-  if(!nzchar(tar_path)) tar_path = Sys.getenv("TAR")
+  tar_path = (if(nzchar(Sys.getenv("tar"))) Sys.getenv("tar") else Sys.getenv("TAR"))
 
   utils::tar(tarfile= tarfile, files=src_file, compression=compress, tar = tar_path, ...)
 }

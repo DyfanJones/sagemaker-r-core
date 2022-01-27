@@ -330,10 +330,15 @@ parse_url = function(url){
   urltools::url_parse(url)
 }
 
-# Check the magic bytes at offset 257. If they match "ustar" including the null terminator, the file is probably a tar.
-# https://stackoverflow.com/questions/32180215/how-to-check-whether-a-file-is-in-tar-format
-# http://www.gnu.org/software/tar/manual/html_node/Standard.html
+#' @title Check if file is tar archived or not.
+#' @description Check the magic bytes at offset 257.
+#'              If they match "ustar" including the null terminator, the file is probably a tar.
+#'              \url{https://www.gnu.org/software/tar/manual/html_node/Standard.html}
+#' @param path A character of filepath to tar archived file.
+#' @export
 is_tarfile <- function(path){
+  stopifnot(is.character(path))
+  # https://stackoverflow.com/questions/32180215/how-to-check-whether-a-file-is-in-tar-format
   con <- gzfile(path.expand(path), "rb")
   on.exit(close(con))
   magic <- readBin(con, "raw", n = 262L)
