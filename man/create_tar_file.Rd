@@ -9,7 +9,8 @@ create_tar_file(source_files, target = NULL)
 \arguments{
 \item{source_files}{(str): vector of file paths that will be contained in the tar file}
 
-\item{target}{(str):}
+\item{target}{(str): A character vector of filepaths to be archived. Default to archive all files
+into a temporary file.}
 }
 \value{
 (str): path to created tar file

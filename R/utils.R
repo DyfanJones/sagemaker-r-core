@@ -300,7 +300,8 @@ download_folder = function(bucket_name,
 
 #' @title Create a tar file containing all the source_files
 #' @param source_files (str): vector of file paths that will be contained in the tar file
-#' @param target (str):
+#' @param target (str): A character vector of filepaths to be archived. Default to archive all files
+#'                      into a temporary file.
 #' @keywords internal
 #' @return (str): path to created tar file
 #' @export
@@ -369,12 +370,6 @@ repack_model <- function(inference_script,
   .save_model(repacked_model_uri, tmp_model_path, sagemaker_session, kms_key=kms_key)
 }
 
-#' @title tar archive file and directories
-#' @param tarfile The pathname of the tar file.
-#' @param src file or sub directory to be tar archived.
-#' @param compress character string giving the type of compression to be used (default gzip).
-#' @param ... extra parameters to be passes to \code{\link[utils]{tar}}
-#' @export
 tar_subdir <- function(tarfile, src, compress = "gzip", ...){
   if(any(fs::is_file(src))){
     src_dir = unique(dirname(src))
