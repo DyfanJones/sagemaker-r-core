@@ -124,7 +124,7 @@ Creates a new instance of this [R6][R6::R6Class] class.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{paws_session}}{(\link[sagemaker.common]{PawsSession}): The underlying AWS credentails passed to paws SDK.}
+\item{\code{paws_session}}{(\link[sagemaker.core]{PawsSession}): The underlying AWS credentails passed to paws SDK.}
 
 \item{\code{sagemaker_client}}{(\link[paws]{sagemaker}): Client which makes Amazon SageMaker service
 calls other than ``InvokeEndpoint`` (default: None). Estimators created using this
