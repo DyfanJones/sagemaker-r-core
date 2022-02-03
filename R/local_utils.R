@@ -1,9 +1,10 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/local/utils.py
 
-#' @importFrom urltools url_parse
-#' @import fs
-#' @import sagemaker.common
+#' @include r_utils.R
+#' @include s3.R
+
+#' @importFrom fs path dir_create dir_exists dir_delete is_dir dir_copy
 
 #' @title Creates intermediate directory structure for relative_path.
 #' @description Create all the intermediate directories required for relative_path to
@@ -15,7 +16,7 @@
 #'              destination_directory
 #' @export
 copy_directory_structure = function(destination_directory, relative_path){
-  full_path = fs::path_join(c(destination_directory, relative_path))
+  full_path = fs::path(destination_directory, relative_path)
   if (fs::dir_exists(full_path))
     return(NULL)
   fs::dir_create(destination_directory, relative_path)
@@ -34,14 +35,14 @@ move_to_destination = function(source,
                                destination,
                                job_name,
                                sagemaker_session){
-  parsed_uri = url_parse(destination)
+  parsed_uri = parse_url(destination)
   if (parsed_uri$scheme == "file"){
     recursive_copy(source, parsed_uri$path)
     final_uri = destination
   } else if (parsed_uri$scheme == "s3"){
     bucket = parsed_uri$domain
-    path = sagemaker.common::s3_path_join(parsed_uri$path, job_name)
-    final_uri = sagemaker.common::s3_path_join("s3://", bucket, path)
+    path = s3_path_join(parsed_uri$path, job_name)
+    final_uri = s3_path_join("s3://", bucket, path)
     sagemaker_session$upload_data(source, bucket, path)
   } else {
     ValueError$new(sprintf("Invalid destination URI, must be s3:// or file://, got: %s",destination))

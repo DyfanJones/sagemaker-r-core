@@ -7,7 +7,7 @@
 Not useful for string content.
 }
 \section{Super class}{
-\code{\link[sagemaker.local:Splitter]{sagemaker.local::Splitter}} -> \code{RecordIOSplitter}
+\code{\link[sagemaker.core:Splitter]{sagemaker.core::Splitter}} -> \code{RecordIOSplitter}
 }
 \section{Methods}{
 \subsection{Public methods}{

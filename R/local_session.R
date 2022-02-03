@@ -4,9 +4,9 @@
 #' @include r_utils.R
 #' @include local_image.R
 #' @include local_entities.R
+#' @include session.R
 
 #' @import R6
-#' @import sagemaker.common
 #' @import fs
 #' @importFrom httr handle add_headers POST
 
@@ -317,9 +317,10 @@ LocalSagemakerRuntimeClient = R6Class("LocalSagemakerRuntimeClient",
 )
 
 #' @title A SageMaker ``Session`` class for Local Mode.
+#' @family Session
 #' @export
 LocalSession = R6Class("LocalSession",
-  inherit = sagemaker.common::Session,
+  inherit = Session,
   public = list(
 
     #' @description This class provides alternative Local Mode implementations for the functionality of

@@ -2,15 +2,16 @@
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/local/image.py
 
 #' @include local_session.R
+#' @include local_data.R
+#' @include local_utils.R
+#' @include utils.R
 #' @include r_utils.R
 
 #' @import processx
+#' @import R6
+#' @importFrom fs path_abs path dir_create dir_copy dir_ls dir_exists is_dir
 #' @importFrom urltools url_parse
 #' @importFrom jsonlite write_json fromJSON toJSON
-#' @import fs
-#' @import paws
-#' @import R6
-#' @import sagemaker.common
 
 CONTAINER_PREFIX = "algo"
 DOCKER_COMPOSE_FILENAME = "docker-compose.yaml"
@@ -89,7 +90,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
 
       # A shared directory for all the containers;
       # it is only mounted if the processing script is Local.
-      shared_dir = fs::path_join(c(self$container_root, "shared"))
+      shared_dir = fs::path(self$container_root, "shared")
       fs::dir_create(shared_dir)
 
       data_dir = private$.create_tmp_folder()
@@ -155,12 +156,12 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
                      hyperparameters,
                      job_name){
       self$container_root = private$.create_tmp_folder()
-      fs::dir_create(fs::path_join(c(self$container_root, "output")))
+      fs::dir_create(fs::path(self$container_root, "output"))
       # create output/data folder since sagemaker-containers 2.0 expects it
-      fs::dir_create(fs::path_join(c(self$container_root, "output", "data")))
+      fs::dir_create(fs::path(self$container_root, "output", "data"))
       # A shared directory for all the containers. It is only mounted if the training script is
       # Local.
-      shared_dir = fs::path_join(c(self$container_root, "shared"))
+      shared_dir = fs::path(self$container_root, "shared")
       fs::dir_create(shared_dir)
 
       data_dir = private$.create_tmp_folder()
@@ -177,7 +178,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
       for (host in self$hosts){
         .create_config_file_directories(self$container_root, host)
         self$write_config_files(host, hyperparameters, input_data_config)
-        fs::dir_copy(data_dir, fs::path_join(c(self$container_root, host, "input", "data")))
+        fs::dir_copy(data_dir, fs::path(self$container_root, host, "input", "data"))
       }
       training_env_vars = list(
         REGION_ENV_NAME=self$sagemaker_session$paws_region_name,
@@ -242,11 +243,12 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
       if (toupper(model_parameters$DIR_PARAM_NAME) %in% names(environment))
         script_dir = environment[[toupper(model_parameters$DIR_PARAM_NAME)]]
       parsed_uri = url_parse(script_dir)
-      if (parsed_uri$scheme == "file")
-        volumes = c(volumes, .Volume$new(parsed_uri$path, "/opt/ml/code"))
-      # Update path to mount location
-      environment[[toupper(model_parameters$DIR_PARAM_NAME)]] = "/opt/ml/code"
-
+      if (parsed_uri$scheme == "file") {
+        host_dir = fs::path_abs(paste0(parsed_uri$netloc, parsed_uri$path))
+        volumes = list.append(volumes, .Volume$new(host_dir, "/opt/ml/code"))
+        # Update path to mount location
+        environment[[toupper(model_parameters$DIR_PARAM_NAME)]] = "/opt/ml/code"
+      }
       if (.ecr_login_if_needed(self$sagemaker_session$paws_session, self$image))
         .pull_image(self$image)
 
@@ -427,14 +429,14 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
       model_dir = fs::path(self$container_root, "model")
       volumes = list()
 
-      volumes = c(volumes, .Volume$new(model_dir, "/opt/ml/model"))
+      volumes = list.append(volumes, .Volume$new(model_dir, "/opt/ml/model"))
 
       # Mount the metadata directory if present.
       # Only expected to be present on SM notebook instances.
       # This is used by some DeepEngine libraries
       metadata_dir = "/opt/ml/metadata"
       if (fs::is_dir(metadata_dir))
-        volumes = c(volumes, .Volume$new(metadata_dir, metadata_dir))
+        volumes = list.append(volumes, .Volume$new(metadata_dir, metadata_dir))
 
       # Set up the channels for the containers. For local data we will
       # mount the local directory to the container. For S3 Data we will download the S3 data
@@ -446,7 +448,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
         fs::dir_create(channel_dir)
 
         data_source = get_data_source_instance(uri, self$sagemaker_session)
-        volumes = c(volumes, .Volume$new(data_source$get_root_dir(), channel=channel_name))
+        volumes = list.append(volumes, .Volume$new(data_source$get_root_dir(), channel=channel_name))
       }
 
       # If there is a training script directory and it is a local directory,
@@ -455,9 +457,9 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
         training_dir = hyperparameters[[model_parameters$DIR_PARAM_NAME]]
         parsed_uri = urltools::url_parse(training_dir)
         if (parsed_uri$scheme == "file"){
-          volumes = c(volumes, .Volume$new(parsed_uri$path, "/opt/ml/code"))
+          volumes = list.append(volumes, .Volume$new(parsed_uri$path, "/opt/ml/code"))
           # Also mount a directory that all the containers can access.
-          volumes = c(volumes, .Volume$new(shared_dir, "/opt/ml/shared"))
+          volumes = list.append(volumes, .Volume$new(shared_dir, "/opt/ml/shared"))
         }
       }
 
@@ -467,7 +469,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
         intermediate_dir = fs::path(parsed_uri$path, "output", "intermediate")
         if (!fs::dir_exists(intermediate_dir))
           fs::dir_create(intermediate_dir)
-        volumes = c(volumes, .Volume$new(intermediate_dir, "/opt/ml/output/intermediate"))
+        volumes = list.append(volumes, .Volume$new(intermediate_dir, "/opt/ml/output/intermediate"))
       }
       return(volumes)
     },
@@ -492,7 +494,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
         input_container_dir = item[["S3Input"]][["LocalPath"]]
 
         data_source = get_data_source_instance(uri, self$sagemaker_session)
-        volumes = c(volumes, .Volume$new(data_source$get_root_dir(), input_container_dir))
+        volumes = list.append(volumes, .Volume$new(data_source$get_root_dir(), input_container_dir))
       }
 
       if (!missing(processing_output_config) && "Outputs" %in% names(processing_output_config)){
@@ -503,10 +505,10 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
           output_dir = fs::path(data_dir, "output", output_name)
           fs::dir_create(output_dir)
 
-          volumes = c(volumes, .Volume$new(output_dir, output_container_dir))
+          volumes = list.append(volumes, .Volume$new(output_dir, output_container_dir))
         }
       }
-      volumes = c(volumes, .Volume$new(shared_dir, "/opt/ml/shared"))
+      volumes = list.append(volumes, .Volume$new(shared_dir, "/opt/ml/shared"))
 
       return(volumes)
     },
@@ -568,7 +570,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
           untar(tarfile = filename, exdir = model_data_source$get_root_dir())
         }
       }
-      volumes = c(volumes, .Volume$new(model_data_source$get_root_dir(), "/opt/ml/model"))
+      volumes = list.append(volumes, .Volume$new(model_data_source$get_root_dir(), "/opt/ml/model"))
 
       return(volumes)
     },
@@ -713,7 +715,7 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
       if (!is.null(root_dir))
         root_dir =  fs::path_abs(root_dir)
 
-      working_dir = tempfile(tmpdir=root_dir)
+      working_dir = temp_dir(root_dir)
       # Docker cannot mount Mac OS /var folder properly see
       # https://forums.docker.com/t/var-folders-isnt-mounted-properly/9600
       # Only apply this workaround if the user didn't provide an alternate storage root dir.
@@ -985,9 +987,9 @@ S3_ENDPOINT_URL_ENV_NAME = "S3_ENDPOINT_URL"
   return(TRUE)
 }
 
-# Invokes the docker pull command for the given image.
-# Args:
-#   image:
+#' @title Invokes the docker pull command for the given image.
+#' @param image (str): pull docker image
+#' @export
 .pull_image = function(image){
   pull_image_command = trimws(sprintf("pull %s", image))
   LOGGER$info("docker command: docker %s", pull_image_command)

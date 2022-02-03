@@ -7,7 +7,7 @@
 The contents will be downloaded and then processed as local data.
 }
 \section{Super class}{
-\code{\link[sagemaker.local:DataSource]{sagemaker.local::DataSource}} -> \code{S3DataSource}
+\code{\link[sagemaker.core:DataSource]{sagemaker.core::DataSource}} -> \code{S3DataSource}
 }
 \section{Methods}{
 \subsection{Public methods}{
