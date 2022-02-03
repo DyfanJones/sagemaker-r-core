@@ -24,6 +24,7 @@ Other sagemaker_utils:
 \code{\link{base_from_name}()},
 \code{\link{base_name_from_image}()},
 \code{\link{build_dict}()},
+\code{\link{common_variables}},
 \code{\link{download_folder}()},
 \code{\link{get_short_version}()},
 \code{\link{name_from_base}()},

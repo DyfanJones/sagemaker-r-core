@@ -9,33 +9,33 @@
 #' @importFrom fs path path_abs is_dir is_file dir_create dir_copy file_copy file_exists
 
 
-#' @title Core varaibles
-#' @name common_varaibles
+#' @title Core variables
+#' @name common_variables
 #' @family sagemaker_utils
-#' @noRd
+#' @keywords internal
 NULL
 
-#' @rdname common_varaibles
+#' @rdname common_variables
 #' @export
 ECR_URI_PATTERN <- "^(\\d+)(\\.)dkr(\\.)ecr(\\.)(.+)(\\.)(.*)(/)(.*:.*)$"
 
-#' @rdname common_varaibles
+#' @rdname common_variables
 #' @export
 MAX_BUCKET_PATHS_COUNT = 5
 
-#' @rdname common_varaibles
+#' @rdname common_variables
 #' @export
 S3_PREFIX = "s3://"
 
-#' @rdname common_varaibles
+#' @rdname common_variables
 #' @export
 HTTP_PREFIX = "http://"
 
-#' @rdname common_varaibles
+#' @rdname common_variables
 #' @export
 HTTPS_PREFIX = "https://"
 
-#' @rdname common_varaibles
+#' @rdname common_variables
 #' @export
 DEFAULT_SLEEP_TIME_SECONDS = 10
 

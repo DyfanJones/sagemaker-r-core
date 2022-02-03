@@ -20,6 +20,7 @@ This function looks for timestamps that match the ones produced by
 Other sagemaker_utils: 
 \code{\link{base_name_from_image}()},
 \code{\link{build_dict}()},
+\code{\link{common_variables}},
 \code{\link{download_file}()},
 \code{\link{download_folder}()},
 \code{\link{get_short_version}()},

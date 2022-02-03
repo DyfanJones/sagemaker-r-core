@@ -19,6 +19,7 @@ Extract the base name of the image to use as the 'algorithm name' for the job.
 Other sagemaker_utils: 
 \code{\link{base_from_name}()},
 \code{\link{build_dict}()},
+\code{\link{common_variables}},
 \code{\link{download_file}()},
 \code{\link{download_folder}()},
 \code{\link{get_short_version}()},

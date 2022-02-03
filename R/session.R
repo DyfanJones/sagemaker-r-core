@@ -45,7 +45,7 @@ Session = R6Class("Session",
 
     #' @description Creates a new instance of this [R6][R6::R6Class] class.
     #'              Initialize a SageMaker \code{Session}.
-    #' @param paws_session (\link[sagemaker.common]{PawsSession}): The underlying AWS credentails passed to paws SDK.
+    #' @param paws_session (\link[sagemaker.core]{PawsSession}): The underlying AWS credentails passed to paws SDK.
     #' @param sagemaker_client (\link[paws]{sagemaker}): Client which makes Amazon SageMaker service
     #'              calls other than ``InvokeEndpoint`` (default: None). Estimators created using this
     #'              ``Session`` use this client. If not provided, one will be created using this
