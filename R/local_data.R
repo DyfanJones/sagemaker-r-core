@@ -252,7 +252,7 @@ RecordIOSplitter = R6Class("RecordIOSplitter",
     #'              the file
     split = function(file){
       f = readBin(file, what = "raw", n = file.size(file))
-      sagemaker.mlcore::read_records_io(f)
+      read_records_io(f)
     }
   )
 )
