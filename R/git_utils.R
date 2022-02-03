@@ -53,6 +53,7 @@
 #'              in the Git repo (default: []).
 #' @return dict: A dict that contains the updated values of entry_point, source_dir
 #'              and dependencies.
+#' @family git_config
 #' @export
 git_clone_repo <- function(git_config,
                            entry_point,

@@ -15,3 +15,23 @@ str: Algorithm name, as extracted from the image name.
 \description{
 Extract the base name of the image to use as the 'algorithm name' for the job.
 }
+\seealso{
+Other sagemaker_utils: 
+\code{\link{base_from_name}()},
+\code{\link{build_dict}()},
+\code{\link{download_file}()},
+\code{\link{download_folder}()},
+\code{\link{get_short_version}()},
+\code{\link{name_from_base}()},
+\code{\link{name_from_image}()},
+\code{\link{regional_hostname}()},
+\code{\link{repack_model}()},
+\code{\link{retries}()},
+\code{\link{sagemaker_short_timestamp}()},
+\code{\link{sagemaker_timestamp}()},
+\code{\link{secondary_training_status_changed}()},
+\code{\link{secondary_training_status_message}()},
+\code{\link{sts_regional_endpoint}()},
+\code{\link{unique_name_from_base}()}
+}
+\concept{sagemaker_utils}

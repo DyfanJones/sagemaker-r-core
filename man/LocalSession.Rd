@@ -8,6 +8,12 @@ A SageMaker ``Session`` class for Local Mode.
 
 A SageMaker ``Session`` class for Local Mode.
 }
+\seealso{
+Other Session: 
+\code{\link{PawsSession}},
+\code{\link{Session}}
+}
+\concept{Session}
 \section{Super class}{
 \code{\link[sagemaker.core:Session]{sagemaker.core::Session}} -> \code{LocalSession}
 }

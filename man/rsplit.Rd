@@ -16,3 +16,11 @@ rsplit(str, separator = "\\\\.", maxsplit)
 \description{
 Split string from the right
 }
+\seealso{
+Other r_utils: 
+\code{\link{cls_help}()},
+\code{\link{is_list_named}()},
+\code{\link{is_tarfile}()},
+\code{\link{pkg_method}()}
+}
+\concept{r_utils}

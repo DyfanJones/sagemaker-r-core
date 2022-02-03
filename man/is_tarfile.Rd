@@ -14,3 +14,11 @@ Check the magic bytes at offset 257.
              If they match "ustar" including the null terminator, the file is probably a tar.
              \url{https://www.gnu.org/software/tar/manual/html_node/Standard.html}
 }
+\seealso{
+Other r_utils: 
+\code{\link{cls_help}()},
+\code{\link{is_list_named}()},
+\code{\link{pkg_method}()},
+\code{\link{rsplit}()}
+}
+\concept{r_utils}

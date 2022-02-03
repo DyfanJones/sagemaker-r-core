@@ -58,3 +58,4 @@ Git clone repo containing the training code and serving code. This method
              also validate ``git_config``, and set ``entry_point``, ``source_dir`` and
              ``dependencies`` to the right file or directory in the repo cloned.
 }
+\concept{git_config}

@@ -12,3 +12,11 @@ cls_help(cls)
 \description{
 Helper function to return help documentation for sagemaker R6 classes.
 }
+\seealso{
+Other r_utils: 
+\code{\link{is_list_named}()},
+\code{\link{is_tarfile}()},
+\code{\link{pkg_method}()},
+\code{\link{rsplit}()}
+}
+\concept{r_utils}

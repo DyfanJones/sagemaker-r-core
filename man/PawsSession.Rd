@@ -7,6 +7,12 @@
 A session stores configuration state and allows you to create paws service
              clients.
 }
+\seealso{
+Other Session: 
+\code{\link{LocalSession}},
+\code{\link{Session}}
+}
+\concept{Session}
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{

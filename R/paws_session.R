@@ -6,6 +6,7 @@
 #' @importFrom utils getFromNamespace
 
 #' @title PawsSession Class create connection to AWS utilizing paws.
+#' @family Session
 #' @description A session stores configuration state and allows you to create paws service
 #'              clients.
 #' @export

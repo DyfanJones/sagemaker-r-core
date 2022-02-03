@@ -12,6 +12,12 @@ Manage interactions with the Amazon SageMaker APIs and any other AWS services ne
              that accesses an S3 bucket location and one is not specified, the ``Session`` creates a default
              bucket based on a naming convention which includes the current AWS account ID.
 }
+\seealso{
+Other Session: 
+\code{\link{LocalSession}},
+\code{\link{PawsSession}}
+}
+\concept{Session}
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{

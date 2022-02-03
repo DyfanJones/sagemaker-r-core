@@ -12,3 +12,11 @@ is_list_named(x)
 \description{
 Check if list is named
 }
+\seealso{
+Other r_utils: 
+\code{\link{cls_help}()},
+\code{\link{is_tarfile}()},
+\code{\link{pkg_method}()},
+\code{\link{rsplit}()}
+}
+\concept{r_utils}

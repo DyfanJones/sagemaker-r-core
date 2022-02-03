@@ -1,15 +1,13 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/local/local_session.py
 
-#' @include error.R
 #' @include r_utils.R
 #' @include local_image.R
 #' @include local_entities.R
 #' @include session.R
-#' @include utils.R
 
 #' @import R6
-#' @importFrom fs path path_expand_r file_exists
+#' @import fs
 #' @importFrom httr handle add_headers POST
 
 #' @title A SageMakerClient that implements the API calls locally.
@@ -319,6 +317,7 @@ LocalSagemakerRuntimeClient = R6Class("LocalSagemakerRuntimeClient",
 )
 
 #' @title A SageMaker ``Session`` class for Local Mode.
+#' @family Session
 #' @export
 LocalSession = R6Class("LocalSession",
   inherit = Session,
@@ -378,7 +377,7 @@ LocalSession = R6Class("LocalSession",
         cred$endpoint = self$s3_endpoint_url
         self$s3 = paws::s3(config = cred)
       }
-      sagemaker_config_file = fs::path(fs::path_expand_r("~"), ".sagemaker", "config.yaml")
+      sagemaker_config_file = fs::path_join(c(fs::path_expand_r("~"), ".sagemaker", "config.yaml"))
       if (fs::file_exists(sagemaker_config_file)){
         read_yaml = pkg_method("read_yaml", "yaml")
         self$config = read_yaml(sagemaker_config_file)
@@ -392,7 +391,6 @@ LocalSession = R6Class("LocalSession",
 
 #' @title Amazon SageMaker channel configuration for FILE data sources, used in local mode.
 #' @keywords internal
-#' @export
 file_input = R6Class("file_input",
   public = list(
 

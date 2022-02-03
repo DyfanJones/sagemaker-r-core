@@ -14,4 +14,12 @@ pkg_method(fun, pkg)
 \description{
 This function allows to use soft dependencies.
 }
+\seealso{
+Other r_utils: 
+\code{\link{cls_help}()},
+\code{\link{is_list_named}()},
+\code{\link{is_tarfile}()},
+\code{\link{rsplit}()}
+}
+\concept{r_utils}
 \keyword{internal}

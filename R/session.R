@@ -31,7 +31,7 @@ LogState <- list(STARTING = 1,
                  COMPLETE = 5)
 
 #' @title Sagemaker Session Class
-#' @name Session
+#' @family Session
 #' @description Manage interactions with the Amazon SageMaker APIs and any other AWS services needed.
 #'              This class provides convenient methods for manipulating entities and resources that Amazon
 #'              SageMaker uses, such as training jobs, endpoints, and input datasets in S3.
@@ -2537,6 +2537,50 @@ Session = R6Class("Session",
           }
         )
       }
+    },
+
+    # Construct CreateCompilationJob request
+    # Args:
+    #   input_model_config (dict): the trained model and the Amazon S3 location where it is
+    # stored.
+    # output_model_config (dict): Identifies the Amazon S3 location where you want Amazon
+    # SageMaker Neo to save the results of compilation job
+    # role (str): An AWS IAM role (either name or full ARN). The Amazon SageMaker Neo
+    # compilation jobs use this role to access model artifacts. You must grant
+    # sufficient permissions to this role.
+    # job_name (str): Name of the compilation job being created.
+    # stop_condition (dict): Defines when compilation job shall finish. Contains entries
+    # that can be understood by the service like ``MaxRuntimeInSeconds``.
+    # tags (list[dict]): List of tags for labeling a compile model job. For more, see
+    # https://docs.aws.amazon.com/sagemaker/latest/dg/API_Tag.html.
+    # vpc_config (dict): Contains values for VpcConfig:
+    #   * subnets (list[str]): List of subnet ids.
+    # The key in vpc_config is 'Subnets'.
+    # * security_group_ids (list[str]): List of security group ids.
+    # The key in vpc_config is 'SecurityGroupIds'.
+    # Returns:
+    #   dict: A dictionary for CreateCompilationJob request
+    .get_compilation_request = function(job_name,
+                                        input_model_config,
+                                        output_model_config,
+                                        role,
+                                        stop_condition,
+                                        tags=NULL,
+                                        vpc_config=NULL) {
+      compilation_request = list(
+        "InputConfig"=input_model_config,
+        "OutputConfig"=output_model_config,
+        "RoleArn"=role,
+        "StoppingCondition"=stop_condition,
+        "CompilationJobName"=job_name
+      )
+
+      tags = .append_project_tags(tags)
+      compilation_request[["Tags"]] = tags
+
+      compilation_request[["VpcConfig"]] = vpc_config
+
+      return(compilation_request)
     },
 
     # Construct CreateHyperParameterTuningJob request

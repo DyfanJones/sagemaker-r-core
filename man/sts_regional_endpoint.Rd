@@ -18,3 +18,23 @@ We need this function because the AWS SDK does not yet honor
              For the list of regional endpoints, see
              \url{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#id_credentials_region-endpoints}.
 }
+\seealso{
+Other sagemaker_utils: 
+\code{\link{base_from_name}()},
+\code{\link{base_name_from_image}()},
+\code{\link{build_dict}()},
+\code{\link{download_file}()},
+\code{\link{download_folder}()},
+\code{\link{get_short_version}()},
+\code{\link{name_from_base}()},
+\code{\link{name_from_image}()},
+\code{\link{regional_hostname}()},
+\code{\link{repack_model}()},
+\code{\link{retries}()},
+\code{\link{sagemaker_short_timestamp}()},
+\code{\link{sagemaker_timestamp}()},
+\code{\link{secondary_training_status_changed}()},
+\code{\link{secondary_training_status_message}()},
+\code{\link{unique_name_from_base}()}
+}
+\concept{sagemaker_utils}

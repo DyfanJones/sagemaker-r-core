@@ -22,3 +22,9 @@ Prepares a VpcConfig list containing keys 'Subnets' and
              CreateTrainingJob and CreateModel APIs See
              \url{https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html}
 }
+\seealso{
+Other vpc_utils: 
+\code{\link{vpc_from_list}()},
+\code{\link{vpc_sanitize}()}
+}
+\concept{vpc_utils}

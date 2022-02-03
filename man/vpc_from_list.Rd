@@ -20,3 +20,9 @@ list as (subnets, security_group_ids) If vpc_config parameter
 \description{
 Extracts subnets and security group ids as lists from a VpcConfig dict
 }
+\seealso{
+Other vpc_utils: 
+\code{\link{vpc_sanitize}()},
+\code{\link{vpc_to_list}()}
+}
+\concept{vpc_utils}

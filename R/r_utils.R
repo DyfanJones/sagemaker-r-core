@@ -14,6 +14,7 @@ get_aws_env <- function(x) {
 #' @keywords internal
 #' @param fun function to export
 #' @param pkg package to method from
+#' @family r_utils
 #' @export
 pkg_method <- function(fun, pkg) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
@@ -29,7 +30,8 @@ get_region <- pkg_method("get_region", "paws.common")
 #' @title Checks is R6 is a sub class
 #' @param subclass (R6):
 #' @param cls (R6):
-#' @keywords internal
+#' @noRd
+#' @family r_utils
 #' @export
 IsSubR6Class <- function(subclass, cls) {
   if(is.null(subclass)) return(NULL)
@@ -43,7 +45,8 @@ IsSubR6Class <- function(subclass, cls) {
 #' @param obj (raw): raw connection or raw vector
 #' @param filename (str):
 #' @param chunk_size (int):
-#' @keywords internal
+#' @noRd
+#' @family r_utils
 #' @export
 write_bin <- function(obj,
                       filename,
@@ -176,7 +179,8 @@ s3_upload_multipart_parts <- function(client,
 #' @title If api call fails retry call
 #' @param expr (code): AWS code to rety
 #' @param retry (int): number of retries
-#' @keywords internal
+#' @noRd
+#' @family r_utils
 #' @export
 retry_api_call <- function(expr, retry = 5){
 
@@ -210,20 +214,23 @@ retry_api_call <- function(expr, retry = 5){
 
 #' @title Check if list is empty
 #' @param obj (list):
-#' @keywords internal
+#' @family r_utils
+#' @noRd
 #' @export
 islistempty = function(obj) {(is.null(obj) || length(obj) == 0)}
 
 #' @title split string
 #' @param str (str): string to split
 #' @param split (str): string used for splitting.
-#' @keywords internal
+#' @family r_utils
+#' @noRd
 #' @export
 split_str <- function(str, split = ",") unlist(strsplit(str, split = split))
 
 #' @title Format of R6 classes
 #' @param self ([R6::R6Class])
-#' @keywords internal
+#' @family r_utils
+#' @noRd
 #' @export
 format_class <- function(self){
   return(sprintf(
@@ -236,7 +243,8 @@ format_class <- function(self){
 #' @title Create Enum "like" environments
 #' @param ... (obj): parameters to be create into an Enum like environment
 #' @param .class (str):
-#' @keywords internal
+#' @family r_utils
+#' @noRd
 #' @export
 Enum <- function(..., .class=NULL) {
   kwargs = list(...)
@@ -260,6 +268,7 @@ print.Enum <- function(x, ...){
 #' @param str : string to be split
 #' @param separator (str): Method splits string starting from the right (default `\\.`)
 #' @param maxsplit (number): The maxsplit defines the maximum number of splits.
+#' @family r_utils
 #' @export
 rsplit <- function(str, separator="\\.", maxsplit) {
   vec = unlist(strsplit(str, separator))
@@ -270,6 +279,7 @@ rsplit <- function(str, separator="\\.", maxsplit) {
 
 #' @title Check if list is named
 #' @param x : object
+#' @family r_utils
 #' @export
 is_list_named = function(x){
   inherits(x, "list") && length(names(x)) > 0
@@ -303,6 +313,7 @@ list.append = function (.data, ...) {
 
 #' @title Helper function to return help documentation for sagemaker R6 classes.
 #' @param cls (R6::R6Class): R6 class
+#' @family r_utils
 #' @export
 cls_help = function(cls){
   cls_name = class(cls)[[1]]
@@ -335,9 +346,13 @@ parse_url = function(url){
 #'              If they match "ustar" including the null terminator, the file is probably a tar.
 #'              \url{https://www.gnu.org/software/tar/manual/html_node/Standard.html}
 #' @param path A character of filepath to tar archived file.
+#' @family r_utils
 #' @export
 is_tarfile <- function(path){
   stopifnot(is.character(path))
+  if(!fs::is_file(path)){
+    ValueError$new("`path` must be a valid file to be checked.")
+  }
   # https://stackoverflow.com/questions/32180215/how-to-check-whether-a-file-is-in-tar-format
   con <- gzfile(path.expand(path), "rb")
   on.exit(close(con))

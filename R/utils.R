@@ -11,7 +11,8 @@
 
 #' @title Core varaibles
 #' @name common_varaibles
-#' @keywords internal
+#' @family sagemaker_utils
+#' @noRd
 NULL
 
 #' @rdname common_varaibles
@@ -43,6 +44,7 @@ DEFAULT_SLEEP_TIME_SECONDS = 10
 #' @param max_length (int): Maximum length for the resulting string (default: 63).
 #' @return str: Training job name using the algorithm from the image name and a
 #'        timestamp.
+#' @family sagemaker_utils
 #' @export
 name_from_image <- function(image, max_length=63L){
   return(name_from_base(base_name_from_image(image), max_length = max_length))
@@ -56,6 +58,7 @@ name_from_image <- function(image, max_length=63L){
 #' @param max_length (int): Maximum length for the resulting string (default: 63).
 #' @param short (bool): Whether or not to use a truncated timestamp (default: False).
 #' @return str: Input parameter with appended timestamp.
+#' @family sagemaker_utils
 #' @export
 name_from_base <- function(base, max_length = 63, short = FALSE){
   timestamp = if(short) sagemaker_short_timestamp() else sagemaker_timestamp()
@@ -67,6 +70,7 @@ name_from_base <- function(base, max_length = 63, short = FALSE){
 #' @param base (str): String used as prefix to generate the unique name.
 #' @param max_length (int): Maximum length for the resulting string (default: 63).
 #' @return str: Input parameter with appended timestamp.
+#' @family sagemaker_utils
 #' @export
 unique_name_from_base <- function(base, max_length=63){
   unique = sprintf("%04x", as.integer(runif(1,max= 16**4))) # 4-digit hex
@@ -79,6 +83,7 @@ unique_name_from_base <- function(base, max_length=63){
 #' @title Extract the base name of the image to use as the 'algorithm name' for the job.
 #' @param image (str): Image name.
 #' @return str: Algorithm name, as extracted from the image name.
+#' @family sagemaker_utils
 #' @export
 base_name_from_image <- function(image){
   stopifnot(is.character(image))
@@ -92,6 +97,7 @@ base_name_from_image <- function(image){
 #'              :func:`~sagemaker.utils.name_from_base`.
 #' @param name (str): The resource name.
 #' @return str: The base name, as extracted from the resource name.
+#' @family sagemaker_utils
 #' @export
 base_from_name <- function(name){
   pattern = "^(.+)-(\\d{4}-\\d{2}-\\d{2}-\\d{2}-\\d{2}-\\d{2}-\\d{3}|\\d{6}-\\d{4})"
@@ -100,6 +106,7 @@ base_from_name <- function(name){
 }
 
 #' @title Return a timestamp with millisecond precision.
+#' @family sagemaker_utils
 #' @export
 sagemaker_timestamp <- function(){
   moment = Sys.time()
@@ -108,6 +115,7 @@ sagemaker_timestamp <- function(){
 }
 
 #' @title Return a timestamp that is relatively short in length
+#' @family sagemaker_utils
 #' @export
 sagemaker_short_timestamp <- function() return(strftime(Sys.time(), "%y%m%d-%H%M"))
 
@@ -115,6 +123,7 @@ sagemaker_short_timestamp <- function() return(strftime(Sys.time(), "%y%m%d-%H%M
 #' @param key (str): input key
 #' @param value (str): input value
 #' @return dict: dict of key and value or an empty dict.
+#' @family sagemaker_utils
 #' @export
 build_dict <- function(key, value = NULL){
   if (!islistempty(value)) {
@@ -128,7 +137,8 @@ build_dict <- function(key, value = NULL){
 #' @title Placeholder
 #' @param key_path (str):
 #' @param config (str):
-#' @keywords internal
+#' @noRd
+#' @family sagemaker_utils
 #' @export
 get_config_value <- function(key_path, config = NULL){
   if(is.null(config))
@@ -147,6 +157,7 @@ get_config_value <- function(key_path, config = NULL){
 #' @title Return short version in the format of x.x
 #' @param framework_version (str): The version string to be shortened.
 #' @return str: The short version string
+#' @family sagemaker_utils
 #' @export
 get_short_version = function(framework_version){
   x = numeric_version(framework_version)
@@ -158,6 +169,7 @@ get_short_version = function(framework_version){
 #' @param prev_job_description (str): Previous job description, returned from DescribeTrainingJob call.
 #' @return boolean: Whether the secondary status message of a training job changed
 #'              or not.
+#' @family sagemaker_utils
 #' @export
 secondary_training_status_changed <- function(current_job_description=NULL,
                                              prev_job_description=NULL){
@@ -188,6 +200,7 @@ secondary_training_status_changed <- function(current_job_description=NULL,
 #' @param job_description (str): Returned response from DescribeTrainingJob call
 #' @param prev_description (str): Previous job description from DescribeTrainingJob call
 #' @return str: Job status string to be printed.
+#' @family sagemaker_utils
 #' @export
 secondary_training_status_message <- function(job_description=NULL,
                                               prev_description=NULL){
@@ -231,6 +244,7 @@ secondary_training_status_message <- function(job_description=NULL,
 #' @param target (str): destination path where the downloaded items will be placed
 #' @param sagemaker_session (sagemaker.session.Session): a sagemaker session to
 #'              interact with S3.
+#' @family sagemaker_utils
 #' @export
 download_folder = function(bucket_name,
                            prefix,
@@ -269,7 +283,8 @@ download_folder = function(bucket_name,
 #' @param prefix (str): S3 prefix within the bucket that will be downloaded
 #' @param target (str): destination path where the downloaded items will be placed
 #' @param s3 (paws::s3): S3 resource
-#' @keywords internal
+#' @family sagemaker_utils
+#' @noRd
 .download_files_under_prefix = function(bucket_name,
                                         prefix,
                                         target,
@@ -302,8 +317,9 @@ download_folder = function(bucket_name,
 #' @param source_files (str): vector of file paths that will be contained in the tar file
 #' @param target (str): A character vector of filepaths to be archived. Default to archive all files
 #'                      into a temporary file.
-#' @keywords internal
+#' @noRd
 #' @return (str): path to created tar file
+#' @family sagemaker_utils
 #' @export
 create_tar_file <- function(source_files, target=NULL){
   if (!is.null(target)){
@@ -339,6 +355,7 @@ create_tar_file <- function(source_files, target=NULL){
 #'              interact with S3.
 #' @param kms_key (str): KMS key ARN for encrypting the repacked model file
 #' @return str: path to the new packed model
+#' @family sagemaker_utils
 #' @export
 repack_model <- function(inference_script,
                          source_directory,
@@ -488,6 +505,7 @@ download_file_from_url = function(url,
 #' @param target (str): destination directory for the downloaded file.
 #' @param sagemaker_session (sagemaker.session.Session): a sagemaker session to
 #'              interact with S3.
+#' @family sagemaker_utils
 #' @export
 download_file = function(bucket_name,
                          path,
@@ -508,6 +526,7 @@ download_file = function(bucket_name,
 #' @param service_name (str): Name of the service to resolve an endpoint for (e.g., s3)
 #' @param region (str): AWS region name
 #' @return str: AWS STS regional endpoint
+#' @family sagemaker_utils
 #' @export
 regional_hostname <- function(service_name, region){
   hostname = list(
@@ -529,6 +548,7 @@ regional_hostname <- function(service_name, region){
 #'              \url{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#id_credentials_region-endpoints}.
 #' @param region (str): AWS region name
 #' @return str: AWS STS regional endpoint
+#' @family sagemaker_utils
 #' @export
 sts_regional_endpoint <- function(region){
   endpoint_data = regional_hostname("sts", region )
@@ -539,6 +559,7 @@ sts_regional_endpoint <- function(region){
 #' @param max_retry_count (int): The retry count.
 #' @param exception_message_prefix (str): The message to include in the exception on failure.
 #' @param seconds_to_sleep (int): The number of seconds to sleep between executions.
+#' @family sagemaker_utils
 #' @export
 retries <- function(max_retry_count,
                     exception_message_prefix,
@@ -560,7 +581,8 @@ retries <- function(max_retry_count,
 #' @title Given a region name (ex: "cn-north-1"), return the corresponding aws partition ("aws-cn").
 #' @description region (str): The region name for which to return the corresponding partition.
 #' @return str: partition corresponding to the region name passed in.
-#' @keywords internal
+#' @noRd
+#' @family sagemaker_utils
 #' @export
 .aws_partition = function(region){
   partitions = list(

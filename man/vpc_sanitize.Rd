@@ -20,3 +20,9 @@ Checks that an instance of VpcConfig has the expected keys and values,
              removes unexpected keys, and raises ValueErrors if any expectations are
              violated
 }
+\seealso{
+Other vpc_utils: 
+\code{\link{vpc_from_list}()},
+\code{\link{vpc_to_list}()}
+}
+\concept{vpc_utils}

@@ -44,3 +44,23 @@ This function does the following: - uncompresses model tarball from S3 or
              with the new code provided - compresses the new model tarball and saves it
              in S3 or local file system
 }
+\seealso{
+Other sagemaker_utils: 
+\code{\link{base_from_name}()},
+\code{\link{base_name_from_image}()},
+\code{\link{build_dict}()},
+\code{\link{download_file}()},
+\code{\link{download_folder}()},
+\code{\link{get_short_version}()},
+\code{\link{name_from_base}()},
+\code{\link{name_from_image}()},
+\code{\link{regional_hostname}()},
+\code{\link{retries}()},
+\code{\link{sagemaker_short_timestamp}()},
+\code{\link{sagemaker_timestamp}()},
+\code{\link{secondary_training_status_changed}()},
+\code{\link{secondary_training_status_message}()},
+\code{\link{sts_regional_endpoint}()},
+\code{\link{unique_name_from_base}()}
+}
+\concept{sagemaker_utils}

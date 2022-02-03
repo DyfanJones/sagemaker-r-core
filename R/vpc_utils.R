@@ -6,7 +6,8 @@
 
 #' @title Vpc Configuration environment list
 #' @description Contains default vpc configurations.
-#' @keywords internal
+#' @noRd
+#' @family vpc_utils
 #' @export
 vpc_configuration_env = Enum(
   SUBNETS_KEY = "Subnets",
@@ -28,6 +29,7 @@ vpc_configuration_env = Enum(
 #'              VpcConfig
 #' @return A VpcConfig dict containing keys 'Subnets' and 'SecurityGroupIds' If
 #'              either or both parameters are None, returns None
+#' @family vpc_utils
 #' @export
 vpc_to_list <- function(subnets,
                         security_group_ids){
@@ -43,6 +45,7 @@ vpc_to_list <- function(subnets,
 #'              extracting values
 #' @return list as (subnets, security_group_ids) If vpc_config parameter
 #'              is None, returns (None, None)
+#' @family vpc_utils
 #' @export
 vpc_from_list <- function(vpc_config,
                           do_sanitize=FALSE){
@@ -76,6 +79,7 @@ vpc_from_list <- function(vpc_config,
 #' @return  A valid VpcConfig dict containing only 'Subnets' and 'SecurityGroupIds'
 #'              from the vpc_config parameter If vpc_config parameter is None, returns
 #'              None
+#' @family vpc_utils
 #' @export
 vpc_sanitize <- function(vpc_config = NULL){
   if (is.null(vpc_config))
