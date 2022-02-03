@@ -30,7 +30,7 @@ get_region <- pkg_method("get_region", "paws.common")
 #' @title Checks is R6 is a sub class
 #' @param subclass (R6):
 #' @param cls (R6):
-#' @noRd
+#' @keywords internal
 #' @family r_utils
 #' @export
 IsSubR6Class <- function(subclass, cls) {
@@ -45,7 +45,7 @@ IsSubR6Class <- function(subclass, cls) {
 #' @param obj (raw): raw connection or raw vector
 #' @param filename (str):
 #' @param chunk_size (int):
-#' @noRd
+#' @keywords internal
 #' @family r_utils
 #' @export
 write_bin <- function(obj,
@@ -179,7 +179,7 @@ s3_upload_multipart_parts <- function(client,
 #' @title If api call fails retry call
 #' @param expr (code): AWS code to rety
 #' @param retry (int): number of retries
-#' @noRd
+#' @keywords internal
 #' @family r_utils
 #' @export
 retry_api_call <- function(expr, retry = 5){
@@ -215,7 +215,7 @@ retry_api_call <- function(expr, retry = 5){
 #' @title Check if list is empty
 #' @param obj (list):
 #' @family r_utils
-#' @noRd
+#' @keywords internal
 #' @export
 islistempty = function(obj) {(is.null(obj) || length(obj) == 0)}
 
@@ -223,14 +223,14 @@ islistempty = function(obj) {(is.null(obj) || length(obj) == 0)}
 #' @param str (str): string to split
 #' @param split (str): string used for splitting.
 #' @family r_utils
-#' @noRd
+#' @keywords internal
 #' @export
 split_str <- function(str, split = ",") unlist(strsplit(str, split = split))
 
 #' @title Format of R6 classes
 #' @param self ([R6::R6Class])
 #' @family r_utils
-#' @noRd
+#' @keywords internal
 #' @export
 format_class <- function(self){
   return(sprintf(
@@ -244,7 +244,7 @@ format_class <- function(self){
 #' @param ... (obj): parameters to be create into an Enum like environment
 #' @param .class (str):
 #' @family r_utils
-#' @noRd
+#' @keywords internal
 #' @export
 Enum <- function(..., .class=NULL) {
   kwargs = list(...)

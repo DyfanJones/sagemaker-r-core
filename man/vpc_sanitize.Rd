@@ -22,6 +22,7 @@ Checks that an instance of VpcConfig has the expected keys and values,
 }
 \seealso{
 Other vpc_utils: 
+\code{\link{vpc_configuration_env}},
 \code{\link{vpc_from_list}()},
 \code{\link{vpc_to_list}()}
 }

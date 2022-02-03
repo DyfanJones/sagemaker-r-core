@@ -6,7 +6,7 @@
 
 #' @title Vpc Configuration environment list
 #' @description Contains default vpc configurations.
-#' @noRd
+#' @keywords internal
 #' @family vpc_utils
 #' @export
 vpc_configuration_env = Enum(

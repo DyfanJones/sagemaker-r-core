@@ -24,6 +24,7 @@ Prepares a VpcConfig list containing keys 'Subnets' and
 }
 \seealso{
 Other vpc_utils: 
+\code{\link{vpc_configuration_env}},
 \code{\link{vpc_from_list}()},
 \code{\link{vpc_sanitize}()}
 }

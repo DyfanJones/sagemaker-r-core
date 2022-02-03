@@ -137,7 +137,7 @@ build_dict <- function(key, value = NULL){
 #' @title Placeholder
 #' @param key_path (str):
 #' @param config (str):
-#' @noRd
+#' @keywords internal
 #' @family sagemaker_utils
 #' @export
 get_config_value <- function(key_path, config = NULL){
@@ -284,7 +284,7 @@ download_folder = function(bucket_name,
 #' @param target (str): destination path where the downloaded items will be placed
 #' @param s3 (paws::s3): S3 resource
 #' @family sagemaker_utils
-#' @noRd
+#' @keywords internal
 .download_files_under_prefix = function(bucket_name,
                                         prefix,
                                         target,
@@ -317,7 +317,7 @@ download_folder = function(bucket_name,
 #' @param source_files (str): vector of file paths that will be contained in the tar file
 #' @param target (str): A character vector of filepaths to be archived. Default to archive all files
 #'                      into a temporary file.
-#' @noRd
+#' @keywords internal
 #' @return (str): path to created tar file
 #' @family sagemaker_utils
 #' @export
@@ -581,7 +581,7 @@ retries <- function(max_retry_count,
 #' @title Given a region name (ex: "cn-north-1"), return the corresponding aws partition ("aws-cn").
 #' @description region (str): The region name for which to return the corresponding partition.
 #' @return str: partition corresponding to the region name passed in.
-#' @noRd
+#' @keywords internal
 #' @family sagemaker_utils
 #' @export
 .aws_partition = function(region){

@@ -1676,10 +1676,10 @@ test_that("test create endpoint config with tags", {
   ims$create_endpoint_config("endpoint-test", "simple-model", 1, "local", tags=tags)
   prod_variants = list(
     ModelName = "simple-model",
-    InstanceType = "local",
-    InitialInstanceCount = 1,
     VariantName = "AllTraffic",
-    InitialVariantWeight = 1
+    InitialVariantWeight = 1,
+    InitialInstanceCount = 1,
+    InstanceType = "local"
   )
   expect_equal(
     ims$sagemaker$create_endpoint_config(..return_value = T),
@@ -2273,4 +2273,3 @@ test_that("test_wait_for_athena_query", {
     list(QueryExecutionId="query_id")
   )
 })
-

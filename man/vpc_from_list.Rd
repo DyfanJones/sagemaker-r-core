@@ -22,6 +22,7 @@ Extracts subnets and security group ids as lists from a VpcConfig dict
 }
 \seealso{
 Other vpc_utils: 
+\code{\link{vpc_configuration_env}},
 \code{\link{vpc_sanitize}()},
 \code{\link{vpc_to_list}()}
 }

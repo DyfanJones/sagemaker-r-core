@@ -8,7 +8,7 @@
 #' @param timestamp_fmt (str): a character scalar.
 #' @param log_cols (list): a named list of functions (like the ones provided by the package crayon)
 #' @family logging
-#' @noRd
+#' @keywords internal
 #' @export
 sagemaker_log_layout <- function(
   log_fmt="%L [%t] %m",
@@ -88,7 +88,7 @@ multi_stream_iter <- function(cloudwatchlogs, log_group, streams, positions= NUL
 #' @param start_time (int):
 #' @param skip (str):
 #' @family logging
-#' @noRd
+#' @keywords internal
 #' @export
 log_stream <- function(cloudwatchlogs,
                        log_group,
