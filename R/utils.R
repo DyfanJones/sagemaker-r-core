@@ -366,18 +366,18 @@ repack_model <- function(inference_script,
                          kms_key=NULL){
   dependencies = dependencies %||% list()
 
-  tmp = tempdir()
+  tmp_dir = tempdir()
 
   # extract model from tar.gz
-  model_dir = .extract_model(model_uri, sagemaker_session, tmp)
+  model_dir = .extract_model(model_uri, sagemaker_session, tmp_dir)
 
   # append file to model directory
   .create_or_update_code_dir(
-    model_dir, inference_script, source_directory, dependencies, sagemaker_session, tmp
+    model_dir, inference_script, source_directory, dependencies, sagemaker_session, tmp_dir
   )
 
   # repackage model_dir
-  tmp_model_path = fs::path(tmp, "temp-model.tar.gz")
+  tmp_model_path = fs::path(tmp_dir, "temp-model.tar.gz")
   tar_subdir(tmp_model_path, model_dir)
 
   # remove temp directory/tar.gz
@@ -452,11 +452,11 @@ tar_subdir <- function(tarfile, src, compress = "gzip", ...){
   }
 }
 
-.extract_model <- function(model_uri, sagemaker_session, tmp){
-  tmp_model_dir = fs::path(tmp, "model")
+.extract_model <- function(model_uri, sagemaker_session, tmp_dir){
+  tmp_model_dir = fs::path(tmp_dir, "model")
   fs::dir_create(tmp_model_dir)
   if(startsWith(tolower(model_uri), "s3://")){
-    local_model_path = fs::path(tmp, "tar_file")
+    local_model_path = fs::path(tmp_dir, "tar_file")
     download_file_from_url(model_uri, local_model_path, sagemaker_session)
   } else{
     local_model_path = gsub("file://", "", model_uri)
@@ -470,10 +470,9 @@ tar_subdir <- function(tarfile, src, compress = "gzip", ...){
                         sagemaker_session,
                         kms_key) {
   if (startsWith(tolower(repacked_model_uri), "s3://")) {
-    s3_parts = split_s3_uri(repacked_model_uri)
+    s3_parts = parse_s3_url(repacked_model_uri)
     s3_parts$key = gsub(basename(s3_parts$key), basename(repacked_model_uri), s3_parts$key)
     obj = readBin(tmp_model_path, "raw", n = file.size(tmp_model_path))
-
     kwargs = list(Body=obj, Bucket=s3_parts$bucket, Key=s3_parts$key)
     if (!is.null(kms_key)) {
       kwargs$ServerSideEncryption = "aws:kms"
@@ -481,7 +480,7 @@ tar_subdir <- function(tarfile, src, compress = "gzip", ...){
     }
     do.call(sagemaker_session$s3$put_object, kwargs)
   } else {
-    fs::file_copy(tmp_model_path,gsub("file://", "", repacked_model_uri))
+    fs::file_copy(tmp_model_path, gsub("file://", "", repacked_model_uri))
   }
   return(invisible(NULL))
 }

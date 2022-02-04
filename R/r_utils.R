@@ -63,32 +63,34 @@ write_bin <- function(obj,
     )
     pkg_env$readr$methods$write_file(obj, l$file)
     file.rename(l$file, paste(l, collapse = "."))
-    return(invisible(TRUE))
-  }
+  } else {
   base_write_raw(obj, filename, chunk_size)
+  }
   return(invisible(TRUE))
 }
 
 base_write_raw <- function(obj,
                            filename,
                            chunk_size = 2^31-2){ # Only 2^31 - 1 bytes can be written in a single call
-  # Open for reading and appending.
-  con <- file(filename, "a+b")
-  on.exit(close(con))
 
   # If R version is 4.0.0 + then don't need to chunk writeBin
   # https://github.com/HenrikBengtsson/Wishlist-for-R/issues/97
-  if (getRversion() > R_system_version("4.0.0")){
-    writeBin(obj,con)
+  r_version = getRversion() > R_system_version("4.0.0")
+  if (r_version){
+    writeBin(obj, filename)
   } else {
     max_len <- length(obj)
     start <- seq(1, max_len, chunk_size)
     end <- c(start[-1]-1, max_len)
-
     if (length(start) == 1) {
-      writeBin(obj,con)
+      writeBin(obj, filename)
     } else {
-      sapply(seq_along(start), function(i){writeBin(obj[start[i]:end[i]],con)})}
+      # Open for reading and appending.
+      con <- file(filename, "a+b")
+      on.exit(close(con))
+
+      sapply(seq_along(start), function(i){writeBin(obj[start[i]:end[i]], con)})
+    }
   }
 }
 
