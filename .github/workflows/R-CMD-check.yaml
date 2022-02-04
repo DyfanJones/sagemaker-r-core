@@ -21,6 +21,10 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Dependencies
+        run: |
+          sudo apt-get install protobuf-compiler libprotobuf-dev libprotoc-dev
+
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: rcmdcheck
