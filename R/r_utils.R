@@ -2,6 +2,13 @@
 #' @importFrom utils getFromNamespace help
 #' @importFrom urltools url_parse
 
+# Copied from https://github.com/paws-r/paws/blob/main/examples/s3_multipart_upload.R
+# and modified under Apache 2.0.
+# See the NOTICE file at the top of this package for attribution.
+KB = 1024
+MB = KB ^ 2
+GB = KB ^ 3
+
 `%||%` <- function(x, y) if (is.null(x)) return(y) else return(x)
 
 get_aws_env <- function(x) {
@@ -43,64 +50,56 @@ IsSubR6Class <- function(subclass, cls) {
 
 #' @title Write large raw connections in chunks
 #' @param obj (raw): raw connection or raw vector
-#' @param filename (str):
-#' @param chunk_size (int):
+#' @param filename (str): file to write raw vector to
 #' @keywords internal
 #' @family r_utils
 #' @export
 write_bin <- function(obj,
-                      filename,
-                      chunk_size = 2^31 - 2) {
-
-  # if readr is available then use readr::write_file else loop writeBin
-  if (pkg_env$readr$available){
-    # to avoid readr trying to unzip files and causing potential errors
-    pos <- regexpr("\\.([[:alnum:]]+)$", filename)
-    l = (
-      if(pos > -1L)
-        list(file = substring(filename, 1, pos-1L), ext = substring(filename, pos + 1L))
-      else list(file = filename)
-    )
-    pkg_env$readr$methods$write_file(obj, l$file)
-    file.rename(l$file, paste(l, collapse = "."))
+                      filename) {
+  # If R version is 4.0.0 + then use writeBin due to long vector support
+  # https://github.com/HenrikBengtsson/Wishlist-for-R/issues/97
+  if (getRversion() > R_system_version("4.0.0")){
+    writeBin(obj, filename)
   } else {
-  base_write_raw(obj, filename, chunk_size)
+    # use readr if R version < 4.0.0 for extra speed
+    if((!requireNamespace("readr", quietly = TRUE))){
+      readr_write_raw(obj, filename)
+    } else {
+      base_write_loop(obj, filename)
+    }
   }
   return(invisible(TRUE))
 }
 
-base_write_raw <- function(obj,
-                           filename,
-                           chunk_size = 2^31-2){ # Only 2^31 - 1 bytes can be written in a single call
-
-  # If R version is 4.0.0 + then don't need to chunk writeBin
-  # https://github.com/HenrikBengtsson/Wishlist-for-R/issues/97
-  r_version = getRversion() > R_system_version("4.0.0")
-  if (r_version){
-    writeBin(obj, filename)
-  } else {
-    max_len <- length(obj)
-    start <- seq(1, max_len, chunk_size)
-    end <- c(start[-1]-1, max_len)
-    if (length(start) == 1) {
-      writeBin(obj, filename)
-    } else {
-      # Open for reading and appending.
-      con <- file(filename, "a+b")
-      on.exit(close(con))
-
-      sapply(seq_along(start), function(i){writeBin(obj[start[i]:end[i]], con)})
-    }
-  }
+readr_write_raw <- function(obj, filename){
+  # to avoid readr trying to unzip files and causing potential errors
+  write_file = pkg_method("write_file", "readr")
+  pos <- regexpr("\\.([[:alnum:]]+)$", filename)
+  parts = (
+    if(pos > -1L)
+      list(file = substring(filename, 1, pos-1L), ext = substring(filename, pos + 1L))
+    else list(file = filename)
+  )
+  write_file(obj, parts$file)
+  file.rename(parts$file, paste(parts, collapse = "."))
 }
 
-# Copied from https://github.com/paws-r/paws/blob/main/examples/s3_multipart_upload.R
-# and modified under Apache 2.0.
-# See the NOTICE file at the top of this package for attribution.
-
-KB = 1024
-MB = KB ^ 2
-GB = KB ^ 3
+base_write_loop <- function(obj,
+                           filename,
+                           chunk_size = (GB*2)-2){
+  # Only 2^31 - 1 bytes can be written in a single call
+  max_len <- length(obj)
+  start <- seq(1, max_len, chunk_size)
+  end <- c(start[-1]-1, max_len)
+  if (length(start) == 1) {
+    writeBin(obj, filename)
+  } else {
+    # Open for reading and appending.
+    con <- file(filename, "a+b")
+    on.exit(close(con))
+    sapply(seq_along(start), function(i){writeBin(obj[start[i]:end[i]], con)})
+  }
+}
 
 s3_upload <- function(client,
                       file,
