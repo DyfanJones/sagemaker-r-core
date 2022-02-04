@@ -6,3 +6,4 @@
 ^LICENSE.txt
 ^vendor$
 ^Makefile$
+^\.github$

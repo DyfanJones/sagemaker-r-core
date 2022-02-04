@@ -62,7 +62,7 @@ name_from_image <- function(image, max_length=63L){
 #' @export
 name_from_base <- function(base, max_length = 63, short = FALSE){
   timestamp = if(short) sagemaker_short_timestamp() else sagemaker_timestamp()
-  trimmed_base = substring(base, 1,(max_length - length(timestamp) - 1))
+  trimmed_base = substring(base, 1, (max_length - nchar(timestamp) - 1))
   return(sprintf("%s-%s", trimmed_base, timestamp))
 }
 
