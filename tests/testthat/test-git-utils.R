@@ -1,7 +1,7 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
 # https://github.com/aws/sagemaker-python-sdk/blob/master/tests/unit/test_git_utils.py
 
-REPO_DIR = "/tmp/repo_dir"
+REPO_DIR = file.path("dummy", "repo_dir")
 PUBLIC_GIT_REPO = "https://github.com/aws/sagemaker-python-sdk.git"
 PUBLIC_BRANCH = "test-branch-git-config"
 PUBLIC_COMMIT = "ae15c9d7d5b97ea95ea451e4662ee43da3401d73"
@@ -27,8 +27,8 @@ test_that("test git clone repo succeed", {
     {
       ret = sagemaker.core::git_clone_repo(git_config, entry_point, source_dir, dependencies)
       expect_equal(ret$entry_point, entry_point)
-      expect_equal(ret$source_dir, "/tmp/repo_dir/source_dir")
-      expect_equal(ret$dependencies, list("/tmp/repo_dir/foo", "/tmp/repo_dir/bar"))
+      expect_equal(ret$source_dir, file.path(REPO_DIR, "source_dir"))
+      expect_equal(ret$dependencies, list(file.path(REPO_DIR, "foo"), file.path(REPO_DIR, "bar")))
     }
   )
 })
@@ -184,7 +184,7 @@ test_that("test_git_clone_repo_with_username_password_no_2fa", {
       ))
       expect_equal(args[[2]], list("git", args = c("checkout", PRIVATE_BRANCH), wd = REPO_DIR))
       expect_equal(args[[3]], list("git", args = c("checkout", PRIVATE_COMMIT), wd = REPO_DIR))
-      expect_equal(ret$entry_point, "/tmp/repo_dir/entry_point")
+      expect_equal(ret$entry_point, file.path(REPO_DIR, "entry_point"))
       expect_null(ret$source_dir)
       expect_null(ret$dependencies)
     }
@@ -223,7 +223,7 @@ test_that("test_git_clone_repo_with_token_no_2fa", {
       ))
       expect_equal(args[[2]], list("git", args = c("checkout", PRIVATE_BRANCH), wd = REPO_DIR))
       expect_equal(args[[3]], list("git", args = c("checkout", PRIVATE_COMMIT), wd = REPO_DIR))
-      expect_equal(ret$entry_point, "/tmp/repo_dir/entry_point")
+      expect_equal(ret$entry_point, file.path(REPO_DIR, "entry_point"))
       expect_null(ret$source_dir)
       expect_null(ret$dependencies)
     }
@@ -266,7 +266,7 @@ test_that("test_git_clone_repo_with_token_2fa", {
       ))
       expect_equal(args[[2]], list("git", args = c("checkout", PRIVATE_BRANCH), wd = REPO_DIR))
       expect_equal(args[[3]], list("git", args = c("checkout", PRIVATE_COMMIT), wd = REPO_DIR))
-      expect_equal(ret$entry_point, "/tmp/repo_dir/entry_point")
+      expect_equal(ret$entry_point, file.path(REPO_DIR, "entry_point"))
       expect_null(ret$source_dir)
       expect_null(ret$dependencies)
     }
@@ -274,6 +274,8 @@ test_that("test_git_clone_repo_with_token_2fa", {
 })
 
 test_that("test_git_clone_repo_ssh", {
+  fs::dir_create(dirname(REPO_DIR))
+  fs::file_touch(REPO_DIR)
   git_config = list("repo"=PRIVATE_GIT_REPO_SSH, "branch"=PRIVATE_BRANCH, "commit"=PRIVATE_COMMIT)
   entry_point = "entry_point"
 
@@ -286,11 +288,12 @@ test_that("test_git_clone_repo_ssh", {
     {
       ret = sagemaker.core::git_clone_repo(git_config, entry_point)
       expect_equal(mock_chmod(..return_value = T)$mode, "511")
-      expect_equal(ret$entry_point, "/tmp/repo_dir/entry_point")
+      expect_equal(ret$entry_point, file.path(REPO_DIR, "entry_point"))
       expect_null(ret$source_dir)
       expect_null(ret$dependencies)
     }
   )
+  fs::dir_delete(dirname(REPO_DIR))
 })
 
 test_that("test_git_clone_repo_with_token_no_2fa_unnecessary_creds_provided", {
@@ -322,7 +325,7 @@ test_that("test_git_clone_repo_with_token_no_2fa_unnecessary_creds_provided", {
       ))
       expect_equal(args[[2]], list("git", args = c("checkout", PRIVATE_BRANCH), wd = REPO_DIR))
       expect_equal(args[[3]], list("git", args = c("checkout", PRIVATE_COMMIT), wd = REPO_DIR))
-      expect_equal(ret$entry_point, "/tmp/repo_dir/entry_point")
+      expect_equal(ret$entry_point, file.path(REPO_DIR, "entry_point"))
       expect_null(ret$source_dir)
       expect_null(ret$dependencies)
     }
@@ -358,7 +361,7 @@ test_that("test_git_clone_repo_with_token_2fa_unnecessary_creds_provided", {
       ))
       expect_equal(args[[2]], list("git", args = c("checkout", PRIVATE_BRANCH), wd = REPO_DIR))
       expect_equal(args[[3]], list("git", args = c("checkout", PRIVATE_COMMIT), wd = REPO_DIR))
-      expect_equal(ret$entry_point, "/tmp/repo_dir/entry_point")
+      expect_equal(ret$entry_point, file.path(REPO_DIR, "entry_point"))
       expect_null(ret$source_dir)
       expect_null(ret$dependencies)
     }
@@ -392,7 +395,7 @@ test_that("test_git_clone_repo_codecommit_https_with_username_and_password", {
         env = env
       ))
       expect_equal(args[[2]], list("git", args = c("checkout", CODECOMMIT_BRANCH), wd = REPO_DIR))
-      expect_equal(ret$entry_point, "/tmp/repo_dir/entry_point")
+      expect_equal(ret$entry_point, file.path(REPO_DIR, "entry_point"))
       expect_null(ret$source_dir)
       expect_null(ret$dependencies)
     }
