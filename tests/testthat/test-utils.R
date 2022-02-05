@@ -5,6 +5,7 @@ BUCKET_WITHOUT_WRITING_PERMISSION = "s3://bucket-without-writing-permission"
 
 NAME = "base_name"
 BUCKET_NAME = "some_bucket"
+temp_dir = "dummy"
 
 test_that("test get config value",{
   config = list("local"=list("region_name"="us-west-2", "port"="123"), "other"=list("key"=1))
@@ -169,21 +170,24 @@ test_that("test download folder", {
   )
   session$s3 = s3_mock
 
-  download_folder(BUCKET_NAME, "/prefix","/tmp", session)
+  fs::dir_create(temp_dir)
 
-  expect_true(file.exists(file.path("/tmp", "prefix")))
+  download_folder(BUCKET_NAME, "/prefix",temp_dir, session)
 
-  download_folder(BUCKET_NAME, "/prefix/","/tmp", session)
+  expect_true(file.exists(file.path(temp_dir, "prefix")))
 
-  expect_true(file.exists(file.path("/tmp", "train", "train_data.csv")))
-  expect_true(file.exists(file.path("/tmp", "train", "validation_data.csv")))
+  download_folder(BUCKET_NAME, "/prefix/",temp_dir, session)
+
+  expect_true(file.exists(file.path(temp_dir, "train", "train_data.csv")))
+  expect_true(file.exists(file.path(temp_dir, "train", "validation_data.csv")))
 
   fs::file_delete(c(
-    file.path("/tmp", "prefix"),
-    file.path("/tmp", "train","train_data.csv"),
-    file.path("/tmp", "train","validation_data.csv")
+    file.path(temp_dir, "prefix"),
+    file.path(temp_dir, "train","train_data.csv"),
+    file.path(temp_dir, "train","validation_data.csv")
     )
   )
+  fs::dir_delete(temp_dir)
 })
 
 test_that("test download folder points to single file", {
@@ -194,11 +198,13 @@ test_that("test download folder points to single file", {
   s3_mock$.call_args("get_object", list(Body = charToRaw("dummy")))
   session$s3 = s3_mock
 
-  download_folder(BUCKET_NAME, "/prefix/train/train_data.csv","/tmp", session)
+  fs::dir_create("dummy")
+  download_folder(BUCKET_NAME, "/prefix/train/train_data.csv","dummy", session)
 
-  expect_true(file.exists(file.path("/tmp", "train_data.csv")))
+  expect_true(file.exists(file.path("dummy", "train_data.csv")))
 
-  fs::file_delete(file.path("/tmp", "train_data.csv"))
+  fs::file_delete(file.path("dummy", "train_data.csv"))
+  fs::dir_delete("dummy")
 })
 
 test_that("test download file", {
@@ -221,8 +227,7 @@ test_that("test download file", {
 })
 
 test_that("test create tar file with provided path", {
-  temp_dir = "dummy"
-  dir.create(temp_dir)
+  fs::dir_create(temp_dir)
   writeLines("dummy", file.path(temp_dir, "file_a"))
   writeLines("dummy", file.path(temp_dir, "file_b"))
   writeLines("dummy", file.path(temp_dir, "file_c"))
@@ -235,12 +240,11 @@ test_that("test create tar file with provided path", {
 
   expect_equal(untar(out, list = T), basename(file_list))
 
-  fs::dir_delete(c(file.path(getwd(), "my"), "dummy"))
+  fs::dir_delete(c(file.path(getwd(), "my"), temp_dir))
 })
 
 test_that("test create tar file with auto generated path", {
-  temp_dir = "dummy"
-  dir.create(temp_dir)
+  fs::dir_create(temp_dir)
   writeLines("dummy", file.path(temp_dir, "file_a"))
   writeLines("dummy", file.path(temp_dir, "file_b"))
 
@@ -252,7 +256,7 @@ test_that("test create tar file with auto generated path", {
 
   expect_equal(untar(out, list = T), basename(file_list))
 
-  fs::dir_delete("dummy")
+  fs::dir_delete(temp_dir)
   fs::file_delete(out)
 })
 
@@ -263,8 +267,8 @@ create_file_tree <- function(tmp, tree){
 }
 
 tar_and_raw = function(File, tar_file="file.tar.gz"){
-  fs::dir_create("dummy")
-  tar_file = file.path("dummy", tar_file)
+  fs::dir_create(temp_dir)
+  tar_file = file.path(temp_dir, tar_file)
   create_tar_file(File, target=tar_file)
   readBin(tar_file, "raw", n = file.size(tar_file))
 }
@@ -323,16 +327,16 @@ test_that("test repack model without source dir", {
   )
 
   obj = session$s3$put_object(..return_value = T)
-  writeBin(obj$Body,"dummy/temp.tar.gz")
+  writeBin(obj$Body,file.path(temp_dir, "temp.tar.gz"))
 
-  file_list = untar("dummy/temp.tar.gz", list = T)
+  file_list = untar(file.path(temp_dir, "temp.tar.gz"), list = T)
 
   expect_equal(
     sort(file_list[!grepl("/$", file_list)]),
     c("./code/inference.py", "./code/lib/a", "./code/lib/aa", "./code/lib/bb",
       "./code/lib/dir/b", "./model")
   )
-  fs::dir_delete(c("temp","dummy"))
+  fs::dir_delete(c("temp",temp_dir))
 })
 
 test_that("test repack model with entry point without path without source dir", {
@@ -361,15 +365,15 @@ test_that("test repack model with entry point without path without source dir", 
   setwd(cwd)
 
   obj = session$s3$put_object(..return_value = T)
-  writeBin(obj$Body,"dummy/temp.tar.gz")
+  writeBin(obj$Body,file.path(temp_dir, "temp.tar.gz"))
 
-  file_list = untar("dummy/temp.tar.gz", list = T)
+  file_list = untar(file.path(temp_dir, "temp.tar.gz"), list = T)
 
   expect_equal(
     sort(file_list[!grepl("/$", file_list)]),
     c("./code/inference.py", "./model")
   )
-  fs::dir_delete(c("temp","dummy"))
+  fs::dir_delete(c("temp",temp_dir))
 })
 
 test_that("test repack model with entry point without path without source dir", {
@@ -393,15 +397,15 @@ test_that("test repack model with entry point without path without source dir", 
   )
 
   obj = session$s3$put_object(..return_value = T)
-  writeBin(obj$Body,"dummy/temp.tar.gz")
+  writeBin(obj$Body,file.path(temp_dir, "temp.tar.gz"))
 
-  file_list = untar("dummy/temp.tar.gz", list = T)
+  file_list = untar(file.path(temp_dir, "temp.tar.gz"), list = T)
 
   expect_equal(
     sort(file_list[!grepl("/$", file_list)]),
     c("./code/inference.py", "./code/this-file-should-be-included.py", "./model")
   )
-  fs::dir_delete(c("temp","dummy"))
+  fs::dir_delete(c("temp",temp_dir))
 })
 
 test_that("test repack model from s3 to s3", {
@@ -425,27 +429,27 @@ test_that("test repack model from s3 to s3", {
   )
 
   obj = session$s3$put_object(..return_value = T)
-  writeBin(obj$Body,"dummy/temp.tar.gz")
+  writeBin(obj$Body,file.path(temp_dir, "temp.tar.gz"))
 
-  file_list = untar("dummy/temp.tar.gz", list = T)
+  file_list = untar(file.path(temp_dir, "temp.tar.gz"), list = T)
 
   expect_equal(
     sort(file_list[!grepl("/$", file_list)]),
     c("./code/inference.py", "./code/this-file-should-be-included.py", "./model")
   )
-  fs::dir_delete(c("temp","dummy"))
+  fs::dir_delete(c("temp",temp_dir))
 })
 
 test_that("test repack model from file to file", {
   create_file_tree(tmp, c("model", "dependencies/a", "source-dir/inference.py"))
 
-  model_tar_path = file.path(getwd(), "dummy", "model.tar.gz")
+  model_tar_path = file.path(getwd(), temp_dir, "model.tar.gz")
   create_tar_file(file.path(tmp, "model"), model_tar_path)
 
   session = fake_s3_session(F)
 
   file_mode_path = sprintf("file://%s", model_tar_path)
-  destination_path = sprintf("file://%s", file.path("dummy", "repacked-model.tar.gz"))
+  destination_path = sprintf("file://%s", file.path(temp_dir, "repacked-model.tar.gz"))
 
   repack_model(
     "inference.py",
@@ -462,7 +466,7 @@ test_that("test repack model from file to file", {
     sort(file_list[!grepl("/$", file_list)]),
     c("./code/inference.py", "./code/lib/a", "./model")
   )
-  fs::dir_delete(c("temp","dummy"))
+  fs::dir_delete(c("temp",temp_dir))
 })
 
 test_that("test repack mode with inference code should replace the code", {
@@ -482,15 +486,15 @@ test_that("test repack mode with inference code should replace the code", {
   )
 
   obj = session$s3$put_object(..return_value = T)
-  writeBin(obj$Body,"dummy/temp.tar.gz")
+  writeBin(obj$Body,file.path(temp_dir, "temp.tar.gz"))
 
-  file_list = untar("dummy/temp.tar.gz", list = T)
+  file_list = untar(file.path(temp_dir, "temp.tar.gz"), list = T)
 
   expect_equal(
     sort(file_list[!grepl("/$", file_list)]),
     c("./code/new-inference.py", "./model" )
   )
-  fs::dir_delete(c("temp","dummy"))
+  fs::dir_delete(c("temp",temp_dir))
 })
 
 test_that("test repack model from file to folder", {
@@ -521,10 +525,6 @@ test_that("test repack model from file to folder", {
   fs::dir_delete(c("temp"))
 })
 
-
-################################################################
-# HERE!!!!!
-################################################################
 test_that("test repack model with inference code and requirements", {
   create_file_tree(
     tmp,
@@ -548,9 +548,9 @@ test_that("test repack model with inference code and requirements", {
 
   obj = session$s3$put_object(..return_value = T)
 
-  writeBin(obj$Body,"dummy/temp.tar.gz")
+  writeBin(obj$Body, file.path(temp_dir, "temp.tar.gz"))
 
-  file_list = untar("dummy/temp.tar.gz", list = T)
+  file_list = untar(file.path(temp_dir, "temp.tar.gz"), list = T)
 
   expect_equal(
     sort(file_list[!grepl("/$", file_list)]),
@@ -560,7 +560,7 @@ test_that("test repack model with inference code and requirements", {
       "./model")
   )
 
-  fs::dir_delete(c("temp", "dummy"))
+  fs::dir_delete(c("temp", temp_dir))
 })
 
 test_that("test repack model with same inference file name", {
@@ -585,15 +585,15 @@ test_that("test repack model with same inference file name", {
   )
 
   obj = session$s3$put_object(..return_value = T)
-  writeBin(obj$Body,"dummy/temp.tar.gz")
+  writeBin(obj$Body, file.path(temp_dir, "temp.tar.gz"))
 
-  file_list = untar("dummy/temp.tar.gz", list = T)
+  file_list = untar(file.path(temp_dir, "temp.tar.gz"), list = T)
 
   expect_equal(
     sort(file_list[!grepl("/$", file_list)]),
     c("./code/inference.py", "./code/requirements.txt", "./model")
   )
-  fs::dir_delete(c("temp", "dummy"))
+  fs::dir_delete(c("temp", temp_dir))
 })
 
 test_that("test sts regional endpoint", {
