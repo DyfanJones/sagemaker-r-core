@@ -1,11 +1,13 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/deprecations.py
 
+#' @include r_utils.R
 
 V2_URL = "https://sagemaker.readthedocs.io/en/stable/v2.html"
 
-.warn <- function(msg){
-  full_msg = sprintf("%s to align with python sagemaker>=2.\nSee: %s for details.", msg, V2_URL)
+.warn <- function(msg, sdk_version = NULL){
+  .sdk_version = sdk_version %||% "2"
+  full_msg = sprintf("%s to align with python sagemaker>=%s.\nSee: %s for details.", msg, .sdk_version, V2_URL)
   warning(full_msg, call. = F)
   LOGGER$warn(full_msg)
 }
@@ -13,8 +15,8 @@ V2_URL = "https://sagemaker.readthedocs.io/en/stable/v2.html"
 #' @title Raise a warning for a no-op in sagemaker>=2
 #' @param phrase (str): the prefix phrase of the warning message.
 #' @export
-removed_warning <- function(phrase){
-  .warn(sprintf("%s is a no-op", phrase))
+removed_warning <- function(phrase, sdk_version=NULL){
+  .warn(sprintf("%s is a no-op", phrase), sdk_version)
 }
 
 #' @title Raise a warning for a rename in sagemaker>=2
