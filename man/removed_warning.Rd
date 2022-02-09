@@ -4,10 +4,12 @@
 \alias{removed_warning}
 \title{Raise a warning for a no-op in sagemaker>=2}
 \usage{
-removed_warning(phrase)
+removed_warning(phrase, sdk_version = NULL)
 }
 \arguments{
 \item{phrase}{(str): the prefix phrase of the warning message.}
+
+\item{sdk_version}{(str): the sdk version of removal of support.}
 }
 \description{
 Raise a warning for a no-op in sagemaker>=2

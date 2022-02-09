@@ -14,6 +14,7 @@ V2_URL = "https://sagemaker.readthedocs.io/en/stable/v2.html"
 
 #' @title Raise a warning for a no-op in sagemaker>=2
 #' @param phrase (str): the prefix phrase of the warning message.
+#' @param sdk_version (str): the sdk version of removal of support.
 #' @export
 removed_warning <- function(phrase, sdk_version=NULL){
   .warn(sprintf("%s is a no-op", phrase), sdk_version)
