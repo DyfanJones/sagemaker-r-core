@@ -6,12 +6,12 @@
 \alias{parse_s3_url}
 \title{split s3 uri}
 \usage{
-split_s3_uri(uri)
+split_s3_uri(url)
 
-parse_s3_url(uri)
+parse_s3_url(url)
 }
 \arguments{
-\item{uri}{(str): s3 uri to split into bucket and key}
+\item{url}{(str): s3 uri to split into bucket and key}
 }
 \description{
 split s3 uri

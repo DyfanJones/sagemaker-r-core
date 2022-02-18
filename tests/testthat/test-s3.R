@@ -114,7 +114,11 @@ test_that("test parse s3 url", {
 })
 
 test_that("test parse s3 url fail", {
-  expect_error(parse_s3_url("t3://code_location"))
+  expect_error(
+    parse_s3_url("t3://code_location"),
+    "Expecting 's3' scheme",
+    class = "ValueError"
+  )
 })
 
 test_that("def test path join", {

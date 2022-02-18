@@ -17,15 +17,17 @@ is.s3_uri <- function(x) {
 }
 
 #' @title split s3 uri
-#' @param uri (str): s3 uri to split into bucket and key
+#' @param url (str): s3 uri to split into bucket and key
 #' @name parse_s3
 #' @export
-split_s3_uri <- function(uri) {
-  stopifnot(is.null(uri) || is.character(uri))
-  parsed_s3 <- url_parse(uri)
+split_s3_uri <- function(url) {
+  stopifnot(is.null(url) || is.character(url))
+  parsed_url <- url_parse(url)
+  if (parsed_url$scheme != "s3")
+    ValueError$new(sprintf("Expecting 's3' scheme, got: %s in %s.", parsed_url$scheme, url))
   return(list(
-    bucket = parsed_s3$domain,
-    key = parsed_s3$path)
+    bucket = parsed_url$domain,
+    key = parsed_url$path)
   )
 }
 
