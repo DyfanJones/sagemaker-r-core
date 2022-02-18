@@ -21,7 +21,7 @@ is.s3_uri <- function(x) {
 #' @name parse_s3
 #' @export
 split_s3_uri <- function(uri) {
-  stopifnot(is.s3_uri(uri))
+  stopifnot(is.null(uri) || is.character(uri))
   parsed_s3 <- url_parse(uri)
   return(list(
     bucket = parsed_s3$domain,
