@@ -49,8 +49,7 @@ s3_path_join = function(...){
     path = fs::path_join(c(args[[1]], path))
     return(gsub("s3:/", "s3://", path))
   }
-
-  return(trimws(fs::path_join(as.character(args)), "left", "/"))
+  return(as.character(trimws(fs::path_join(as.character(args)), "left", "/")))
 }
 
 #' @title S3Uploader Class
