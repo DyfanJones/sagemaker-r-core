@@ -39,7 +39,7 @@ parse_s3_url <- split_s3_uri
 #' @description Returns the arguments joined by a slash ("/"), similarly to ``file.path()`` (on Unix).
 #'              If the first argument is "s3://", then that is preserved.
 #' @param ... : The strings to join with a slash.
-#' @return charater: The joined string.
+#' @return character: The joined string.
 #' @return
 #' @export
 s3_path_join = function(...){
@@ -47,7 +47,7 @@ s3_path_join = function(...){
   if(grepl("^s3://", args[[1]])){
     path = trimws(args[2:length(args)], "left", "/")
     path = fs::path_join(c(args[[1]], path))
-    return(gsub("s3:/", "s3://", path))
+    return(as.character(gsub("s3:/", "s3://", path)))
   }
   return(as.character(trimws(fs::path_join(as.character(args)), "left", "/")))
 }

@@ -10,7 +10,7 @@ s3_path_join(...)
 \item{...}{: The strings to join with a slash.}
 }
 \value{
-charater: The joined string.
+character: The joined string.
 
 
 }
