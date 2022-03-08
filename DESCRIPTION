@@ -1,7 +1,7 @@
 Package: sagemaker.core
 Type: Package
 Title: Sagemaker core classes, methods and functions
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person("Dyfan", "Jones", email="dyfan.r.jones@gmail.com", role= c("aut", "cre")),
              person("Amazon.com, Inc.", role = "cph"))
 Description: Contains core classes, methods and functions that support `AWS Sagemaker R Software
