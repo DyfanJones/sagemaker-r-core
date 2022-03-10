@@ -2859,7 +2859,9 @@ Session = R6Class("Session",
       process_request$StoppingCondition = stopping_condition
       if(!islistempty(tags))
         process_request$Tags = tags
-      process_request$ExperimentConfig = experiment_config
+
+      if (!islistempty(experiment_config))
+        process_request$ExperimentConfig = experiment_config
       return(process_request)
     },
 
