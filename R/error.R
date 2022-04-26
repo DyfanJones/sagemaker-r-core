@@ -79,3 +79,7 @@ DataNotFoundError = R6Class("DataNotFoundError", inherit = SagemakerError)
 #' @rdname SagemakerError
 #' @export
 UnknownServiceError = R6Class("UnknownServiceError", inherit = DataNotFoundError)
+
+#' @rdname SagemakerError
+#' @export
+KeyError = R6Class("KeyError", inherit = SagemakerError)
