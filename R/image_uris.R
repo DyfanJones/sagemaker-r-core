@@ -34,9 +34,27 @@ ImageUris = R6Class("ImageUris",
     #' @param distribution (dict): A dictionary with information on how to run distributed training
     #'              (default: None).
     #' @param base_framework_version (str):
+    #' @param training_compiler_config (:class:`~sagemaker.training_compiler.TrainingCompilerConfig`):
+    #'              A configuration class for the SageMaker Training Compiler
+    #'              (default: None).
+    #' @param model_id (str): The JumpStart model ID for which to retrieve the image URI
+    #'              (default: None).
+    #' @param model_version (str): The version of the JumpStart model for which to retrieve the
+    #'              image URI (default: None).
+    #' @param tolerate_vulnerable_model (bool): ``True`` if vulnerable versions of model specifications
+    #'              should be tolerated without an exception raised. If ``False``, raises an exception if
+    #'              the script used by this version of the model has dependencies with known security
+    #'              vulnerabilities. (Default: False).
+    #' @param tolerate_deprecated_model (bool): True if deprecated versions of model specifications
+    #'              should be tolerated without an exception raised. If False, raises an exception
+    #'              if the version of the model is deprecated. (Default: False).
+    #' @param sdk_version (str): the version of python-sdk that will be used in the image retrieval.
+    #'              (default: None).
+    #' @param inference_tool (str): the tool that will be used to aid in the inference.
+    #'              Valid values: "neuron, None" (default: None).
     #' @return str: the ECR URI for the corresponding SageMaker Docker image.
     retrieve = function(framework,
-                        region=NULL,
+                        region,
                         version=NULL,
                         py_version=NULL,
                         instance_type=NULL,
@@ -44,7 +62,14 @@ ImageUris = R6Class("ImageUris",
                         image_scope=NULL,
                         container_version=NULL,
                         distribution=NULL,
-                        base_framework_version=NULL){
+                        base_framework_version=NULL,
+                        training_compiler_config=NULL,
+                        model_id=NULL,
+                        model_version=NULL,
+                        tolerate_vulnerable_model=FALSE,
+                        tolerate_deprecated_model=FALSE,
+                        sdk_version=NULL,
+                        inference_tool=NULL){
       config = private$.config_for_framework_and_scope(framework, image_scope, accelerator_type)
 
       original_version = version
