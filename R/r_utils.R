@@ -373,3 +373,9 @@ temp_dir = function(dir = NULL){
   fs::dir_create(dir_path)
   return(dir_path)
 }
+
+tz_now_utc <- function(){
+  now <- Sys.time()
+  attr(now, "tzone") <- "UTC"
+  now
+}
