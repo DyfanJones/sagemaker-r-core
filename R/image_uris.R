@@ -74,7 +74,9 @@ ImageUris = R6Class("ImageUris",
 
       original_version = version
       version = private$.validate_version_and_set_if_needed(version, config, framework)
-      version_config = config[["versions"]][[private$.version_for_config(version, config)]]
+      # Read dictionary key "" as position instead due to how jsonlite reads in jsons
+      version_config = private$.version_for_config(version, config)
+      version_config = config[["versions"]][[(if (identical(version_config, "")) 1L else version_config)]]
 
       if(framework == private$HUGGING_FACE_FRAMEWORK){
         if (!islistempty(version_config[["version_aliases"]])){
@@ -175,7 +177,7 @@ ImageUris = R6Class("ImageUris",
         image_scope = available_scopes[[1]]
       }
 
-      if(islistempty(image_scope) && "scope" %in% names(config) && any(unique(available_scopes) %in% list("training", "inference"))){
+      if (islistempty(image_scope) && "scope" %in% names(config) && any(unique(available_scopes) %in% list("training", "inference"))){
         LOGGER$info(
           "Same images used for training and inference. Defaulting to image scope: %s.",
           available_scopes[[1]])
@@ -206,8 +208,8 @@ ImageUris = R6Class("ImageUris",
         if (!is.na(version) && version != available_versions[[1]])
           LOGGER$warn("%s Ignoring framework/algorithm version: %s.", log_message, version)
         if (is.na(version)){
-          LOGGER$info(log_message)}
-
+          LOGGER$info(log_message)
+        }
         return(available_versions[[1]])
       }
 
@@ -371,3 +373,4 @@ config_for_framework = function(framework){
 
   return(read_json(fname))
 }
+
