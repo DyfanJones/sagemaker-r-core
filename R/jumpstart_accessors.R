@@ -8,10 +8,10 @@
 
 #' @import R6
 
-#' @title SageMakerSettings class
-#' @description Static class for storing the SageMaker settings.
-#' @export
-SageMakerSettings = R6Class("SageMakerSettings",
+# @title SageMakerSettings class
+# @description Static class for storing the SageMaker settings.
+# @export
+.SageMakerSettings = R6Class("SageMakerSettings",
   public = list(
 
     #' @description Set SageMaker version.
@@ -31,10 +31,10 @@ SageMakerSettings = R6Class("SageMakerSettings",
   )
 )
 
-#' @title JumpStartModelsAccessor class
-#' @description Static class for storing the JumpStart models cache.
-#' @export
-JumpStartModelsAccessor = R6Class("JumpStartModelsAccessor",
+# @title JumpStartModelsAccessor class
+# @description Static class for storing the JumpStart models cache.
+# @export
+.JumpStartModelsAccessor = R6Class("JumpStartModelsAccessor",
   public = list(
 
     #' @description Returns model header from JumpStart models cache.
@@ -136,3 +136,6 @@ JumpStartModelsAccessor = R6Class("JumpStartModelsAccessor",
     }
   )
 )
+
+SageMakerSettings = .SageMakerSettings$new()
+JumpStartModelsAccessor = .JumpStartModelsAccessor$new()
