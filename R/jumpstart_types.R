@@ -6,6 +6,8 @@
 #' @importFrom stats setNames
 #' @importFrom data.table address
 
+#' @include r_utils.R
+
 JumpStartDataHolderType = R6Class("JumpStartDataHolderType",
   public = list(
 
@@ -185,16 +187,282 @@ JumpStartECRSpecs = R6Class("JumpStartECRSpecs",
   lock_objects = F
 )
 
-# TODO: Up to here
+#' @title JumpStartHyperparameter class
+#' @description Data class for JumpStart hyperparameter definition in the training container.
+#' @export
 JumpStartHyperparameter = R6Class("JumpStartHyperparameter",
   inherit = JumpStartDataHolderType,
   public = list(
 
-  )
+    #' @description Initializes a JumpStartHyperparameter object from its json representation.
+    #' @param spec (Dict[str, Any]): Dictionary representation of hyperparameter.
+    initialize = function(spec){
+      self$from_json(spec)
+    },
+
+    #' @description Sets fields in object based on json.
+    #' @param json_obj (Dict[str, Any]): Dictionary representation of hyperparameter.
+    from_json = function(json_obj){
+
+      self$name = json_obj[["name"]]
+      self$type = json_obj[["type"]]
+      self$default = json_obj[["default"]]
+      self$scope = json_obj[["scope"]]
+
+      options = json_obj[["options"]]
+      if (!is.null(options))
+        self$options = options
+
+      min_val = json_obj[["min"]]
+      if (!is.null(min_val))
+        self$min = min_val
+
+      max_val = json_obj[["max"]]
+      if (!is.null(max_val))
+        self$max = max_val
+
+      exclusive_min_val = json_obj[["exclusive_min"]]
+      if (is.null(exclusive_min_val))
+        self$exclusive_min = exclusive_min_val
+
+      exclusive_max_val = json_obj[["exclusive_max"]]
+      if (!is.null(exclusive_max_val))
+        self$exclusive_max = exclusive_max_val
+    },
+
+    #' @description Returns json representation of JumpStartHyperparameter object.
+    to_json = function(){
+      json_obj = as.list(self)[names(self) %in% .slots]
+      return(json_obj)
+    }
+  ),
+  private = list(
+    .slots = c(
+      "name",
+      "type",
+      "options",
+      "default",
+      "scope",
+      "min",
+      "max",
+      "exclusive_min",
+      "exclusive_max"
+    )
+  ),
+  lock_objects = F
 )
 
+#' @title JumpStartEnvironmentVariable class
+#' @description Data class for JumpStart environment variable definitions in the hosting container.
+#' @export
+JumpStartEnvironmentVariable = R6Class("JumpStartEnvironmentVariable",
+  inherit = JumpStartDataHolderType,
+  public = list(
 
+    #' @descriptioon Initializes a JumpStartEnvironmentVariable object from its json representation.
+    #' @param spec (Dict[str, Any]): Dictionary representation of environment variable.
+    initialize = function(spec){
+      self$from_json(spec)
+    },
 
+    #' @description Sets fields in object based on json.
+    #' @param json_obj (Dict[str, Any]): Dictionary representation of environment variable.
+    from_json = function(json_obj){
+      self$name = json_obj[["name"]]
+      self$type = json_obj[["type"]]
+      self$default = json_obj[["default"]]
+      self$scope = json_obj[["scope"]]
+    },
 
+    #' @description Returns json representation of JumpStartEnvironmentVariable object.
+    to_json = function(){
+      json_obj = as.list(self)[names(self) %in% .slots]
+      return(json_obj)
+    }
+  ),
+  private = list(
+    .slots = list(
+      "name",
+      "type",
+      "default",
+      "scope"
+    )
+  ),
+  lock_objects = F
+)
 
+#' @title JumpStartModelSpecs class
+#' @description Data class JumpStart model specs
+#' @export
+JumpStartModelSpecs = R6Class("JumpStartModelSpecs",
+  inherit = ,
+  public = list(
 
+    #' @description Initializes a JumpStartModelSpecs object from its json representation.
+    #' @param spec (Dict[str, Any]): Dictionary representation of spec.
+    initialize = function(spec){
+      self$from_json(spec)
+    },
+
+    #' @description Sets fields in object based on json of header.
+    #' @param json_obj (Dict[str, Any]): Dictionary representation of spec.
+    from_json = function(json_obj){
+      self$model_id = json_obj[["model_id"]]
+      self$url = json_obj[["url"]]
+      self$version = json_obj[["version"]]
+      self$min_sdk_version = json_obj[["min_sdk_version"]]
+      self$incremental_training_supported = as.logical(json_obj[["incremental_training_supported"]])
+      self$hosting_ecr_specs = JumpStartECRSpecs$new(json_obj[["hosting_ecr_specs"]])
+      self$hosting_artifact_key = json_obj[["hosting_artifact_key"]]
+      self$hosting_script_key = json_obj[["hosting_script_key"]]
+      self$training_supported = as.logical(json_obj[["training_supported"]])
+      self$inference_environment_variables = lapply(
+        json_obj[["inference_environment_variables"]], function(env_variable){
+          JumpStartEnvironmentVariable$new(env_variable)
+      })
+      self$inference_vulnerable = as.logical(json_obj[["inference_vulnerable"]])
+      self$inference_dependencies = json_obj[["inference_dependencies"]]
+      self$inference_vulnerabilities = json_obj[["inference_vulnerabilities"]]
+      self$training_vulnerable = as.logical(json_obj[["training_vulnerable"]])
+      self$training_dependencies = json_obj[["training_dependencies"]]
+      self$training_vulnerabilities = json_obj[["training_vulnerabilities"]]
+      self$deprecated = as.logical(json_obj[["deprecated"]])
+
+      if (self$training_supported){
+        self$training_ecr_specs = JumpStartECRSpecs$new(
+          json_obj[["training_ecr_specs"]]
+        )
+        self$training_artifact_key = json_obj[["training_artifact_key"]]
+        self$training_script_key = json_obj[["training_script_key"]]
+        hyperparameters = json_obj[["hyperparameters"]]
+        if (!is.null(hyperparameters)){
+          self$hyperparameters = lapply(
+            hyperparameters, function(hyperparameter){
+              JumpStartHyperparameter$new(hyperparameter)
+          })
+        }
+      }
+    },
+
+    #' @description Returns json representation of JumpStartModelSpecs object.
+    to_json = function(){
+      json_obj = list()
+      for (att in private$.slots){
+        if (!is.null(self[[att]])) {
+          cur_val = self[[att]]
+          if (inherits(cur_val, "JumpStartDataHolderType")){
+            json_obj[[att]] = cur_val$to_json()
+          } else if (is.list(cur_val)) {
+            ll = list()
+              for (obj in cur_val) {
+                if (inherits(obj, "JumpStartDataHolderType"))
+                  ll = list.append(ll, obj$to_json())
+                else
+                  ll = list.append(ll, obj)
+              }
+            json_obj[[att]] = ll
+          } else {
+            json_obj[[att]] = cur_val
+          }
+        }
+      }
+      return(json_obj)
+    }
+  ),
+  private = list(
+    .slots = list(
+      "model_id",
+      "url",
+      "version",
+      "min_sdk_version",
+      "incremental_training_supported",
+      "hosting_ecr_specs",
+      "hosting_artifact_key",
+      "hosting_script_key",
+      "training_supported",
+      "training_ecr_specs",
+      "training_artifact_key",
+      "training_script_key",
+      "hyperparameters",
+      "inference_environment_variables",
+      "inference_vulnerable",
+      "inference_dependencies",
+      "inference_vulnerabilities",
+      "training_vulnerable",
+      "training_dependencies",
+      "training_vulnerabilities",
+      "deprecated"
+    )
+  ),
+  lock_objects = F
+)
+
+#' @title JumpStartVersionedModelId class
+#' @description Data class for versioned model IDs.
+#' @export
+JumpStartVersionedModelId = R6Class("JumpStartVersionedModelId",
+  inherit = JumpStartDataHolderType,
+  public = list(
+
+    #' @description Instantiates JumpStartVersionedModelId object.
+    #' @param model_id (str): JumpStart model ID.
+    #' @param version (str): JumpStart model version.
+    initialize = function(model_id,
+                          version){
+      self$model_id = model_id
+      self$version = version
+    }
+  ),
+  private = list(
+    .slots = list(
+      "model_id", "version"
+    )
+  ),
+  lock_objects = F
+)
+
+#' @title JumpStartCachedS3ContentKey class
+#' @description Data class for the s3 cached content keys.
+#' @export
+JumpStartCachedS3ContentKey = R6Class("JumpStartCachedS3ContentKey",
+  inherit = JumpStartDataHolderType,
+  public = list(
+
+    #' @description Instantiates JumpStartCachedS3ContentKey object.
+    #' @param file_type (JumpStartS3FileType): JumpStart file type.
+    #' @param s3_key (str): object key in s3.
+    initialize = function(file_type,
+                          s3_key){
+      self$file_type = file_type
+      self$s3_key = s3_key
+    }
+  ),
+  private = list(
+    .slots = list("file_type", "s3_key")
+  ),
+  lock_objecs = F
+)
+
+#' @title JumpStartCachedS3ContentValue class
+#' @description Data class for the s3 cached content values.
+#' @export
+JumpStartCachedS3ContentValue = R6Class("JumpStartCachedS3ContentValue",
+  inherit = JumpStartDataHolderType,
+  public = list(
+
+    #' @description Instantiates JumpStartCachedS3ContentValue object.
+    #' @param formatted_content (Union[Dict[JumpStartVersionedModelId, JumpStartModelHeader],
+    #'              JumpStartModelSpecs]): Formatted content for model specs and mappings from
+    #'              versioned model IDs to specs.
+    #' @param md5_hash (str): md5_hash for stored file content from s3.
+    initialize = function(formatted_content,
+                          md5_hash=NULL){
+      self$formatted_content = formatted_content
+      self$md5_hash = md5_hash
+    }
+  ),
+  private = list(
+    .slots = list("formatted_content", "md5_hash")
+  ),
+  lock_objects = F
+)
