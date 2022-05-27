@@ -103,7 +103,7 @@ extract_framework_task_model = function(model_id){
 #'              either an ``Operator`` type filter (e.g. ``And("task == ic", "framework == pytorch")``),
 #'              or simply a string filter which will get serialized into an Identity filter.
 #'              (e.g. ``"task == ic"``). If this argument is not supplied, all tasks will be listed.
-#'              (Default: Constant(BooleanValues.TRUE)).
+#'              (Default: Constant(BooleanValues$`TRUE`)).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
 #'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @export
@@ -122,7 +122,7 @@ list_jumpstart_tasks = function(){
 #'              either an ``Operator`` type filter (e.g. ``And("task == ic", "framework == pytorch")``),
 #'              or simply a string filter which will get serialized into an Identity filter.
 #'              (eg. ``"task == ic"``). If this argument is not supplied, all frameworks will be listed.
-#'              (Default: Constant(BooleanValues.TRUE)).
+#'              (Default: Constant(BooleanValues$TRUE)).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
 #'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @export
@@ -142,7 +142,7 @@ list_jumpstart_frameworks = function(filter = Constant$new(BooleanValues$`TRUE`)
 #'              either an ``Operator`` type filter (e.g. ``And("task == ic", "framework == pytorch")``),
 #'              or simply a string filter which will get serialized into an Identity filter.
 #'              (e.g. ``"task == ic"``). If this argument is not supplied, all scripts will be listed.
-#'              (Default: Constant(BooleanValues.TRUE)).
+#'              (Default: Constant(BooleanValues$TRUE)).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
 #'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @export
@@ -162,7 +162,7 @@ list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
 #'              either an ``Operator`` type filter (e.g. ``And("task == ic", "framework == pytorch")``),
 #'              or simply a string filter which will get serialized into an Identity filter.
 #'              (e.g. ``"task == ic"``). If this argument is not supplied, all models will be generated.
-#'              (Default: Constant(BooleanValues.TRUE)).
+#'              (Default: Constant(BooleanValues$TRUE)).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
 #'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @param list_incomplete_models (bool): Optional. If a model does not contain metadata fields
@@ -249,7 +249,7 @@ list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
       next
     }
 
-    if (copied_filter$resolved_value == BooleanValues.UNEVALUATED){
+    if (copied_filter$resolved_value == BooleanValues$UNEVALUATED){
       RuntimeError$new(
         "Filter expression in unevaluated state after using values from model manifest. ",
         "Model ID and version that is failing: ",

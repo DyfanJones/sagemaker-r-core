@@ -11,7 +11,7 @@ list_jumpstart_tasks()
 either an ``Operator`` type filter (e.g. ``And("task == ic", "framework == pytorch")``),
 or simply a string filter which will get serialized into an Identity filter.
 (e.g. ``"task == ic"``). If this argument is not supplied, all tasks will be listed.
-(Default: Constant(BooleanValues.TRUE)).}
+(Default: Constant(BooleanValues$`TRUE`)).}
 
 \item{region}{(str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
 models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).}
