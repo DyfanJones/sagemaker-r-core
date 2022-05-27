@@ -228,7 +228,7 @@ list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
       ]] = extract_framework_task_model(model_manifest$model_id)[[1]]
     }
     if (is_supported_model_filter){
-      manifest_specs_cached_values[SpecialSupportedFilterKeys$SUPPORTED_MODEL] = Version(
+      manifest_specs_cached_values[SpecialSupportedFilterKeys$SUPPORTED_MODEL] = numeric_version(
         model_manifest$min_version
       ) <= numeric_version(get_sagemaker_version())
     }
