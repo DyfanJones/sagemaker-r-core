@@ -31,7 +31,7 @@ The manifest and specs associated with JumpStart models provide the information 
 Initialize a ``JumpStartModelsCache`` instance.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{JumpStartModelsCache$new(
-  region = JUMPSTART_DEFAULT_REGION_NAME,
+  region = JUMPSTART_DEFAULT_REGION_NAME(),
   max_s3_cache_items = JUMPSTART_DEFAULT_MAX_S3_CACHE_ITEMS,
   s3_cache_expiration_horizon = JUMPSTART_DEFAULT_S3_CACHE_EXPIRATION_HORIZON,
   max_semantic_version_cache_items = JUMPSTART_DEFAULT_MAX_SEMANTIC_VERSION_CACHE_ITEMS,

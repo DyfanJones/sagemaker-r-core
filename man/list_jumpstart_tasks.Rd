@@ -14,7 +14,7 @@ or simply a string filter which will get serialized into an Identity filter.
 (Default: Constant(BooleanValues.TRUE)).}
 
 \item{region}{(str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
-models. (Default: JUMPSTART_DEFAULT_REGION_NAME).}
+models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).}
 }
 \description{
 List tasks for JumpStart, and optionally apply filters to result.

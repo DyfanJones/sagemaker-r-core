@@ -9,7 +9,7 @@ validate_hyperparameters(
   model_version,
   hyperparameters,
   validation_mode = HyperparameterValidationMode$VALIDATE_PROVIDED,
-  region = JUMPSTART_DEFAULT_REGION_NAME
+  region = JUMPSTART_DEFAULT_REGION_NAME()
 )
 }
 \arguments{

@@ -105,7 +105,7 @@ JUMPSTART_BUCKET_NAME_SET = lapply(
     region$content_bucket
 })
 
-JUMPSTART_DEFAULT_REGION_NAME = tryCatch(get_region(NULL), error = function(e) "us-west-2")
+JUMPSTART_DEFAULT_REGION_NAME = function() tryCatch(get_region(NULL), error = function(e) "us-west-2")
 
 JUMPSTART_DEFAULT_MANIFEST_FILE_S3_KEY = "models_manifest.json"
 

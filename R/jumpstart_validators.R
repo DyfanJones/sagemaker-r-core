@@ -165,12 +165,12 @@ validate_hyperparameters = function(model_id,
                                     model_version,
                                     hyperparameters,
                                     validation_mode = HyperparameterValidationMode$VALIDATE_PROVIDED,
-                                    region = JUMPSTART_DEFAULT_REGION_NAME){
+                                    region = JUMPSTART_DEFAULT_REGION_NAME()){
   if (is.null(validation_mode))
     validation_mode = HyperparameterValidationMode$VALIDATE_PROVIDED
 
   if (is.null(region))
-    region = JUMPSTART_DEFAULT_REGION_NAME
+    region = JUMPSTART_DEFAULT_REGION_NAME()
 
   model_specs = JumpStartModelsAccessor$get_model_specs(
     region=region, model_id=model_id, version=model_version

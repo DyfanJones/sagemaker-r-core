@@ -34,7 +34,7 @@ JumpStartModelsCache = R6Class("JumpStartModelsCache",
     #' @param manifest_file_s3_key (str): The key in S3 corresponding to the sdk metadata manifest.
     #' @param s3_bucket_name (Optional[str]): S3 bucket to associate with cache.
     #'              Default: JumpStart-hosted content bucket for region.
-    initialize = function(region=JUMPSTART_DEFAULT_REGION_NAME,
+    initialize = function(region=JUMPSTART_DEFAULT_REGION_NAME(),
                           max_s3_cache_items=JUMPSTART_DEFAULT_MAX_S3_CACHE_ITEMS,
                           s3_cache_expiration_horizon=JUMPSTART_DEFAULT_S3_CACHE_EXPIRATION_HORIZON,
                           max_semantic_version_cache_items=JUMPSTART_DEFAULT_MAX_SEMANTIC_VERSION_CACHE_ITEMS,

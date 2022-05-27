@@ -67,7 +67,7 @@
                                tolerate_vulnerable_model,
                                tolerate_deprecated_model){
   if(is.null(region)){
-    region = JUMPSTART_DEFAULT_REGION_NAME
+    region = JUMPSTART_DEFAULT_REGION_NAME()
   }
   model_specs = verify_model_region_and_return_specs(
     model_id=model_id,
@@ -169,7 +169,7 @@
                                tolerate_vulnerable_model,
                                tolerate_deprecated_model){
   if (is.null(region))
-    region = JUMPSTART_DEFAULT_REGION_NAME
+    region = JUMPSTART_DEFAULT_REGION_NAME()
 
   model_specs = verify_model_region_and_return_specs(
     model_id=model_id,
@@ -222,7 +222,7 @@
                                 tolerate_vulnerable_model,
                                 tolerate_deprecated_model){
   if (is.null(region)){
-    region = JUMPSTART_DEFAULT_REGION_NAME
+    region = JUMPSTART_DEFAULT_REGION_NAME()
   }
   model_specs = verify_model_region_and_return_specs(
     model_id=model_id,
@@ -266,7 +266,7 @@
                                              region=NULL,
                                              include_container_hyperparameters=FALSE){
   if (is.null(region)) {
-    region = JUMPSTART_DEFAULT_REGION_NAME
+    region = JUMPSTART_DEFAULT_REGION_NAME()
   }
   model_specs = JumpStartModelsAccessor$get_model_specs(
     region=region, model_id=model_id, version=model_version
@@ -295,7 +295,7 @@
                                                    model_version,
                                                    region){
   if (is.null(region)){
-    region = JUMPSTART_DEFAULT_REGION_NAME
+    region = JUMPSTART_DEFAULT_REGION_NAME()
   }
   model_specs = JumpStartModelsAccessor$get_model_specs(
     region=region, model_id=model_id, version=model_version

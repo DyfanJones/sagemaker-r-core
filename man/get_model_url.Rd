@@ -4,7 +4,11 @@
 \alias{get_model_url}
 \title{Retrieve web url describing pretrained model.}
 \usage{
-get_model_url(model_id, model_version, region = JUMPSTART_DEFAULT_REGION_NAME)
+get_model_url(
+  model_id,
+  model_version,
+  region = JUMPSTART_DEFAULT_REGION_NAME()
+)
 }
 \arguments{
 \item{model_id}{(str): The model ID for which to retrieve the url.}
@@ -12,7 +16,7 @@ get_model_url(model_id, model_version, region = JUMPSTART_DEFAULT_REGION_NAME)
 \item{model_version}{(str): The model version for which to retrieve the url.}
 
 \item{region}{(str): Optional. The region from which to retrieve metadata.
-(Default: JUMPSTART_DEFAULT_REGION_NAME)}
+(Default: JUMPSTART_DEFAULT_REGION_NAME())}
 }
 \description{
 Retrieve web url describing pretrained model.

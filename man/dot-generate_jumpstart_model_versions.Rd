@@ -6,7 +6,7 @@
 \usage{
 .generate_jumpstart_model_versions(
   filter = Constant$new(BooleanValues$`TRUE`),
-  region = JUMPSTART_DEFAULT_REGION_NAME,
+  region = JUMPSTART_DEFAULT_REGION_NAME(),
   list_incomplete_models = FALSE
 )
 }
@@ -18,7 +18,7 @@ or simply a string filter which will get serialized into an Identity filter.
 (Default: Constant(BooleanValues.TRUE)).}
 
 \item{region}{(str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
-models. (Default: JUMPSTART_DEFAULT_REGION_NAME).}
+models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).}
 
 \item{list_incomplete_models}{(bool): Optional. If a model does not contain metadata fields
 requested by the filter, and the filter cannot be resolved to a include/not include,

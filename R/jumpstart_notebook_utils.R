@@ -105,7 +105,7 @@ extract_framework_task_model = function(model_id){
 #'              (e.g. ``"task == ic"``). If this argument is not supplied, all tasks will be listed.
 #'              (Default: Constant(BooleanValues.TRUE)).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
-#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME).
+#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @export
 list_jumpstart_tasks = function(){
   tasks = lapply(
@@ -124,10 +124,10 @@ list_jumpstart_tasks = function(){
 #'              (eg. ``"task == ic"``). If this argument is not supplied, all frameworks will be listed.
 #'              (Default: Constant(BooleanValues.TRUE)).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
-#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME).
+#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @export
 list_jumpstart_frameworks = function(filter = Constant$new(BooleanValues$`TRUE`),
-                                     region = JUMPSTART_DEFAULT_REGION_NAME){
+                                     region = JUMPSTART_DEFAULT_REGION_NAME()){
   frameworks = lapply(
     .generate_jumpstart_model_versions(filter=filter, region=region),
     function(ll){
@@ -144,10 +144,10 @@ list_jumpstart_frameworks = function(filter = Constant$new(BooleanValues$`TRUE`)
 #'              (e.g. ``"task == ic"``). If this argument is not supplied, all scripts will be listed.
 #'              (Default: Constant(BooleanValues.TRUE)).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
-#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME).
+#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @export
 list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
-                                  region = JUMPSTART_DEFAULT_REGION_NAME){
+                                  region = JUMPSTART_DEFAULT_REGION_NAME()){
   if ((inherits(filter, "Constant") && filter$resolved_value == BooleanValues$`TRUE`) ||
       (is.character(filter) && tolower(filter) == tolower(BooleanValues$`TRUE`))){
     jsss = as.list(JumpStartScriptScope)
@@ -164,13 +164,13 @@ list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
 #'              (e.g. ``"task == ic"``). If this argument is not supplied, all models will be generated.
 #'              (Default: Constant(BooleanValues.TRUE)).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
-#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME).
+#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @param list_incomplete_models (bool): Optional. If a model does not contain metadata fields
 #'              requested by the filter, and the filter cannot be resolved to a include/not include,
 #'              whether the model should be included. By default, these models are omitted from
 #'              results. (Default: False).
 .generate_jumpstart_model_versions = function(filter = Constant$new(BooleanValues$`TRUE`),
-                                              region = JUMPSTART_DEFAULT_REGION_NAME,
+                                              region = JUMPSTART_DEFAULT_REGION_NAME(),
                                               list_incomplete_models = FALSE){
   if (is.character(filter))
     filter = Identity$new(filter)
@@ -310,11 +310,11 @@ list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
 #' @param model_id (str): The model ID for which to retrieve the url.
 #' @param model_version (str): The model version for which to retrieve the url.
 #' @param region (str): Optional. The region from which to retrieve metadata.
-#'              (Default: JUMPSTART_DEFAULT_REGION_NAME)
+#'              (Default: JUMPSTART_DEFAULT_REGION_NAME())
 #' @export
 get_model_url = function(model_id,
                          model_version,
-                         region = JUMPSTART_DEFAULT_REGION_NAME){
+                         region = JUMPSTART_DEFAULT_REGION_NAME()){
   model_specs = JumpStartModelsAccessor$get_model_specs(
     region=region, model_id=model_id, version=model_version
   )

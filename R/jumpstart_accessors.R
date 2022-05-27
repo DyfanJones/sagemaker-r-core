@@ -110,7 +110,7 @@
   ),
   private = list(
     .cache = NULL,
-    .curr_region = JUMPSTART_DEFAULT_REGION_NAME,
+    .curr_region = JUMPSTART_DEFAULT_REGION_NAME(),
     .cache_kwargs = list(),
 
     # Returns cache_kwargs with region argument removed if present.
