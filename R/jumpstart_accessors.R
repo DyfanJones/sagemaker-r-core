@@ -8,8 +8,8 @@
 
 #' @import R6
 
-# @title SageMakerSettings class
-# @description Static class for storing the SageMaker settings.
+#' @title SageMakerSettings class
+#' @description Static class for storing the SageMaker settings.
 # @export
 .SageMakerSettings = R6Class("SageMakerSettings",
   public = list(
@@ -31,8 +31,8 @@
   )
 )
 
-# @title JumpStartModelsAccessor class
-# @description Static class for storing the JumpStart models cache.
+#' @title JumpStartModelsAccessor class
+#' @description Static class for storing the JumpStart models cache.
 # @export
 .JumpStartModelsAccessor = R6Class("JumpStartModelsAccessor",
   public = list(
@@ -94,6 +94,18 @@
     reset_cache = function(cache_kwargs=NULL, region=NULL){
       cache_kwargs_dict = cache_kwargs %||% list()
       self$set_cache_kwargs(cache_kwargs_dict, region)
+    },
+
+    #' @description Return entire JumpStart models manifest.
+    #' @param cache_kwargs (Dict[str, Any]): Optional. Cache kwargs to use.
+    #'              (Default: None).
+    #' @param region (str): Optional. The region to use for the cache.
+    #'              (Default: None).
+    get_manifest = function(cache_kwargs = NULL,
+                            region = NULL){
+      cache_kwargs_dict =  cache_kwargs %||% list()
+      self$set_cache_kwargs(cache_kwargs_dict, region)
+      return(private$.cache$get_manifest())
     }
   ),
   private = list(

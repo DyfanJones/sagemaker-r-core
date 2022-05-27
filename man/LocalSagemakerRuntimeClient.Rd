@@ -11,14 +11,14 @@ A SageMaker Runtime client that calls a local endpoint only.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{LocalSagemakerRuntimeClient$new()}}
-\item \href{#method-invoke_endpoint}{\code{LocalSagemakerRuntimeClient$invoke_endpoint()}}
-\item \href{#method-clone}{\code{LocalSagemakerRuntimeClient$clone()}}
+\item \href{#method-LocalSagemakerRuntimeClient-new}{\code{LocalSagemakerRuntimeClient$new()}}
+\item \href{#method-LocalSagemakerRuntimeClient-invoke_endpoint}{\code{LocalSagemakerRuntimeClient$invoke_endpoint()}}
+\item \href{#method-LocalSagemakerRuntimeClient-clone}{\code{LocalSagemakerRuntimeClient$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerRuntimeClient-new"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerRuntimeClient-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes a LocalSageMakerRuntimeClient.
 \subsection{Usage}{
@@ -35,8 +35,8 @@ the local port is read.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-invoke_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-invoke_endpoint}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerRuntimeClient-invoke_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerRuntimeClient-invoke_endpoint}{}}}
 \subsection{Method \code{invoke_endpoint()}}{
 Invoke the endpoint.
 \subsection{Usage}{
@@ -83,8 +83,8 @@ object: Inference for the given input.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerRuntimeClient-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerRuntimeClient-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

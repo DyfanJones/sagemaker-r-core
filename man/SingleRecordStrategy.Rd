@@ -13,20 +13,20 @@ If a single record does not fit within the payload specified it will
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-pad}{\code{SingleRecordStrategy$pad()}}
-\item \href{#method-clone}{\code{SingleRecordStrategy$clone()}}
+\item \href{#method-SingleRecordStrategy-pad}{\code{SingleRecordStrategy$pad()}}
+\item \href{#method-SingleRecordStrategy-clone}{\code{SingleRecordStrategy$clone()}}
 }
 }
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="BatchStrategy" data-id="initialize">}\href{../../sagemaker.core/html/BatchStrategy.html#method-initialize}{\code{sagemaker.core::BatchStrategy$initialize()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="BatchStrategy" data-id="initialize"><a href='../../sagemaker.core/html/BatchStrategy.html#method-BatchStrategy-initialize'><code>sagemaker.core::BatchStrategy$initialize()</code></a></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-pad"></a>}}
-\if{latex}{\out{\hypertarget{method-pad}{}}}
+\if{html}{\out{<a id="method-SingleRecordStrategy-pad"></a>}}
+\if{latex}{\out{\hypertarget{method-SingleRecordStrategy-pad}{}}}
 \subsection{Method \code{pad()}}{
 Group together as many records as possible to fit in the specified size.
              This SingleRecordStrategy will not group any record and will return
@@ -50,8 +50,8 @@ generator of records
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-SingleRecordStrategy-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-SingleRecordStrategy-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

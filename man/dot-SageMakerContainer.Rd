@@ -10,20 +10,20 @@ This class is responsible for creating the directories and configuration
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{.SageMakerContainer$new()}}
-\item \href{#method-process}{\code{.SageMakerContainer$process()}}
-\item \href{#method-train}{\code{.SageMakerContainer$train()}}
-\item \href{#method-serve}{\code{.SageMakerContainer$serve()}}
-\item \href{#method-stop_serving}{\code{.SageMakerContainer$stop_serving()}}
-\item \href{#method-retrieve_artifacts}{\code{.SageMakerContainer$retrieve_artifacts()}}
-\item \href{#method-write_processing_config_files}{\code{.SageMakerContainer$write_processing_config_files()}}
-\item \href{#method-write_config_files}{\code{.SageMakerContainer$write_config_files()}}
-\item \href{#method-clone}{\code{.SageMakerContainer$clone()}}
+\item \href{#method-.SageMakerContainer-new}{\code{.SageMakerContainer$new()}}
+\item \href{#method-.SageMakerContainer-process}{\code{.SageMakerContainer$process()}}
+\item \href{#method-.SageMakerContainer-train}{\code{.SageMakerContainer$train()}}
+\item \href{#method-.SageMakerContainer-serve}{\code{.SageMakerContainer$serve()}}
+\item \href{#method-.SageMakerContainer-stop_serving}{\code{.SageMakerContainer$stop_serving()}}
+\item \href{#method-.SageMakerContainer-retrieve_artifacts}{\code{.SageMakerContainer$retrieve_artifacts()}}
+\item \href{#method-.SageMakerContainer-write_processing_config_files}{\code{.SageMakerContainer$write_processing_config_files()}}
+\item \href{#method-.SageMakerContainer-write_config_files}{\code{.SageMakerContainer$write_config_files()}}
+\item \href{#method-.SageMakerContainer-clone}{\code{.SageMakerContainer$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-new"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize a SageMakerContainer instance
              It uses a :class:`sagemaker.session.Session` for general interaction
@@ -61,8 +61,8 @@ to use when interacting with SageMaker.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-process"></a>}}
-\if{latex}{\out{\hypertarget{method-process}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-process"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-process}{}}}
 \subsection{Method \code{process()}}{
 Run a processing job locally using docker-compose.
 \subsection{Usage}{
@@ -89,8 +89,8 @@ Run a processing job locally using docker-compose.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-train"></a>}}
-\if{latex}{\out{\hypertarget{method-train}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-train"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-train}{}}}
 \subsection{Method \code{train()}}{
 Run a training job locally using docker-compose.
 \subsection{Usage}{
@@ -121,8 +121,8 @@ channels to be used for training.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-serve"></a>}}
-\if{latex}{\out{\hypertarget{method-serve}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-serve"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-serve}{}}}
 \subsection{Method \code{serve()}}{
 Host a local endpoint using docker-compose.
 \subsection{Usage}{
@@ -141,8 +141,8 @@ hosting container.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-stop_serving"></a>}}
-\if{latex}{\out{\hypertarget{method-stop_serving}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-stop_serving"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-stop_serving}{}}}
 \subsection{Method \code{stop_serving()}}{
 Stop the serving container.
              The serving container runs in async mode to allow the SDK to do other
@@ -153,8 +153,8 @@ Stop the serving container.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-retrieve_artifacts"></a>}}
-\if{latex}{\out{\hypertarget{method-retrieve_artifacts}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-retrieve_artifacts"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-retrieve_artifacts}{}}}
 \subsection{Method \code{retrieve_artifacts()}}{
 Get the model artifacts from all the container nodes.
              Used after training completes to gather the data from all the
@@ -186,8 +186,8 @@ Local path to the collected model artifacts.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-write_processing_config_files"></a>}}
-\if{latex}{\out{\hypertarget{method-write_processing_config_files}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-write_processing_config_files"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-write_processing_config_files}{}}}
 \subsection{Method \code{write_processing_config_files()}}{
 Write the config files for the processing containers.
              This method writes the hyperparameters, resources and input data
@@ -219,8 +219,8 @@ Write the config files for the processing containers.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-write_config_files"></a>}}
-\if{latex}{\out{\hypertarget{method-write_config_files}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-write_config_files"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-write_config_files}{}}}
 \subsection{Method \code{write_config_files()}}{
 Write the config files for the training containers.
              This method writes the hyperparameters, resources and input data
@@ -250,8 +250,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-.SageMakerContainer-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-.SageMakerContainer-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

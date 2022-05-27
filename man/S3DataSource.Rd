@@ -12,21 +12,21 @@ The contents will be downloaded and then processed as local data.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{S3DataSource$new()}}
-\item \href{#method-get_file_list}{\code{S3DataSource$get_file_list()}}
-\item \href{#method-get_root_dir}{\code{S3DataSource$get_root_dir()}}
-\item \href{#method-clone}{\code{S3DataSource$clone()}}
+\item \href{#method-S3DataSource-new}{\code{S3DataSource$new()}}
+\item \href{#method-S3DataSource-get_file_list}{\code{S3DataSource$get_file_list()}}
+\item \href{#method-S3DataSource-get_root_dir}{\code{S3DataSource$get_root_dir()}}
+\item \href{#method-S3DataSource-clone}{\code{S3DataSource$clone()}}
 }
 }
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-S3DataSource-new"></a>}}
+\if{latex}{\out{\hypertarget{method-S3DataSource-new}{}}}
 \subsection{Method \code{new()}}{
 Create an S3DataSource instance.
 \subsection{Usage}{
@@ -47,8 +47,8 @@ desired settings to talk to S3}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get_file_list"></a>}}
-\if{latex}{\out{\hypertarget{method-get_file_list}{}}}
+\if{html}{\out{<a id="method-S3DataSource-get_file_list"></a>}}
+\if{latex}{\out{\hypertarget{method-S3DataSource-get_file_list}{}}}
 \subsection{Method \code{get_file_list()}}{
 Retrieve the list of absolute paths to all the files in this data source.
 \subsection{Usage}{
@@ -60,8 +60,8 @@ List(str): List of absolute paths.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get_root_dir"></a>}}
-\if{latex}{\out{\hypertarget{method-get_root_dir}{}}}
+\if{html}{\out{<a id="method-S3DataSource-get_root_dir"></a>}}
+\if{latex}{\out{\hypertarget{method-S3DataSource-get_root_dir}{}}}
 \subsection{Method \code{get_root_dir()}}{
 Retrieve the absolute path to the root directory of this data source.
 \subsection{Usage}{
@@ -73,8 +73,8 @@ str: absolute path to the root directory of this data source.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-S3DataSource-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-S3DataSource-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

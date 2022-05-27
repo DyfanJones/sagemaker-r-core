@@ -108,7 +108,7 @@ JumpStartModelsCache = R6Class("JumpStartModelsCache",
       manifest_dict = private$.s3_cache$get(
         JumpStartCachedS3ContentKey$new(JumpStartS3FileType$MANIFEST, private$.manifest_file_s3_key)
       )$formatted_content
-      manifest = as.list(manifest_dict$values())  # type: ignore
+      manifest = as.list(unname(manifest_dict$values()))
       return(manifest)
     },
 

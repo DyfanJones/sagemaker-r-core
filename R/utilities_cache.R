@@ -1,9 +1,28 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/jumpstart/cache.py
 
+#' @import R6
 
-KeyType = TypeVar("KeyType")
-ValType = TypeVar("ValType")
+KeyType = "KeyType"
+ValType = "ValType"
+
+#' @title Class describes the values in the cache.
+#' @description This object stores the value itself as well as a timestamp so that this
+#'              element can be invalidated if it becomes too old.
+Element = R6Class("Element",
+  public = list(
+
+    #' @description Initialize an ``Element`` instance for ``LRUCache``.
+    #' @param value (ValType): Value that is stored in cache.
+    #' @param creation_time (datetime.datetime): Time at which cache item was created.
+    initialize = function(value, creation_time){
+      self$value = value
+      self$creation_time = creation_time
+    }
+  ),
+  lock_objects = F
+)
+
 
 #' @title Class that implements LRU cache with expiring items.
 #' @description LRU caches remove items in a FIFO manner, such that the oldest
@@ -14,22 +33,9 @@ ValType = TypeVar("ValType")
 LRUCache = R6Class("LRUCache",
   public = list(
 
-    #' @description Class describes the values in the cache.
-    #'              This object stores the value itself as well as a timestamp so that this
-    #'              element can be invalidated if it becomes too old.
-    Element = R6Class("Element",
-      public = list(
-
-        #' @description Initialize an ``Element`` instance for ``LRUCache``.
-        #' @param value (ValType): Value that is stored in cache.
-        #' @param creation_time (datetime.datetime): Time at which cache item was created.
-        initialize = function(value, creation_time){
-          self$value = value
-          self$creation_time = creation_time
-        }
-      ),
-      lock_objects = F
-    ),
+    #' @field Element
+    #' Class describes the values in the cache
+    Element = Element,
 
     #' @description Initialize an ``LRUCache`` instance.
     #' @param max_cache_items (int): Maximum number of items to store in cache.
@@ -149,3 +155,4 @@ LRUCache = R6Class("LRUCache",
 length.LRUCache = function(x){
   length(LRUCache$.__enclos_env__$private$.lru_cache)
 }
+

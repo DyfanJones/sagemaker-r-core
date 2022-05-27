@@ -14,19 +14,19 @@ Split records by new line.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-split}{\code{LineSplitter$split()}}
-\item \href{#method-clone}{\code{LineSplitter$clone()}}
+\item \href{#method-LineSplitter-split}{\code{LineSplitter$split()}}
+\item \href{#method-LineSplitter-clone}{\code{LineSplitter$clone()}}
 }
 }
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-split"></a>}}
-\if{latex}{\out{\hypertarget{method-split}{}}}
+\if{html}{\out{<a id="method-LineSplitter-split"></a>}}
+\if{latex}{\out{\hypertarget{method-LineSplitter-split}{}}}
 \subsection{Method \code{split()}}{
 Split a file into records using a specific strategy
              This LineSplitter splits the file on each line break.
@@ -47,8 +47,8 @@ list: for the individual records that were split from
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-LineSplitter-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-LineSplitter-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

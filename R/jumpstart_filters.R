@@ -97,7 +97,7 @@ Operand = R6Class("Operand",
 
     #' @description format class
     format = function(){
-      format_class()
+      format_class(self)
     }
   ),
 
@@ -110,6 +110,9 @@ Operand = R6Class("Operand",
         return(private$.resolved_value)
       private$.resolved_value = match.arg(resolved_value, unname(as.list(BooleanValues)))
     }
+  ),
+  private = list(
+    .resolved_value = NULL
   ),
   lock_objects = F
 )
@@ -138,14 +141,15 @@ Operator = R6Class("Operator",
     eval = function(){
       return(NULL)
     }
-  )
+  ),
+  lock_objects = F
 )
 
 #' @title And operator class for filtering JumpStart content.
 #' @export
 And = R6Class("And",
   inherit = Operator,
-  pubilc = list(
+  public = list(
 
     #' @description Instantiates And object.
     #' @param ... (Operand): Operand for And-ing.
@@ -160,7 +164,7 @@ And = R6Class("And",
     #' @description Evaluates operator.
     eval = function(){
       incomplete_expression = FALSE
-      for (operand in self.operands){
+      for (operand in self$operands){
         if (inherits(operand, "Operand")){
           RuntimeError$new(
             sprintf("Operand must be subclass of ``Operand``, but got %s", paste(class(operand), collapse=", "))
@@ -208,7 +212,8 @@ Constant = R6Class("Constant",
     eval = function(){
       return(NULL)
     }
-  )
+  ),
+  lock_objects = F
 )
 
 #' @title Identity operator class for filtering JumpStart content.

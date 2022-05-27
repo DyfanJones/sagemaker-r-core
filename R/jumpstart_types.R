@@ -2,12 +2,18 @@
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/jumpstart/types.py
 
 #' @import R6
-#' @importfrom jsonlite toJSON
+#' @importFrom jsonlite toJSON
 #' @importFrom stats setNames
 #' @importFrom data.table address
 
 #' @include r_utils.R
 
+#' @title Base class for many JumpStart types.
+#' @description Allows objects to be added to dicts and sets,
+#'              and improves string representation. This class overrides the ``__eq__``
+#'              and ``__hash__`` methods so that different objects with the same attributes/types
+#'              can be compared.
+#' @export
 JumpStartDataHolderType = R6Class("JumpStartDataHolderType",
   public = list(
 
@@ -129,7 +135,7 @@ JumpStartModelHeader = R6Class("JumpStartModelHeader",
       return(json_obj)
     },
 
-    #' @descriptionSets fields in object based on json of header.
+    #' @description Sets fields in object based on json of header.
     #' @param json_obj (Dict[str, str]): Dictionary representation of header.
     from_json = function(json_obj){
       self$model_id = json_obj[["model_id"]]
@@ -259,7 +265,7 @@ JumpStartEnvironmentVariable = R6Class("JumpStartEnvironmentVariable",
   inherit = JumpStartDataHolderType,
   public = list(
 
-    #' @descriptioon Initializes a JumpStartEnvironmentVariable object from its json representation.
+    #' @description Initializes a JumpStartEnvironmentVariable object from its json representation.
     #' @param spec (Dict[str, Any]): Dictionary representation of environment variable.
     initialize = function(spec){
       self$from_json(spec)
@@ -295,7 +301,7 @@ JumpStartEnvironmentVariable = R6Class("JumpStartEnvironmentVariable",
 #' @description Data class JumpStart model specs
 #' @export
 JumpStartModelSpecs = R6Class("JumpStartModelSpecs",
-  inherit = ,
+  inherit = JumpStartDataHolderType,
   public = list(
 
     #' @description Initializes a JumpStartModelSpecs object from its json representation.
@@ -440,7 +446,7 @@ JumpStartCachedS3ContentKey = R6Class("JumpStartCachedS3ContentKey",
   private = list(
     .slots = list("file_type", "s3_key")
   ),
-  lock_objecs = F
+  lock_objects = F
 )
 
 #' @title JumpStartCachedS3ContentValue class
