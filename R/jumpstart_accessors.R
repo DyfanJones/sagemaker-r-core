@@ -1,5 +1,5 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
-# https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/session.py
+# https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/jumpstart/accessors.py
 
 #' @include jumpstart_types.R
 #' @include jumpstart_cache.R
