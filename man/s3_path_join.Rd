@@ -11,8 +11,6 @@ s3_path_join(...)
 }
 \value{
 character: The joined string.
-
-
 }
 \description{
 Returns the arguments joined by a slash ("/"), similarly to ``file.path()`` (on Unix).

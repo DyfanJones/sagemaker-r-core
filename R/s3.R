@@ -40,7 +40,6 @@ parse_s3_url <- split_s3_uri
 #'              If the first argument is "s3://", then that is preserved.
 #' @param ... : The strings to join with a slash.
 #' @return character: The joined string.
-#' @return
 #' @export
 s3_path_join = function(...){
   args=list(...)
