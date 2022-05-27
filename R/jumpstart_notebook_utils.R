@@ -196,7 +196,7 @@ list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
   }
   metadata_filter_keys = as.list(all_keys)[!(as.list(all_keys) %in% SPECIAL_SUPPORTED_FILTER_KEYS)]
 
-  required_manifest_keys = intersection(manifest_keys, metadata_filter_keys)
+  required_manifest_keys = intersect(manifest_keys, metadata_filter_keys)
   possible_spec_keys = metadata_filter_keys[!(metadata_filter_keys %in% manifest_keys)]
 
   unrecognized_keys = listenv()
