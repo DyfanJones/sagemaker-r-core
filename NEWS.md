@@ -1,3 +1,8 @@
+# sagemaker.core 0.1.2.9001:
+## New Feature:
+* Initial implementation of jumpstart function and classes
+* Add `listenv` dependency to allow for mutable lists
+
 # sagemaker.core 0.1.2.9000:
 
 # sagemaker.core 0.1.1:
