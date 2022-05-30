@@ -1,7 +1,9 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
 # https://github.com/aws/sagemaker-python-sdk/blob/dev/src/sagemaker/serverless/serverless_inference_config.py
 
-#' @import sagemaker.core
+#' @include r_utils.R
+
+#' @import R6
 
 #' @title Configuration object passed in when deploying models to Amazon SageMaker Endpoints.
 #' @description This object specifies configuration related to serverless endpoint. Use this configuration
