@@ -18,7 +18,8 @@ Imports:
     processx,
     fs,
     jsonlite,
-    R6
+    R6,
+    listenv
 Suggests:
     yaml,
     crayon,
@@ -40,10 +41,24 @@ Collate:
     'apiutils_base_types.R'
     'apiutils_utils.R'
     'deprecations.R'
+    'workflow_utils.R'
     'image_uris.R'
     'fw_utils.R'
     'git_utils.R'
     'input.R'
+    'jumpstart_types.R'
+    'jumpstart_enums.R'
+    'jumpstart_constants.R'
+    'utilities_cache.R'
+    'jumpstart_exceptions.R'
+    'jumpstart_utils.R'
+    'jumpstart_parameters.R'
+    'jumpstart_cache.R'
+    'jumpstart_accessors.R'
+    'jumpstart_artifacts.R'
+    'jumpstart_filters.R'
+    'jumpstart_notebook_utils.R'
+    'jumpstart_validators.R'
     's3.R'
     'local_utils.R'
     'local_data.R'
@@ -56,5 +71,5 @@ Collate:
     'local_image.R'
     'local_session.R'
     'local_entities.R'
-    'utilities_cache.R'
+    'serverless_serverless_inference_config.R'
     'zzz.R'
