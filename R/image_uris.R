@@ -77,7 +77,7 @@ ImageUris = R6Class("ImageUris",
                         serverless_inference_config=NULL){
       args = as.list(environment())
 
-      for (name in args){
+      for (name in names(args)){
         val = args[[name]]
         if (is_pipeline_variable(val))
           ValueError$new(sprintf(
@@ -110,9 +110,9 @@ ImageUris = R6Class("ImageUris",
           inference_tool = private$.get_inference_tool(inference_tool, instance_type)
           if (inference_tool == "neuron") {
             .framework = sprintf("%s-%s", framework, inference_tool)
-            config = private$.config_for_framework_and_scope(.framework, image_scope, accelerator_type)
           }
         }
+        config = private$.config_for_framework_and_scope(.framework, image_scope, accelerator_type)
       } else if (framework == private$HUGGING_FACE_FRAMEWORK) {
         config = private$.config_for_framework_and_scope(
           paste0(framework, "-training-compiler"), image_scope, accelerator_type
