@@ -1,3 +1,7 @@
+# sagemaker.core 0.1.2.9002:
+## Architecture:
+* migrate jumpstart to sagemaker.common
+
 # sagemaker.core 0.1.2.9001:
 ## New Feature:
 * Initial implementation of jumpstart function and classes
