@@ -71,5 +71,4 @@ Collate:
     'local_image.R'
     'local_session.R'
     'local_entities.R'
-    'serverless_serverless_inference_config.R'
     'zzz.R'
