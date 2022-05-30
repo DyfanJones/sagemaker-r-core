@@ -4,6 +4,7 @@
 #' @include r_utils.R
 #' @include utils.R
 #' @include error.R
+#' @include workflow_utils.R
 
 #' @import jsonlite
 #' @import R6
@@ -52,6 +53,9 @@ ImageUris = R6Class("ImageUris",
     #'              (default: None).
     #' @param inference_tool (str): the tool that will be used to aid in the inference.
     #'              Valid values: "neuron, None" (default: None).
+    #' @param serverless_inference_config (\code{sagemaker.core::ServerlessInferenceConfig}):
+    #'              Specifies configuration related to serverless endpoint. Instance type is
+    #'              not provided in serverless inference. So this is used to determine processor type.
     #' @return str: the ECR URI for the corresponding SageMaker Docker image.
     retrieve = function(framework,
                         region,
@@ -69,11 +73,59 @@ ImageUris = R6Class("ImageUris",
                         tolerate_vulnerable_model=FALSE,
                         tolerate_deprecated_model=FALSE,
                         sdk_version=NULL,
-                        inference_tool=NULL){
-      config = private$.config_for_framework_and_scope(framework, image_scope, accelerator_type)
+                        inference_tool=NULL,
+                        serverless_inference_config=NULL){
+      args = as.list(environment())
+
+      for (name in args){
+        val = args[[name]]
+        if (is_pipeline_variable(val))
+          ValueError$new(sprintf(
+            "%s should not be a pipeline variable (%s)", name, class(val)
+          ))
+      }
+      if (is_jumpstart_model_input(model_id, model_version)){
+        return(.retrieve_image_uri(
+          model_id,
+          model_version,
+          image_scope,
+          framework,
+          region,
+          version,
+          py_version,
+          instance_type,
+          accelerator_type,
+          container_version,
+          distribution,
+          base_framework_version,
+          training_compiler_config,
+          tolerate_vulnerable_model,
+          tolerate_deprecated_model
+        ))
+      }
+
+      if (is.null(training_compiler_config)) {
+        .framework = framework
+        if (framework == private$HUGGING_FACE_FRAMEWORK) {
+          inference_tool = private$.get_inference_tool(inference_tool, instance_type)
+          if (inference_tool == "neuron") {
+            .framework = sprintf("%s-%s", framework, inference_tool)
+            config = private$.config_for_framework_and_scope(.framework, image_scope, accelerator_type)
+          }
+        }
+      } else if (framework == private$HUGGING_FACE_FRAMEWORK) {
+        config = private$.config_for_framework_and_scope(
+          paste0(framework, "-training-compiler"), image_scope, accelerator_type
+        )
+      } else {
+        ValueError$new(
+          "Unsupported Configuration: Training Compiler is only supported with HuggingFace"
+        )
+      }
 
       original_version = version
       version = private$.validate_version_and_set_if_needed(version, config, framework)
+
       # Read dictionary key "" as position instead due to how jsonlite reads in jsons
       version_config = private$.version_for_config(version, config)
       version_config = config[["versions"]][[(if (identical(version_config, "")) 1L else version_config)]]
@@ -89,30 +141,59 @@ ImageUris = R6Class("ImageUris",
 
       py_version = private$.validate_py_version_and_set_if_needed(py_version, version_config, framework)
       version_config = if(is.null(py_version)) version_config else {version_config[[py_version]] %||% version_config}
-
       registry = private$.registry_from_region(region, version_config$registries)
       hostname = regional_hostname("ecr", region)
 
       repo = version_config[["repository"]]
 
-      avialable_processors = (config[["processors"]] %||% version_config[["processors"]])
       processor = private$.processor(
         instance_type=instance_type,
-        available_processors=avialable_processors
+        available_processors=(config[["processors"]] %||% version_config[["processors"]]),
+        serverless_inference_config
       )
+
+
+      # if container version is available in .json file, utilize that
+      if (!is.null(version_config[["container_version"]]))
+        container_version = version_config[["container_version"]][[processor]]
 
       if(framework == private$HUGGING_FACE_FRAMEWORK){
         pt_or_tf_version = private$.str_match(base_framework_version, "^(pytorch|tensorflow)(.*)$")[[3]]
-        tag_prefix = sprintf("%s-transformers%s", pt_or_tf_version, original_version)
+
+        .version = original_version
+
+        if (repo %in% c("huggingface-pytorch-trcomp-training", "huggingface-tensorflow-trcomp-training")){
+          .version = version
+
+          if(repo %in% c("huggingface-pytorch-inference-neuron")){
+            if (is.null(sdk_version))
+              sdk_version = .get_latest_versions(version_config[["sdk_versions"]])
+            container_version = paste0(sdk_version, "-", container_version)
+            if (!is.null(config[["version_aliases"]][[original_version]]))
+              .version = config[["version_aliases"]][[original_version]]
+            if (
+              !is.null(config[["versions"]][[
+                .version]][[
+                "version_aliases"]][[
+                base_framework_version]])
+            ){
+              .base_framework_version = config[["versions"]][[.version]][["version_aliases"]][[
+                base_framework_version
+              ]]
+              pt_or_tf_version =  private$.str_match(
+                .base_framework_version, "^(pytorch|tensorflow)(.*)$"
+              )[[3]]
+            }
+          }
+        }
+        tag_prefix = sprintf("%s-transformers%s", pt_or_tf_version, .version)
       } else {
         tag_prefix = version_config[["tag_prefix"]] %||% version
       }
 
       tag = private$.format_tag(
-        tag_prefix,
-        processor,
-        py_version,
-        container_version)
+        tag_prefix, processor, py_version, container_version, inference_tool
+      )
 
       if(private$.should_auto_select_container_version(instance_type, distribution)){
         container_versions = list(
@@ -127,7 +208,8 @@ ImageUris = R6Class("ImageUris",
           "pytorch-1.6-gpu-py36"="cu110-ubuntu18.04-v3",
           "pytorch-1.6.0-gpu-py36"="cu110-ubuntu18.04",
           "pytorch-1.6-gpu-py3"="cu110-ubuntu18.04-v3",
-          "pytorch-1.6.0-gpu-py3"="cu110-ubuntu18.04")
+          "pytorch-1.6.0-gpu-py3"="cu110-ubuntu18.04"
+        )
         key = paste(list(framework, tag), collapse = "-", sep= "-")
         if (key %in% names(container_versions))
           tag = paste(list(tag, container_versions[[key]]), collapse = "-", sep = "-")
@@ -137,6 +219,64 @@ ImageUris = R6Class("ImageUris",
         repo = sprintf("%s:%s", repo, tag)
 
       return(sprintf(private$ECR_URI_TEMPLATE, registry, hostname, repo))
+    },
+
+    #' @description Retrieves the image URI for training.
+    #' @param region (str): The AWS region to use for image URI.
+    #' @param framework (str): The framework for which to retrieve an image URI.
+    #' @param framework_version (str): The framework version for which to retrieve an
+    #'              image URI (default: NULL).
+    #' @param py_version (str): The python version to use for the image (default: NULL).
+    #' @param image_uri (str): If an image URI is supplied, it is returned (default: NULL).
+    #' @param distribution (dict): A dictionary with information on how to run distributed
+    #'              training (default: NULL).
+    #' @param compiler_config (:class:`~sagemaker.training_compiler.TrainingCompilerConfig`):
+    #'              A configuration class for the SageMaker Training Compiler
+    #'              (default: NULL).
+    #' @param tensorflow_version (str): The version of TensorFlow to use. (default: NULL)
+    #' @param pytorch_version (str): The version of PyTorch to use. (default: NULL)
+    #' @param instance_type (str): The instance type to use. (default: NULL)
+    #' @return str: The image URI string.
+    get_training_image_uri = function(region,
+                                      framework,
+                                      framework_version=NULL,
+                                      py_version=NULL,
+                                      image_uri=NULL,
+                                      distribution=NULL,
+                                      compiler_config=NULL,
+                                      tensorflow_version=NULL,
+                                      pytorch_version=NULL,
+                                      instance_type=NULL){
+      if (!is.null(image_uri))
+        return(image_uri)
+
+      base_framework_version = NULL
+
+      if (!is.null(tensorflow_version) || !is.null(pytorch_version)) {
+        processor = private$.processor(instance_type, c("cpu", "gpu"))
+        is_native_huggingface_gpu = (processor == "gpu" && !is.null(compiler_config))
+        container_version = if (is_native_huggingface_gpu) "cu110-ubuntu18.04" else NULL
+        if (!is.null(tensorflow_version)) {
+          base_framework_version = sprintf("tensorflow%s", tensorflow_version)
+        } else {
+          base_framework_version = sprintf("pytorch%s", pytorch_version)
+        }
+      } else {
+        container_version = NULL
+        base_framework_version = NULL
+      }
+      return(self$retrieve(
+        framework,
+        region,
+        instance_type=instance_type,
+        version=framework_version,
+        py_version=py_version,
+        image_scope="training",
+        distribution=distribution,
+        base_framework_version=base_framework_version,
+        container_version=container_version,
+        training_compiler_config=compiler_config
+      ))
     },
 
     #' @description format class
@@ -153,7 +293,6 @@ ImageUris = R6Class("ImageUris",
     .config_for_framework_and_scope = function(framework,
                                                image_scope = NULL,
                                                accelerator_type=NULL){
-
       config = config_for_framework(framework)
 
       if (!is.null(accelerator_type)){
@@ -167,6 +306,7 @@ ImageUris = R6Class("ImageUris",
       }
 
       available_scopes = if(!islistempty(config$scope)) config$scope else names(config)
+
       if (length(available_scopes) == 1){
         if (!islistempty(image_scope) && image_scope != available_scopes[[1]])
           LOGGER$warn(
@@ -176,23 +316,38 @@ ImageUris = R6Class("ImageUris",
           )
         image_scope = available_scopes[[1]]
       }
-
-      if (islistempty(image_scope) && "scope" %in% names(config) && any(unique(available_scopes) %in% list("training", "inference"))){
+      if (islistempty(image_scope) && "scope" %in% names(config) && any(unique(available_scopes) %in% c("training", "inference"))){
         LOGGER$info(
           "Same images used for training and inference. Defaulting to image scope: %s.",
           available_scopes[[1]])
         image_scope = available_scopes[[1]]
       }
-
       private$.validate_arg(image_scope, available_scopes, "image scope")
       return(if("scope" %in% names(config)) config else config[[image_scope]])
+    },
+
+    # Extract the inference tool name from instance type.
+    .get_inference_tool = function(inference_tool, instance_type){
+      if (missing(inference_tool) && !missing(instance_type)){
+        match = private$.str_match("^ml[\\._]([a-z\\d]+)\\.?\\w*$", instance_type)
+        if (!islistempty(match) && grepl("^inf", match[[2]]))
+          return("neuron")
+      }
+      return(inference_tool)
+    },
+
+    # Extract the latest version from the input list of available versions.
+    .get_latest_versions = function(list_of_versions){
+      return(sort(as.character(list_of_versions), decreasing = T)[1])
     },
 
     # Raises a ``ValueError`` if ``accelerator_type`` is invalid.
     .validate_accelerator_type = function(accelerator_type){
       if (!startsWith(accelerator_type, "ml.eia") && accelerator_type != "local_sagemaker_notebook")
-        ValueError$new(sprintf("Invalid SageMaker Elastic Inference accelerator type: %s. ",accelerator_type),
-                       "See https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html")
+        ValueError$new(sprintf(
+          "Invalid SageMaker Elastic Inference accelerator type: %s. ",accelerator_type),
+          "See https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html"
+        )
     },
 
     # Checks if the framework/algorithm version is one of the supported versions.
@@ -239,24 +394,26 @@ ImageUris = R6Class("ImageUris",
 
     # Returns the processor type for the given instance type.
     .processor = function(instance_type = NULL,
-                          available_processors = NULL){
+                          available_processors = NULL,
+                          serverless_inference_config = NULL){
       if (is.null(available_processors)){
         if(!is.null(instance_type))
           LOGGER$info("Ignoring unnecessary instance type: %s.", instance_type)
         return(NULL)
       }
-
       if (length(available_processors) == 1 && is.null(instance_type)){
         LOGGER$info("Defaulting to only supported image scope: %s.", available_processors[[1]])
         return(available_processors[[1]])
       }
-
+      if (!is.null(serverless_inference_config)) {
+        LOGGER$info("Defaulting to CPU type when using serverless inference")
+        return("cpu")
+      }
       if (islistempty(instance_type)){
         ValueError$new(
           "Empty SageMaker instance type. For options, see: ",
           "https://aws.amazon.com/sagemaker/pricing/instance-types")
       }
-
       if (startsWith(instance_type,"local")){
         processor = if(instance_type == "local") "cpu" else "gpu"
       } else {
@@ -269,16 +426,19 @@ ImageUris = R6Class("ImageUris",
           # In those cases, we use the family name in the image tag. In other cases, we use
           # 'cpu' or 'gpu'.
           if (family %in% available_processors) {
-            processor = family}
-          if (startsWith(family, "inf")){
-            processor = "inf"}
-          if (substr(family, 1,1) %in% c("g", "p"))
+            processor = family
+          } else if (startsWith(family, "inf")) {
+            processor = "inf"
+          } else if (substr(family, 1,1) %in% c("g", "p")) {
             processor = "gpu"
-          else
+          } else {
             processor = "cpu"
+          }
         } else {
-          ValueError$new(sprintf("Invalid SageMaker instance type: %s. For options, see: ", instance_type),
-                         "https://aws.amazon.com/sagemaker/pricing/instance-types")
+          ValueError$new(sprintf(
+            "Invalid SageMaker instance type: %s. For options, see: ", instance_type),
+            "https://aws.amazon.com/sagemaker/pricing/instance-types"
+          )
         }
       }
       private$.validate_arg(processor, available_processors, "processor")
@@ -297,7 +457,6 @@ ImageUris = R6Class("ImageUris",
           p4d = (family == "p4d")
         }
       }
-
       smdistributed = FALSE
       if (!islistempty(distribution))
         smdistributed = ("smdistributed" %in% names(distribution))
@@ -314,13 +473,11 @@ ImageUris = R6Class("ImageUris",
       } else {
         available_versions = names(version_config)
       }
-
       if (islistempty(available_versions)){
         if(!is.null(py_version)){
           LOGGER$info("Ignoring unnecessary Python version: %s.", py_version)}
         return(NULL)
       }
-
       if (is.null(py_version) && "spark" == framework)
         return(NULL)
 
@@ -328,7 +485,6 @@ ImageUris = R6Class("ImageUris",
         LOGGER$info("Defaulting to only available Python version: %s", available_versions[[1]])
         return(available_versions[[1]])
       }
-
       private$.validate_arg(py_version, available_versions, "Python version")
       return(py_version)
     },
@@ -340,15 +496,22 @@ ImageUris = R6Class("ImageUris",
           "Unsupported %s: %s. You may need to upgrade your SDK version",
           "(remotes::install_github('DyfanJones/sagemaker-r-common')) for newer %ss.",
           "\nSupported %s(s): {%s}."), arg_name, arg %||% "NULL", arg_name, arg_name,
-          paste(available_options, collapse = ", ")))
+          paste(available_options, collapse = ", ")
+        ))
     },
 
     # Creates a tag for the image URI.
     .format_tag = function(tag_prefix,
                            processor,
                            py_version,
-                           container_version){
-      tag_list = list(tag_prefix, processor, py_version,container_version)
+                           container_version,
+                           inference_tool = NULL){
+      if (!is.null(inference_tool)) {
+        tag_list = list(tag_prefix, inference_tool, py_version, container_version)
+        tag_list = Filter(Negate(is.null), tag_list)
+        return (paste(tag_list, collapse = "-"))
+      }
+      tag_list = list(tag_prefix, processor, py_version, container_version)
       tag_list = Filter(Negate(is.null), tag_list)
       return (paste(tag_list, collapse = "-"))
     },
@@ -373,4 +536,3 @@ config_for_framework = function(framework){
 
   return(read_json(fname))
 }
-

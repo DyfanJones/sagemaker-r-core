@@ -10,6 +10,7 @@ Class to create and format sagemaker docker images stored in ECR
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-ImageUris-retrieve}{\code{ImageUris$retrieve()}}
+\item \href{#method-ImageUris-get_training_image_uri}{\code{ImageUris$get_training_image_uri()}}
 \item \href{#method-ImageUris-format}{\code{ImageUris$format()}}
 \item \href{#method-ImageUris-clone}{\code{ImageUris$clone()}}
 }
@@ -37,7 +38,8 @@ Retrieves the ECR URI for the Docker image matching the given arguments of inbui
   tolerate_vulnerable_model = FALSE,
   tolerate_deprecated_model = FALSE,
   sdk_version = NULL,
-  inference_tool = NULL
+  inference_tool = NULL,
+  serverless_inference_config = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -96,11 +98,68 @@ if the version of the model is deprecated. (Default: False).}
 
 \item{\code{inference_tool}}{(str): the tool that will be used to aid in the inference.
 Valid values: "neuron, None" (default: None).}
+
+\item{\code{serverless_inference_config}}{(\code{sagemaker.core::ServerlessInferenceConfig}):
+Specifies configuration related to serverless endpoint. Instance type is
+not provided in serverless inference. So this is used to determine processor type.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
 str: the ECR URI for the corresponding SageMaker Docker image.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-ImageUris-get_training_image_uri"></a>}}
+\if{latex}{\out{\hypertarget{method-ImageUris-get_training_image_uri}{}}}
+\subsection{Method \code{get_training_image_uri()}}{
+Retrieves the image URI for training.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{ImageUris$get_training_image_uri(
+  region,
+  framework,
+  framework_version = NULL,
+  py_version = NULL,
+  image_uri = NULL,
+  distribution = NULL,
+  compiler_config = NULL,
+  tensorflow_version = NULL,
+  pytorch_version = NULL,
+  instance_type = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{region}}{(str): The AWS region to use for image URI.}
+
+\item{\code{framework}}{(str): The framework for which to retrieve an image URI.}
+
+\item{\code{framework_version}}{(str): The framework version for which to retrieve an
+image URI (default: NULL).}
+
+\item{\code{py_version}}{(str): The python version to use for the image (default: NULL).}
+
+\item{\code{image_uri}}{(str): If an image URI is supplied, it is returned (default: NULL).}
+
+\item{\code{distribution}}{(dict): A dictionary with information on how to run distributed
+training (default: NULL).}
+
+\item{\code{compiler_config}}{(:class:`~sagemaker.training_compiler.TrainingCompilerConfig`):
+A configuration class for the SageMaker Training Compiler
+(default: NULL).}
+
+\item{\code{tensorflow_version}}{(str): The version of TensorFlow to use. (default: NULL)}
+
+\item{\code{pytorch_version}}{(str): The version of PyTorch to use. (default: NULL)}
+
+\item{\code{instance_type}}{(str): The instance type to use. (default: NULL)}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+str: The image URI string.
 }
 }
 \if{html}{\out{<hr>}}

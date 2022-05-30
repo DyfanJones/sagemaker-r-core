@@ -316,6 +316,53 @@ zip_list <- function(...) {
   mapply(list, ..., SIMPLIFY = FALSE)
 }
 
+listenv.extend = function(x, y){
+  lapply(1:length(y), function(i){x[[length(x) + 1]] <- y[[i]]})
+  return(invisible(NULL))
+}
+listenv.append = function (x, y) {
+  x[[length(x) + 1]] <- y
+}
+
+modifyListenv <- function (x, val, keep.null = FALSE) {
+  stopifnot(
+    inherits(x, "listenv") || is.list(x),
+    inherits(val, "listenv") || is.list(val)
+  )
+  xnames <- names(x)
+  vnames <- names(val)[nzchar(names(val))]
+  if (keep.null) {
+    for (v in vnames) {
+      if (v %in% xnames
+          && is.list(x[[v]])
+          && (is.list(val[[v]]) || inherits(val[[v]], "listenv"))) {
+        x[v] <- list(modifyListenv(x[[v]], val[[v]], keep.null = keep.null))
+      } else if (v %in% xnames
+                 && inherits(x[[v]], "listenv")
+                 && (is.list(val[[v]]) || inherits(val[[v]], "listenv"))) {
+        modifyListenv(x[[v]], val[[v]], keep.null = keep.null)
+      } else {
+        x[v] <- list(val[[v]])
+      }
+    }
+  } else {
+    for (v in vnames) {
+      if (v %in% xnames
+          && is.list(x[[v]])
+          && (is.list(val[[v]]) || inherits(val[[v]], "listenv"))) {
+        x[[v]] <- modifyListenv(x[[v]], val[[v]], keep.null = keep.null)
+      } else if (v %in% xnames
+                 && inherits(x[[v]], "listenv")
+                 && (is.list(val[[v]]) || inherits(val[[v]], "listenv"))) {
+        modifyListenv(x[[v]], val[[v]], keep.null = keep.null)
+      } else {
+        x[[v]] <- val[[v]]
+      }
+    }
+  }
+  return(x)
+}
+
 #' @title Helper function to return help documentation for sagemaker R6 classes.
 #' @param cls (R6::R6Class): R6 class
 #' @family r_utils
