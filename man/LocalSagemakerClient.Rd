@@ -12,29 +12,29 @@ Used for doing local training and hosting local endpoints. It still needs access
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{LocalSagemakerClient$new()}}
-\item \href{#method-create_processing_job}{\code{LocalSagemakerClient$create_processing_job()}}
-\item \href{#method-describe_processing_job}{\code{LocalSagemakerClient$describe_processing_job()}}
-\item \href{#method-create_training_job}{\code{LocalSagemakerClient$create_training_job()}}
-\item \href{#method-describe_training_job}{\code{LocalSagemakerClient$describe_training_job()}}
-\item \href{#method-create_transform_job}{\code{LocalSagemakerClient$create_transform_job()}}
-\item \href{#method-describe_transform_job}{\code{LocalSagemakerClient$describe_transform_job()}}
-\item \href{#method-create_model}{\code{LocalSagemakerClient$create_model()}}
-\item \href{#method-describe_model}{\code{LocalSagemakerClient$describe_model()}}
-\item \href{#method-describe_endpoint_config}{\code{LocalSagemakerClient$describe_endpoint_config()}}
-\item \href{#method-create_endpoint_config}{\code{LocalSagemakerClient$create_endpoint_config()}}
-\item \href{#method-describe_endpoint}{\code{LocalSagemakerClient$describe_endpoint()}}
-\item \href{#method-create_endpoint}{\code{LocalSagemakerClient$create_endpoint()}}
-\item \href{#method-update_endpoint}{\code{LocalSagemakerClient$update_endpoint()}}
-\item \href{#method-delete_endpoint}{\code{LocalSagemakerClient$delete_endpoint()}}
-\item \href{#method-delete_endpoint_config}{\code{LocalSagemakerClient$delete_endpoint_config()}}
-\item \href{#method-delete_model}{\code{LocalSagemakerClient$delete_model()}}
-\item \href{#method-clone}{\code{LocalSagemakerClient$clone()}}
+\item \href{#method-LocalSagemakerClient-new}{\code{LocalSagemakerClient$new()}}
+\item \href{#method-LocalSagemakerClient-create_processing_job}{\code{LocalSagemakerClient$create_processing_job()}}
+\item \href{#method-LocalSagemakerClient-describe_processing_job}{\code{LocalSagemakerClient$describe_processing_job()}}
+\item \href{#method-LocalSagemakerClient-create_training_job}{\code{LocalSagemakerClient$create_training_job()}}
+\item \href{#method-LocalSagemakerClient-describe_training_job}{\code{LocalSagemakerClient$describe_training_job()}}
+\item \href{#method-LocalSagemakerClient-create_transform_job}{\code{LocalSagemakerClient$create_transform_job()}}
+\item \href{#method-LocalSagemakerClient-describe_transform_job}{\code{LocalSagemakerClient$describe_transform_job()}}
+\item \href{#method-LocalSagemakerClient-create_model}{\code{LocalSagemakerClient$create_model()}}
+\item \href{#method-LocalSagemakerClient-describe_model}{\code{LocalSagemakerClient$describe_model()}}
+\item \href{#method-LocalSagemakerClient-describe_endpoint_config}{\code{LocalSagemakerClient$describe_endpoint_config()}}
+\item \href{#method-LocalSagemakerClient-create_endpoint_config}{\code{LocalSagemakerClient$create_endpoint_config()}}
+\item \href{#method-LocalSagemakerClient-describe_endpoint}{\code{LocalSagemakerClient$describe_endpoint()}}
+\item \href{#method-LocalSagemakerClient-create_endpoint}{\code{LocalSagemakerClient$create_endpoint()}}
+\item \href{#method-LocalSagemakerClient-update_endpoint}{\code{LocalSagemakerClient$update_endpoint()}}
+\item \href{#method-LocalSagemakerClient-delete_endpoint}{\code{LocalSagemakerClient$delete_endpoint()}}
+\item \href{#method-LocalSagemakerClient-delete_endpoint_config}{\code{LocalSagemakerClient$delete_endpoint_config()}}
+\item \href{#method-LocalSagemakerClient-delete_model}{\code{LocalSagemakerClient$delete_model()}}
+\item \href{#method-LocalSagemakerClient-clone}{\code{LocalSagemakerClient$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-new"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize a LocalSageMakerClient.
 \subsection{Usage}{
@@ -51,8 +51,8 @@ from, and use its boto client.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_processing_job"></a>}}
-\if{latex}{\out{\hypertarget{method-create_processing_job}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-create_processing_job"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-create_processing_job}{}}}
 \subsection{Method \code{create_processing_job()}}{
 Creates a processing job in Local Mode
 \subsection{Usage}{
@@ -91,8 +91,8 @@ configuration. (Default value = None)}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_processing_job"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_processing_job}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-describe_processing_job"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-describe_processing_job}{}}}
 \subsection{Method \code{describe_processing_job()}}{
 Describes a local processing job.
 \subsection{Usage}{
@@ -111,8 +111,8 @@ Describes a local processing job.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_training_job"></a>}}
-\if{latex}{\out{\hypertarget{method-create_training_job}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-create_training_job"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-create_training_job}{}}}
 \subsection{Method \code{create_training_job()}}{
 Create a training job in Local Mode.
 \subsection{Usage}{
@@ -150,8 +150,8 @@ influence the quality of the final model.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_training_job"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_training_job}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-describe_training_job"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-describe_training_job}{}}}
 \subsection{Method \code{describe_training_job()}}{
 Describe a local training job.
 \subsection{Usage}{
@@ -170,8 +170,8 @@ Describe a local training job.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_transform_job"></a>}}
-\if{latex}{\out{\hypertarget{method-create_transform_job}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-create_transform_job"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-create_transform_job}{}}}
 \subsection{Method \code{create_transform_job()}}{
 Create the transform job.
 \subsection{Usage}{
@@ -204,8 +204,8 @@ Create the transform job.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_transform_job"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_transform_job}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-describe_transform_job"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-describe_transform_job}{}}}
 \subsection{Method \code{describe_transform_job()}}{
 Describe the transform job.
 \subsection{Usage}{
@@ -221,8 +221,8 @@ Describe the transform job.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_model"></a>}}
-\if{latex}{\out{\hypertarget{method-create_model}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-create_model"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-create_model}{}}}
 \subsection{Method \code{create_model()}}{
 Create a Local Model Object.
 \subsection{Usage}{
@@ -242,8 +242,8 @@ Create a Local Model Object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_model"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_model}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-describe_model"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-describe_model}{}}}
 \subsection{Method \code{describe_model()}}{
 Describe the model.
 \subsection{Usage}{
@@ -259,8 +259,8 @@ Describe the model.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_endpoint_config"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_endpoint_config}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-describe_endpoint_config"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-describe_endpoint_config}{}}}
 \subsection{Method \code{describe_endpoint_config()}}{
 Describe the endpoint configuration.
 \subsection{Usage}{
@@ -276,8 +276,8 @@ Describe the endpoint configuration.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_endpoint_config"></a>}}
-\if{latex}{\out{\hypertarget{method-create_endpoint_config}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-create_endpoint_config"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-create_endpoint_config}{}}}
 \subsection{Method \code{create_endpoint_config()}}{
 Create the endpoint configuration.
 \subsection{Usage}{
@@ -301,8 +301,8 @@ Create the endpoint configuration.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_endpoint}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-describe_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-describe_endpoint}{}}}
 \subsection{Method \code{describe_endpoint()}}{
 Describe the endpoint.
 \subsection{Usage}{
@@ -318,8 +318,8 @@ Describe the endpoint.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-create_endpoint}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-create_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-create_endpoint}{}}}
 \subsection{Method \code{create_endpoint()}}{
 Create the endpoint.
 \subsection{Usage}{
@@ -343,8 +343,8 @@ Create the endpoint.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-update_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-update_endpoint}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-update_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-update_endpoint}{}}}
 \subsection{Method \code{update_endpoint()}}{
 Update the endpoint.
 \subsection{Usage}{
@@ -362,8 +362,8 @@ Update the endpoint.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-delete_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-delete_endpoint}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-delete_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-delete_endpoint}{}}}
 \subsection{Method \code{delete_endpoint()}}{
 Delete the endpoint.
 \subsection{Usage}{
@@ -379,8 +379,8 @@ Delete the endpoint.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-delete_endpoint_config"></a>}}
-\if{latex}{\out{\hypertarget{method-delete_endpoint_config}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-delete_endpoint_config"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-delete_endpoint_config}{}}}
 \subsection{Method \code{delete_endpoint_config()}}{
 Delete the endpoint configuration.
 \subsection{Usage}{
@@ -396,8 +396,8 @@ Delete the endpoint configuration.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-delete_model"></a>}}
-\if{latex}{\out{\hypertarget{method-delete_model}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-delete_model"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-delete_model}{}}}
 \subsection{Method \code{delete_model()}}{
 Delete the model.
 \subsection{Usage}{
@@ -413,8 +413,8 @@ Delete the model.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-LocalSagemakerClient-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-LocalSagemakerClient-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

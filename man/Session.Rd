@@ -28,87 +28,87 @@ Other Session:
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Session$new()}}
-\item \href{#method-upload_data}{\code{Session$upload_data()}}
-\item \href{#method-upload_string_as_file_body}{\code{Session$upload_string_as_file_body()}}
-\item \href{#method-download_data}{\code{Session$download_data()}}
-\item \href{#method-read_s3_file}{\code{Session$read_s3_file()}}
-\item \href{#method-list_s3_files}{\code{Session$list_s3_files()}}
-\item \href{#method-default_bucket}{\code{Session$default_bucket()}}
-\item \href{#method-train}{\code{Session$train()}}
-\item \href{#method-update_training_job}{\code{Session$update_training_job()}}
-\item \href{#method-process}{\code{Session$process()}}
-\item \href{#method-create_monitoring_schedule}{\code{Session$create_monitoring_schedule()}}
-\item \href{#method-update_monitoring_schedule}{\code{Session$update_monitoring_schedule()}}
-\item \href{#method-start_monitoring_schedule}{\code{Session$start_monitoring_schedule()}}
-\item \href{#method-stop_monitoring_schedule}{\code{Session$stop_monitoring_schedule()}}
-\item \href{#method-delete_monitoring_schedule}{\code{Session$delete_monitoring_schedule()}}
-\item \href{#method-describe_monitoring_schedule}{\code{Session$describe_monitoring_schedule()}}
-\item \href{#method-list_monitoring_executions}{\code{Session$list_monitoring_executions()}}
-\item \href{#method-list_monitoring_schedules}{\code{Session$list_monitoring_schedules()}}
-\item \href{#method-was_processing_job_successful}{\code{Session$was_processing_job_successful()}}
-\item \href{#method-describe_processing_job}{\code{Session$describe_processing_job()}}
-\item \href{#method-stop_processing_job}{\code{Session$stop_processing_job()}}
-\item \href{#method-stop_training_job}{\code{Session$stop_training_job()}}
-\item \href{#method-describe_training_job}{\code{Session$describe_training_job()}}
-\item \href{#method-auto_ml}{\code{Session$auto_ml()}}
-\item \href{#method-describe_auto_ml_job}{\code{Session$describe_auto_ml_job()}}
-\item \href{#method-list_candidates}{\code{Session$list_candidates()}}
-\item \href{#method-wait_for_auto_ml_job}{\code{Session$wait_for_auto_ml_job()}}
-\item \href{#method-logs_for_auto_ml_job}{\code{Session$logs_for_auto_ml_job()}}
-\item \href{#method-compile_model}{\code{Session$compile_model()}}
-\item \href{#method-tune}{\code{Session$tune()}}
-\item \href{#method-create_tuning_job}{\code{Session$create_tuning_job()}}
-\item \href{#method-describe_tuning_job}{\code{Session$describe_tuning_job()}}
-\item \href{#method-stop_tuning_job}{\code{Session$stop_tuning_job()}}
-\item \href{#method-transform}{\code{Session$transform()}}
-\item \href{#method-create_model}{\code{Session$create_model()}}
-\item \href{#method-create_model_from_job}{\code{Session$create_model_from_job()}}
-\item \href{#method-create_model_package_from_algorithm}{\code{Session$create_model_package_from_algorithm()}}
-\item \href{#method-create_model_package_from_containers}{\code{Session$create_model_package_from_containers()}}
-\item \href{#method-wait_for_model_package}{\code{Session$wait_for_model_package()}}
-\item \href{#method-describe_model}{\code{Session$describe_model()}}
-\item \href{#method-create_endpoint_config}{\code{Session$create_endpoint_config()}}
-\item \href{#method-create_endpoint_config_from_existing}{\code{Session$create_endpoint_config_from_existing()}}
-\item \href{#method-create_endpoint}{\code{Session$create_endpoint()}}
-\item \href{#method-update_endpoint}{\code{Session$update_endpoint()}}
-\item \href{#method-delete_endpoint}{\code{Session$delete_endpoint()}}
-\item \href{#method-delete_endpoint_config}{\code{Session$delete_endpoint_config()}}
-\item \href{#method-delete_model}{\code{Session$delete_model()}}
-\item \href{#method-list_tags}{\code{Session$list_tags()}}
-\item \href{#method-wait_for_job}{\code{Session$wait_for_job()}}
-\item \href{#method-wait_for_processing_job}{\code{Session$wait_for_processing_job()}}
-\item \href{#method-wait_for_compilation_job}{\code{Session$wait_for_compilation_job()}}
-\item \href{#method-wait_for_edge_packaging_job}{\code{Session$wait_for_edge_packaging_job()}}
-\item \href{#method-wait_for_tuning_job}{\code{Session$wait_for_tuning_job()}}
-\item \href{#method-describe_transform_job}{\code{Session$describe_transform_job()}}
-\item \href{#method-wait_for_transform_job}{\code{Session$wait_for_transform_job()}}
-\item \href{#method-stop_transform_job}{\code{Session$stop_transform_job()}}
-\item \href{#method-wait_for_endpoint}{\code{Session$wait_for_endpoint()}}
-\item \href{#method-endpoint_from_job}{\code{Session$endpoint_from_job()}}
-\item \href{#method-endpoint_from_model_data}{\code{Session$endpoint_from_model_data()}}
-\item \href{#method-endpoint_from_production_variants}{\code{Session$endpoint_from_production_variants()}}
-\item \href{#method-expand_role}{\code{Session$expand_role()}}
-\item \href{#method-get_caller_identity_arn}{\code{Session$get_caller_identity_arn()}}
-\item \href{#method-logs_for_job}{\code{Session$logs_for_job()}}
-\item \href{#method-logs_for_processing_job}{\code{Session$logs_for_processing_job()}}
-\item \href{#method-logs_for_transform_job}{\code{Session$logs_for_transform_job()}}
-\item \href{#method-delete_feature_group}{\code{Session$delete_feature_group()}}
-\item \href{#method-create_feature_group}{\code{Session$create_feature_group()}}
-\item \href{#method-describe_feature_group}{\code{Session$describe_feature_group()}}
-\item \href{#method-start_query_execution}{\code{Session$start_query_execution()}}
-\item \href{#method-get_query_execution}{\code{Session$get_query_execution()}}
-\item \href{#method-wait_for_athena_query}{\code{Session$wait_for_athena_query()}}
-\item \href{#method-download_athena_query_result}{\code{Session$download_athena_query_result()}}
-\item \href{#method-account_id}{\code{Session$account_id()}}
-\item \href{#method-help}{\code{Session$help()}}
-\item \href{#method-format}{\code{Session$format()}}
-\item \href{#method-clone}{\code{Session$clone()}}
+\item \href{#method-Session-new}{\code{Session$new()}}
+\item \href{#method-Session-upload_data}{\code{Session$upload_data()}}
+\item \href{#method-Session-upload_string_as_file_body}{\code{Session$upload_string_as_file_body()}}
+\item \href{#method-Session-download_data}{\code{Session$download_data()}}
+\item \href{#method-Session-read_s3_file}{\code{Session$read_s3_file()}}
+\item \href{#method-Session-list_s3_files}{\code{Session$list_s3_files()}}
+\item \href{#method-Session-default_bucket}{\code{Session$default_bucket()}}
+\item \href{#method-Session-train}{\code{Session$train()}}
+\item \href{#method-Session-update_training_job}{\code{Session$update_training_job()}}
+\item \href{#method-Session-process}{\code{Session$process()}}
+\item \href{#method-Session-create_monitoring_schedule}{\code{Session$create_monitoring_schedule()}}
+\item \href{#method-Session-update_monitoring_schedule}{\code{Session$update_monitoring_schedule()}}
+\item \href{#method-Session-start_monitoring_schedule}{\code{Session$start_monitoring_schedule()}}
+\item \href{#method-Session-stop_monitoring_schedule}{\code{Session$stop_monitoring_schedule()}}
+\item \href{#method-Session-delete_monitoring_schedule}{\code{Session$delete_monitoring_schedule()}}
+\item \href{#method-Session-describe_monitoring_schedule}{\code{Session$describe_monitoring_schedule()}}
+\item \href{#method-Session-list_monitoring_executions}{\code{Session$list_monitoring_executions()}}
+\item \href{#method-Session-list_monitoring_schedules}{\code{Session$list_monitoring_schedules()}}
+\item \href{#method-Session-was_processing_job_successful}{\code{Session$was_processing_job_successful()}}
+\item \href{#method-Session-describe_processing_job}{\code{Session$describe_processing_job()}}
+\item \href{#method-Session-stop_processing_job}{\code{Session$stop_processing_job()}}
+\item \href{#method-Session-stop_training_job}{\code{Session$stop_training_job()}}
+\item \href{#method-Session-describe_training_job}{\code{Session$describe_training_job()}}
+\item \href{#method-Session-auto_ml}{\code{Session$auto_ml()}}
+\item \href{#method-Session-describe_auto_ml_job}{\code{Session$describe_auto_ml_job()}}
+\item \href{#method-Session-list_candidates}{\code{Session$list_candidates()}}
+\item \href{#method-Session-wait_for_auto_ml_job}{\code{Session$wait_for_auto_ml_job()}}
+\item \href{#method-Session-logs_for_auto_ml_job}{\code{Session$logs_for_auto_ml_job()}}
+\item \href{#method-Session-compile_model}{\code{Session$compile_model()}}
+\item \href{#method-Session-tune}{\code{Session$tune()}}
+\item \href{#method-Session-create_tuning_job}{\code{Session$create_tuning_job()}}
+\item \href{#method-Session-describe_tuning_job}{\code{Session$describe_tuning_job()}}
+\item \href{#method-Session-stop_tuning_job}{\code{Session$stop_tuning_job()}}
+\item \href{#method-Session-transform}{\code{Session$transform()}}
+\item \href{#method-Session-create_model}{\code{Session$create_model()}}
+\item \href{#method-Session-create_model_from_job}{\code{Session$create_model_from_job()}}
+\item \href{#method-Session-create_model_package_from_algorithm}{\code{Session$create_model_package_from_algorithm()}}
+\item \href{#method-Session-create_model_package_from_containers}{\code{Session$create_model_package_from_containers()}}
+\item \href{#method-Session-wait_for_model_package}{\code{Session$wait_for_model_package()}}
+\item \href{#method-Session-describe_model}{\code{Session$describe_model()}}
+\item \href{#method-Session-create_endpoint_config}{\code{Session$create_endpoint_config()}}
+\item \href{#method-Session-create_endpoint_config_from_existing}{\code{Session$create_endpoint_config_from_existing()}}
+\item \href{#method-Session-create_endpoint}{\code{Session$create_endpoint()}}
+\item \href{#method-Session-update_endpoint}{\code{Session$update_endpoint()}}
+\item \href{#method-Session-delete_endpoint}{\code{Session$delete_endpoint()}}
+\item \href{#method-Session-delete_endpoint_config}{\code{Session$delete_endpoint_config()}}
+\item \href{#method-Session-delete_model}{\code{Session$delete_model()}}
+\item \href{#method-Session-list_tags}{\code{Session$list_tags()}}
+\item \href{#method-Session-wait_for_job}{\code{Session$wait_for_job()}}
+\item \href{#method-Session-wait_for_processing_job}{\code{Session$wait_for_processing_job()}}
+\item \href{#method-Session-wait_for_compilation_job}{\code{Session$wait_for_compilation_job()}}
+\item \href{#method-Session-wait_for_edge_packaging_job}{\code{Session$wait_for_edge_packaging_job()}}
+\item \href{#method-Session-wait_for_tuning_job}{\code{Session$wait_for_tuning_job()}}
+\item \href{#method-Session-describe_transform_job}{\code{Session$describe_transform_job()}}
+\item \href{#method-Session-wait_for_transform_job}{\code{Session$wait_for_transform_job()}}
+\item \href{#method-Session-stop_transform_job}{\code{Session$stop_transform_job()}}
+\item \href{#method-Session-wait_for_endpoint}{\code{Session$wait_for_endpoint()}}
+\item \href{#method-Session-endpoint_from_job}{\code{Session$endpoint_from_job()}}
+\item \href{#method-Session-endpoint_from_model_data}{\code{Session$endpoint_from_model_data()}}
+\item \href{#method-Session-endpoint_from_production_variants}{\code{Session$endpoint_from_production_variants()}}
+\item \href{#method-Session-expand_role}{\code{Session$expand_role()}}
+\item \href{#method-Session-get_caller_identity_arn}{\code{Session$get_caller_identity_arn()}}
+\item \href{#method-Session-logs_for_job}{\code{Session$logs_for_job()}}
+\item \href{#method-Session-logs_for_processing_job}{\code{Session$logs_for_processing_job()}}
+\item \href{#method-Session-logs_for_transform_job}{\code{Session$logs_for_transform_job()}}
+\item \href{#method-Session-delete_feature_group}{\code{Session$delete_feature_group()}}
+\item \href{#method-Session-create_feature_group}{\code{Session$create_feature_group()}}
+\item \href{#method-Session-describe_feature_group}{\code{Session$describe_feature_group()}}
+\item \href{#method-Session-start_query_execution}{\code{Session$start_query_execution()}}
+\item \href{#method-Session-get_query_execution}{\code{Session$get_query_execution()}}
+\item \href{#method-Session-wait_for_athena_query}{\code{Session$wait_for_athena_query()}}
+\item \href{#method-Session-download_athena_query_result}{\code{Session$download_athena_query_result()}}
+\item \href{#method-Session-account_id}{\code{Session$account_id()}}
+\item \href{#method-Session-help}{\code{Session$help()}}
+\item \href{#method-Session-format}{\code{Session$format()}}
+\item \href{#method-Session-clone}{\code{Session$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Session-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new instance of this [R6][R6::R6Class] class.
              Initialize a SageMaker \code{Session}.
@@ -146,8 +146,8 @@ If not provided, a default bucket will be created based on the following format:
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-upload_data"></a>}}
-\if{latex}{\out{\hypertarget{method-upload_data}{}}}
+\if{html}{\out{<a id="method-Session-upload_data"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-upload_data}{}}}
 \subsection{Method \code{upload_data()}}{
 Upload local file or directory to S3.If a single file is specified for upload, the resulting S3 object key is
              ``{key_prefix}/{filename}`` (filename does not include the local path, if any specified).
@@ -185,8 +185,8 @@ str: The S3 URI of the uploaded file(s). If a file is specified in the path argu
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-upload_string_as_file_body"></a>}}
-\if{latex}{\out{\hypertarget{method-upload_string_as_file_body}{}}}
+\if{html}{\out{<a id="method-Session-upload_string_as_file_body"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-upload_string_as_file_body}{}}}
 \subsection{Method \code{upload_string_as_file_body()}}{
 Upload a string as a file body.
 \subsection{Usage}{
@@ -214,8 +214,8 @@ str: The S3 URI of the uploaded file.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-download_data"></a>}}
-\if{latex}{\out{\hypertarget{method-download_data}{}}}
+\if{html}{\out{<a id="method-Session-download_data"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-download_data}{}}}
 \subsection{Method \code{download_data()}}{
 Download file or directory from S3.
 \subsection{Usage}{
@@ -243,8 +243,8 @@ NULL invisibly
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-read_s3_file"></a>}}
-\if{latex}{\out{\hypertarget{method-read_s3_file}{}}}
+\if{html}{\out{<a id="method-Session-read_s3_file"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-read_s3_file}{}}}
 \subsection{Method \code{read_s3_file()}}{
 Read a single file from S3.
 \subsection{Usage}{
@@ -265,8 +265,8 @@ str: The body of the s3 file as a string.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-list_s3_files"></a>}}
-\if{latex}{\out{\hypertarget{method-list_s3_files}{}}}
+\if{html}{\out{<a id="method-Session-list_s3_files"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-list_s3_files}{}}}
 \subsection{Method \code{list_s3_files()}}{
 Lists the S3 files given an S3 bucket and key.
 \subsection{Usage}{
@@ -287,8 +287,8 @@ Lists the S3 files given an S3 bucket and key.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-default_bucket"></a>}}
-\if{latex}{\out{\hypertarget{method-default_bucket}{}}}
+\if{html}{\out{<a id="method-Session-default_bucket"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-default_bucket}{}}}
 \subsection{Method \code{default_bucket()}}{
 Return the name of the default bucket to use in relevant Amazon SageMaker interactions.
 \subsection{Usage}{
@@ -301,8 +301,8 @@ Return the name of the default bucket to use in relevant Amazon SageMaker intera
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-train"></a>}}
-\if{latex}{\out{\hypertarget{method-train}{}}}
+\if{html}{\out{<a id="method-Session-train"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-train}{}}}
 \subsection{Method \code{train()}}{
 Create an Amazon SageMaker training job. Train the learner on a set of observations of the provided `task`.
              Mutates the learner by reference, i.e. stores the model alongside other information in field `$state`.
@@ -450,8 +450,8 @@ str: ARN of the training job, if it is created.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-update_training_job"></a>}}
-\if{latex}{\out{\hypertarget{method-update_training_job}{}}}
+\if{html}{\out{<a id="method-Session-update_training_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-update_training_job}{}}}
 \subsection{Method \code{update_training_job()}}{
 Calls the UpdateTrainingJob API for the given job name and returns the response.
 \subsection{Usage}{
@@ -476,8 +476,8 @@ SageMaker Profiler. (default: ``None``).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-process"></a>}}
-\if{latex}{\out{\hypertarget{method-process}{}}}
+\if{html}{\out{<a id="method-Session-process"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-process}{}}}
 \subsection{Method \code{process()}}{
 Create an Amazon SageMaker processing job.
 \subsection{Usage}{
@@ -541,8 +541,8 @@ three optional keys, 'ExperimentName', 'TrialName', and 'TrialComponentDisplayNa
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_monitoring_schedule"></a>}}
-\if{latex}{\out{\hypertarget{method-create_monitoring_schedule}{}}}
+\if{html}{\out{<a id="method-Session-create_monitoring_schedule"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_monitoring_schedule}{}}}
 \subsection{Method \code{create_monitoring_schedule()}}{
 Create an Amazon SageMaker monitoring schedule.
 \subsection{Usage}{
@@ -631,8 +631,8 @@ pairs.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-update_monitoring_schedule"></a>}}
-\if{latex}{\out{\hypertarget{method-update_monitoring_schedule}{}}}
+\if{html}{\out{<a id="method-Session-update_monitoring_schedule"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-update_monitoring_schedule}{}}}
 \subsection{Method \code{update_monitoring_schedule()}}{
 Update an Amazon SageMaker monitoring schedule.
 \subsection{Usage}{
@@ -718,8 +718,8 @@ Amazon SageMaker can assume to perform tasks on your behalf.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-start_monitoring_schedule"></a>}}
-\if{latex}{\out{\hypertarget{method-start_monitoring_schedule}{}}}
+\if{html}{\out{<a id="method-Session-start_monitoring_schedule"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-start_monitoring_schedule}{}}}
 \subsection{Method \code{start_monitoring_schedule()}}{
 Starts a monitoring schedule.
 \subsection{Usage}{
@@ -736,8 +736,8 @@ Schedule to start.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-stop_monitoring_schedule"></a>}}
-\if{latex}{\out{\hypertarget{method-stop_monitoring_schedule}{}}}
+\if{html}{\out{<a id="method-Session-stop_monitoring_schedule"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-stop_monitoring_schedule}{}}}
 \subsection{Method \code{stop_monitoring_schedule()}}{
 Stops a monitoring schedule.
 \subsection{Usage}{
@@ -754,8 +754,8 @@ Schedule to stop.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-delete_monitoring_schedule"></a>}}
-\if{latex}{\out{\hypertarget{method-delete_monitoring_schedule}{}}}
+\if{html}{\out{<a id="method-Session-delete_monitoring_schedule"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-delete_monitoring_schedule}{}}}
 \subsection{Method \code{delete_monitoring_schedule()}}{
 Deletes a monitoring schedule.
 \subsection{Usage}{
@@ -772,8 +772,8 @@ Schedule to delete.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_monitoring_schedule"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_monitoring_schedule}{}}}
+\if{html}{\out{<a id="method-Session-describe_monitoring_schedule"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-describe_monitoring_schedule}{}}}
 \subsection{Method \code{describe_monitoring_schedule()}}{
 Calls the DescribeMonitoringSchedule API for the given monitoring schedule name
               and returns the response.
@@ -793,8 +793,8 @@ dict: A dictionary response with the processing job description.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-list_monitoring_executions"></a>}}
-\if{latex}{\out{\hypertarget{method-list_monitoring_executions}{}}}
+\if{html}{\out{<a id="method-Session-list_monitoring_executions"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-list_monitoring_executions}{}}}
 \subsection{Method \code{list_monitoring_executions()}}{
 Lists the monitoring executions associated with the given monitoring_schedule_name.
 \subsection{Usage}{
@@ -827,8 +827,8 @@ dict: Dictionary of monitoring schedule executions.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-list_monitoring_schedules"></a>}}
-\if{latex}{\out{\hypertarget{method-list_monitoring_schedules}{}}}
+\if{html}{\out{<a id="method-Session-list_monitoring_schedules"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-list_monitoring_schedules}{}}}
 \subsection{Method \code{list_monitoring_schedules()}}{
 Lists the monitoring executions associated with the given monitoring_schedule_name.
 \subsection{Usage}{
@@ -861,8 +861,8 @@ dict: Dictionary of monitoring schedule executions.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-was_processing_job_successful"></a>}}
-\if{latex}{\out{\hypertarget{method-was_processing_job_successful}{}}}
+\if{html}{\out{<a id="method-Session-was_processing_job_successful"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-was_processing_job_successful}{}}}
 \subsection{Method \code{was_processing_job_successful()}}{
 Calls the DescribeProcessingJob API for the given job name
              and returns the True if the job was successful. False otherwise.
@@ -882,8 +882,8 @@ bool: Whether the processing job was successful.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_processing_job"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_processing_job}{}}}
+\if{html}{\out{<a id="method-Session-describe_processing_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-describe_processing_job}{}}}
 \subsection{Method \code{describe_processing_job()}}{
 Calls the DescribeProcessingJob API for the given job name
              and returns the response.
@@ -903,8 +903,8 @@ dict: A dictionary response with the processing job description.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-stop_processing_job"></a>}}
-\if{latex}{\out{\hypertarget{method-stop_processing_job}{}}}
+\if{html}{\out{<a id="method-Session-stop_processing_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-stop_processing_job}{}}}
 \subsection{Method \code{stop_processing_job()}}{
 Calls the StopProcessingJob API for the given job name.
 \subsection{Usage}{
@@ -920,8 +920,8 @@ Calls the StopProcessingJob API for the given job name.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-stop_training_job"></a>}}
-\if{latex}{\out{\hypertarget{method-stop_training_job}{}}}
+\if{html}{\out{<a id="method-Session-stop_training_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-stop_training_job}{}}}
 \subsection{Method \code{stop_training_job()}}{
 Calls the StopTrainingJob API for the given job name.
 \subsection{Usage}{
@@ -937,8 +937,8 @@ Calls the StopTrainingJob API for the given job name.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_training_job"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_training_job}{}}}
+\if{html}{\out{<a id="method-Session-describe_training_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-describe_training_job}{}}}
 \subsection{Method \code{describe_training_job()}}{
 Calls the DescribeTrainingJob API for the given job name
              and returns the response.
@@ -958,8 +958,8 @@ dict: A dictionary response with the training job description.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-auto_ml"></a>}}
-\if{latex}{\out{\hypertarget{method-auto_ml}{}}}
+\if{html}{\out{<a id="method-Session-auto_ml"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-auto_ml}{}}}
 \subsection{Method \code{auto_ml()}}{
 Create an Amazon SageMaker AutoML job.
 \subsection{Usage}{
@@ -1014,8 +1014,8 @@ NULL invisible
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_auto_ml_job"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_auto_ml_job}{}}}
+\if{html}{\out{<a id="method-Session-describe_auto_ml_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-describe_auto_ml_job}{}}}
 \subsection{Method \code{describe_auto_ml_job()}}{
 Calls the DescribeAutoMLJob API for the given job name
              and returns the response.
@@ -1035,8 +1035,8 @@ dict: A dictionary response with the AutoML Job description.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-list_candidates"></a>}}
-\if{latex}{\out{\hypertarget{method-list_candidates}{}}}
+\if{html}{\out{<a id="method-Session-list_candidates"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-list_candidates}{}}}
 \subsection{Method \code{list_candidates()}}{
 Returns the list of candidates of an AutoML job for a given name.
 \subsection{Usage}{
@@ -1082,8 +1082,8 @@ list: A list of dictionaries with candidates information
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_auto_ml_job"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_auto_ml_job}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_auto_ml_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_auto_ml_job}{}}}
 \subsection{Method \code{wait_for_auto_ml_job()}}{
 Wait for an Amazon SageMaker AutoML job to complete.
 \subsection{Usage}{
@@ -1104,8 +1104,8 @@ Wait for an Amazon SageMaker AutoML job to complete.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-logs_for_auto_ml_job"></a>}}
-\if{latex}{\out{\hypertarget{method-logs_for_auto_ml_job}{}}}
+\if{html}{\out{<a id="method-Session-logs_for_auto_ml_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-logs_for_auto_ml_job}{}}}
 \subsection{Method \code{logs_for_auto_ml_job()}}{
 Display the logs for a given AutoML job, optionally tailing them until the
              job is complete. If the output is a tty or a Jupyter cell, it will be color-coded
@@ -1129,8 +1129,8 @@ completion (Default: 10).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-compile_model"></a>}}
-\if{latex}{\out{\hypertarget{method-compile_model}{}}}
+\if{html}{\out{<a id="method-Session-compile_model"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-compile_model}{}}}
 \subsection{Method \code{compile_model()}}{
 Create an Amazon SageMaker Neo compilation job.
 \subsection{Usage}{
@@ -1172,8 +1172,8 @@ str: ARN of the compile model job, if it is created.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-tune"></a>}}
-\if{latex}{\out{\hypertarget{method-tune}{}}}
+\if{html}{\out{<a id="method-Session-tune"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-tune}{}}}
 \subsection{Method \code{tune()}}{
 Create an Amazon SageMaker hyperparameter tuning job
 \subsection{Usage}{
@@ -1314,8 +1314,8 @@ checkpoints will be provided under `/opt/ml/checkpoints/`.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_tuning_job"></a>}}
-\if{latex}{\out{\hypertarget{method-create_tuning_job}{}}}
+\if{html}{\out{<a id="method-Session-create_tuning_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_tuning_job}{}}}
 \subsection{Method \code{create_tuning_job()}}{
 Create an Amazon SageMaker hyperparameter tuning job. This method supports creating
              tuning jobs with single or multiple training algorithms (estimators), while the ``tune()``
@@ -1355,8 +1355,8 @@ https://docs.aws.amazon.com/sagemaker/latest/dg/API_Tag.html.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_tuning_job"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_tuning_job}{}}}
+\if{html}{\out{<a id="method-Session-describe_tuning_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-describe_tuning_job}{}}}
 \subsection{Method \code{describe_tuning_job()}}{
 Calls the DescribeHyperParameterTuningJob API for the given job name
              and returns the response.
@@ -1376,8 +1376,8 @@ dict: A dictionary response with the hyperparameter tuning job description.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-stop_tuning_job"></a>}}
-\if{latex}{\out{\hypertarget{method-stop_tuning_job}{}}}
+\if{html}{\out{<a id="method-Session-stop_tuning_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-stop_tuning_job}{}}}
 \subsection{Method \code{stop_tuning_job()}}{
 Stop the Amazon SageMaker hyperparameter tuning job with the specified name.
 \subsection{Usage}{
@@ -1393,8 +1393,8 @@ Stop the Amazon SageMaker hyperparameter tuning job with the specified name.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transform"></a>}}
-\if{latex}{\out{\hypertarget{method-transform}{}}}
+\if{html}{\out{<a id="method-Session-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-transform}{}}}
 \subsection{Method \code{transform()}}{
 Create an Amazon SageMaker transform job.
 \subsection{Usage}{
@@ -1458,8 +1458,8 @@ job. Dictionary contains two optional keys,
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_model"></a>}}
-\if{latex}{\out{\hypertarget{method-create_model}{}}}
+\if{html}{\out{<a id="method-Session-create_model"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_model}{}}}
 \subsection{Method \code{create_model()}}{
 Create an Amazon SageMaker ``Model``.
              Specify the S3 location of the model artifacts and Docker image containing
@@ -1522,8 +1522,8 @@ str: Name of the Amazon SageMaker ``Model`` created.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_model_from_job"></a>}}
-\if{latex}{\out{\hypertarget{method-create_model_from_job}{}}}
+\if{html}{\out{<a id="method-Session-create_model_from_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_model_from_job}{}}}
 \subsection{Method \code{create_model_from_job()}}{
 Create an Amazon SageMaker ``Model`` from a SageMaker Training Job.
 \subsection{Usage}{
@@ -1578,8 +1578,8 @@ str: The name of the created ``Model``.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_model_package_from_algorithm"></a>}}
-\if{latex}{\out{\hypertarget{method-create_model_package_from_algorithm}{}}}
+\if{html}{\out{<a id="method-Session-create_model_package_from_algorithm"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_model_package_from_algorithm}{}}}
 \subsection{Method \code{create_model_package_from_algorithm()}}{
 Create a SageMaker Model Package from the results of training with an Algorithm Package
 \subsection{Usage}{
@@ -1606,8 +1606,8 @@ Create a SageMaker Model Package from the results of training with an Algorithm 
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_model_package_from_containers"></a>}}
-\if{latex}{\out{\hypertarget{method-create_model_package_from_containers}{}}}
+\if{html}{\out{<a id="method-Session-create_model_package_from_containers"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_model_package_from_containers}{}}}
 \subsection{Method \code{create_model_package_from_containers()}}{
 Get request dictionary for CreateModelPackage API.
 \subsection{Usage}{
@@ -1669,8 +1669,8 @@ or "PendingManualApproval" (default: "PendingManualApproval").}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_model_package"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_model_package}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_model_package"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_model_package}{}}}
 \subsection{Method \code{wait_for_model_package()}}{
 Wait for an Amazon SageMaker endpoint deployment to complete.
 \subsection{Usage}{
@@ -1691,8 +1691,8 @@ dict: Return value from the ``DescribeEndpoint`` API.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_model"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_model}{}}}
+\if{html}{\out{<a id="method-Session-describe_model"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-describe_model}{}}}
 \subsection{Method \code{describe_model()}}{
 Calls the DescribeModel API for the given model name.
 \subsection{Usage}{
@@ -1711,8 +1711,8 @@ dict: A dictionary response with the model description.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_endpoint_config"></a>}}
-\if{latex}{\out{\hypertarget{method-create_endpoint_config}{}}}
+\if{html}{\out{<a id="method-Session-create_endpoint_config"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_endpoint_config}{}}}
 \subsection{Method \code{create_endpoint_config()}}{
 Create an Amazon SageMaker endpoint configuration.
              The endpoint configuration identifies the Amazon SageMaker model (created using the
@@ -1767,8 +1767,8 @@ str: Name of the endpoint point configuration created.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_endpoint_config_from_existing"></a>}}
-\if{latex}{\out{\hypertarget{method-create_endpoint_config_from_existing}{}}}
+\if{html}{\out{<a id="method-Session-create_endpoint_config_from_existing"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_endpoint_config_from_existing}{}}}
 \subsection{Method \code{create_endpoint_config_from_existing()}}{
 Create an Amazon SageMaker endpoint configuration from an existing one. Updating any
              values that were passed in.
@@ -1820,8 +1820,8 @@ str: Name of the endpoint point configuration created.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-create_endpoint}{}}}
+\if{html}{\out{<a id="method-Session-create_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_endpoint}{}}}
 \subsection{Method \code{create_endpoint()}}{
 Create an Amazon SageMaker ``Endpoint`` according to the endpoint configuration
              specified in the request.
@@ -1850,8 +1850,8 @@ str: Name of the Amazon SageMaker ``Endpoint`` created.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-update_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-update_endpoint}{}}}
+\if{html}{\out{<a id="method-Session-update_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-update_endpoint}{}}}
 \subsection{Method \code{update_endpoint()}}{
 Update an Amazon SageMaker ``Endpoint`` according to the endpoint configuration
              specified in the request
@@ -1876,8 +1876,8 @@ str: Name of the Amazon SageMaker ``Endpoint`` being updated.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-delete_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-delete_endpoint}{}}}
+\if{html}{\out{<a id="method-Session-delete_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-delete_endpoint}{}}}
 \subsection{Method \code{delete_endpoint()}}{
 Delete an Amazon SageMaker ``Endpoint``.
 \subsection{Usage}{
@@ -1893,8 +1893,8 @@ Delete an Amazon SageMaker ``Endpoint``.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-delete_endpoint_config"></a>}}
-\if{latex}{\out{\hypertarget{method-delete_endpoint_config}{}}}
+\if{html}{\out{<a id="method-Session-delete_endpoint_config"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-delete_endpoint_config}{}}}
 \subsection{Method \code{delete_endpoint_config()}}{
 Delete an Amazon SageMaker endpoint configuration.
 \subsection{Usage}{
@@ -1911,8 +1911,8 @@ delete.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-delete_model"></a>}}
-\if{latex}{\out{\hypertarget{method-delete_model}{}}}
+\if{html}{\out{<a id="method-Session-delete_model"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-delete_model}{}}}
 \subsection{Method \code{delete_model()}}{
 Delete an Amazon SageMaker Model.
 \subsection{Usage}{
@@ -1928,8 +1928,8 @@ Delete an Amazon SageMaker Model.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-list_tags"></a>}}
-\if{latex}{\out{\hypertarget{method-list_tags}{}}}
+\if{html}{\out{<a id="method-Session-list_tags"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-list_tags}{}}}
 \subsection{Method \code{list_tags()}}{
 List the tags given an Amazon Resource Name
 \subsection{Usage}{
@@ -1948,8 +1948,8 @@ This method takes care of that abstraction and returns a full list.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_job"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_job}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_job}{}}}
 \subsection{Method \code{wait_for_job()}}{
 Wait for an Amazon SageMaker training job to complete.
 \subsection{Usage}{
@@ -1970,8 +1970,8 @@ Wait for an Amazon SageMaker training job to complete.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_processing_job"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_processing_job}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_processing_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_processing_job}{}}}
 \subsection{Method \code{wait_for_processing_job()}}{
 Wait for an Amazon SageMaker Processing job to complete.
 \subsection{Usage}{
@@ -1992,8 +1992,8 @@ Wait for an Amazon SageMaker Processing job to complete.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_compilation_job"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_compilation_job}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_compilation_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_compilation_job}{}}}
 \subsection{Method \code{wait_for_compilation_job()}}{
 Wait for an Amazon SageMaker Neo compilation job to complete.
 \subsection{Usage}{
@@ -2014,8 +2014,8 @@ Wait for an Amazon SageMaker Neo compilation job to complete.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_edge_packaging_job"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_edge_packaging_job}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_edge_packaging_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_edge_packaging_job}{}}}
 \subsection{Method \code{wait_for_edge_packaging_job()}}{
 Wait for an Amazon SageMaker Edge packaging job to complete.
 \subsection{Usage}{
@@ -2036,8 +2036,8 @@ Wait for an Amazon SageMaker Edge packaging job to complete.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_tuning_job"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_tuning_job}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_tuning_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_tuning_job}{}}}
 \subsection{Method \code{wait_for_tuning_job()}}{
 Wait for an Amazon SageMaker hyperparameter tuning job to complete.
 \subsection{Usage}{
@@ -2058,8 +2058,8 @@ Wait for an Amazon SageMaker hyperparameter tuning job to complete.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_transform_job"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_transform_job}{}}}
+\if{html}{\out{<a id="method-Session-describe_transform_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-describe_transform_job}{}}}
 \subsection{Method \code{describe_transform_job()}}{
 Calls the DescribeTransformJob API for the given job name
              and returns the response.
@@ -2079,8 +2079,8 @@ dict: A dictionary response with the transform job description.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_transform_job"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_transform_job}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_transform_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_transform_job}{}}}
 \subsection{Method \code{wait_for_transform_job()}}{
 Wait for an Amazon SageMaker transform job to complete.
 \subsection{Usage}{
@@ -2101,8 +2101,8 @@ Wait for an Amazon SageMaker transform job to complete.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-stop_transform_job"></a>}}
-\if{latex}{\out{\hypertarget{method-stop_transform_job}{}}}
+\if{html}{\out{<a id="method-Session-stop_transform_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-stop_transform_job}{}}}
 \subsection{Method \code{stop_transform_job()}}{
 Stop the Amazon SageMaker hyperparameter tuning job with the specified name.
 \subsection{Usage}{
@@ -2118,8 +2118,8 @@ Stop the Amazon SageMaker hyperparameter tuning job with the specified name.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_endpoint"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_endpoint}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_endpoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_endpoint}{}}}
 \subsection{Method \code{wait_for_endpoint()}}{
 Wait for an Amazon SageMaker endpoint deployment to complete.
 \subsection{Usage}{
@@ -2140,8 +2140,8 @@ dict: Return value from the ``DescribeEndpoint`` API.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-endpoint_from_job"></a>}}
-\if{latex}{\out{\hypertarget{method-endpoint_from_job}{}}}
+\if{html}{\out{<a id="method-Session-endpoint_from_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-endpoint_from_job}{}}}
 \subsection{Method \code{endpoint_from_job()}}{
 Create an ``Endpoint`` using the results of a successful training job.
              Specify the job name, Docker image containing the inference code, and hardware
@@ -2217,8 +2217,8 @@ str: Name of the ``Endpoint`` that is created.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-endpoint_from_model_data"></a>}}
-\if{latex}{\out{\hypertarget{method-endpoint_from_model_data}{}}}
+\if{html}{\out{<a id="method-Session-endpoint_from_model_data"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-endpoint_from_model_data}{}}}
 \subsection{Method \code{endpoint_from_model_data()}}{
 Create and deploy to an ``Endpoint`` using existing model data stored in S3.
 \subsection{Usage}{
@@ -2286,8 +2286,8 @@ str: Name of the ``Endpoint`` that is created.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-endpoint_from_production_variants"></a>}}
-\if{latex}{\out{\hypertarget{method-endpoint_from_production_variants}{}}}
+\if{html}{\out{<a id="method-Session-endpoint_from_production_variants"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-endpoint_from_production_variants}{}}}
 \subsection{Method \code{endpoint_from_production_variants()}}{
 Create an SageMaker ``Endpoint`` from a list of production variants.
 \subsection{Usage}{
@@ -2327,8 +2327,8 @@ str: The name of the created ``Endpoint``.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-expand_role"></a>}}
-\if{latex}{\out{\hypertarget{method-expand_role}{}}}
+\if{html}{\out{<a id="method-Session-expand_role"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-expand_role}{}}}
 \subsection{Method \code{expand_role()}}{
 Expand an IAM role name into an ARN.
              If the role is already in the form of an ARN, then the role is simply returned. Otherwise
@@ -2349,8 +2349,8 @@ str: The corresponding AWS IAM role ARN.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get_caller_identity_arn"></a>}}
-\if{latex}{\out{\hypertarget{method-get_caller_identity_arn}{}}}
+\if{html}{\out{<a id="method-Session-get_caller_identity_arn"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-get_caller_identity_arn}{}}}
 \subsection{Method \code{get_caller_identity_arn()}}{
 Returns the ARN user or role whose credentials are used to call the API.
 \subsection{Usage}{
@@ -2362,8 +2362,8 @@ str: The ARN user or role
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-logs_for_job"></a>}}
-\if{latex}{\out{\hypertarget{method-logs_for_job}{}}}
+\if{html}{\out{<a id="method-Session-logs_for_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-logs_for_job}{}}}
 \subsection{Method \code{logs_for_job()}}{
 Display the logs for a given training job, optionally tailing them until the
              job is complete. If the output is a tty or a Jupyter cell, it will be color-coded
@@ -2389,8 +2389,8 @@ completion (Default: 10).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-logs_for_processing_job"></a>}}
-\if{latex}{\out{\hypertarget{method-logs_for_processing_job}{}}}
+\if{html}{\out{<a id="method-Session-logs_for_processing_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-logs_for_processing_job}{}}}
 \subsection{Method \code{logs_for_processing_job()}}{
 Display the logs for a given processing job, optionally tailing them until the
              job is complete.
@@ -2413,8 +2413,8 @@ completion (Default: 10).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-logs_for_transform_job"></a>}}
-\if{latex}{\out{\hypertarget{method-logs_for_transform_job}{}}}
+\if{html}{\out{<a id="method-Session-logs_for_transform_job"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-logs_for_transform_job}{}}}
 \subsection{Method \code{logs_for_transform_job()}}{
 Display the logs for a given transform job, optionally tailing them until the
              job is complete. If the output is a tty or a Jupyter cell, it will be color-coded
@@ -2438,8 +2438,8 @@ completion (Default: 10).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-delete_feature_group"></a>}}
-\if{latex}{\out{\hypertarget{method-delete_feature_group}{}}}
+\if{html}{\out{<a id="method-Session-delete_feature_group"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-delete_feature_group}{}}}
 \subsection{Method \code{delete_feature_group()}}{
 Deletes a FeatureGroup in the FeatureStore service.
 \subsection{Usage}{
@@ -2455,8 +2455,8 @@ Deletes a FeatureGroup in the FeatureStore service.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-create_feature_group"></a>}}
-\if{latex}{\out{\hypertarget{method-create_feature_group}{}}}
+\if{html}{\out{<a id="method-Session-create_feature_group"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-create_feature_group}{}}}
 \subsection{Method \code{create_feature_group()}}{
 Creates a FeatureGroup in the FeatureStore service.
 \subsection{Usage}{
@@ -2504,8 +2504,8 @@ Response dict from service.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-describe_feature_group"></a>}}
-\if{latex}{\out{\hypertarget{method-describe_feature_group}{}}}
+\if{html}{\out{<a id="method-Session-describe_feature_group"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-describe_feature_group}{}}}
 \subsection{Method \code{describe_feature_group()}}{
 Describe a FeatureGroup by name in FeatureStore service.
 \subsection{Usage}{
@@ -2526,8 +2526,8 @@ Response dict from service.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-start_query_execution"></a>}}
-\if{latex}{\out{\hypertarget{method-start_query_execution}{}}}
+\if{html}{\out{<a id="method-Session-start_query_execution"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-start_query_execution}{}}}
 \subsection{Method \code{start_query_execution()}}{
 Start Athena query execution.
 \subsection{Usage}{
@@ -2559,8 +2559,8 @@ Start Athena query execution.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get_query_execution"></a>}}
-\if{latex}{\out{\hypertarget{method-get_query_execution}{}}}
+\if{html}{\out{<a id="method-Session-get_query_execution"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-get_query_execution}{}}}
 \subsection{Method \code{get_query_execution()}}{
 Get execution status of the Athena query.
 \subsection{Usage}{
@@ -2576,8 +2576,8 @@ Get execution status of the Athena query.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-wait_for_athena_query"></a>}}
-\if{latex}{\out{\hypertarget{method-wait_for_athena_query}{}}}
+\if{html}{\out{<a id="method-Session-wait_for_athena_query"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-wait_for_athena_query}{}}}
 \subsection{Method \code{wait_for_athena_query()}}{
 Wait for Athena query to finish.
 \subsection{Usage}{
@@ -2595,8 +2595,8 @@ Wait for Athena query to finish.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-download_athena_query_result"></a>}}
-\if{latex}{\out{\hypertarget{method-download_athena_query_result}{}}}
+\if{html}{\out{<a id="method-Session-download_athena_query_result"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-download_athena_query_result}{}}}
 \subsection{Method \code{download_athena_query_result()}}{
 Download query result file from S3.
 \subsection{Usage}{
@@ -2623,8 +2623,8 @@ Download query result file from S3.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-account_id"></a>}}
-\if{latex}{\out{\hypertarget{method-account_id}{}}}
+\if{html}{\out{<a id="method-Session-account_id"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-account_id}{}}}
 \subsection{Method \code{account_id()}}{
 Get the AWS account id of the caller.
 \subsection{Usage}{
@@ -2636,8 +2636,8 @@ AWS account ID.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-help"></a>}}
-\if{latex}{\out{\hypertarget{method-help}{}}}
+\if{html}{\out{<a id="method-Session-help"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-help}{}}}
 \subsection{Method \code{help()}}{
 Return class documentation
 \subsection{Usage}{
@@ -2646,8 +2646,8 @@ Return class documentation
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-format"></a>}}
-\if{latex}{\out{\hypertarget{method-format}{}}}
+\if{html}{\out{<a id="method-Session-format"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-format}{}}}
 \subsection{Method \code{format()}}{
 foramt class
 \subsection{Usage}{
@@ -2656,8 +2656,8 @@ foramt class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Session-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

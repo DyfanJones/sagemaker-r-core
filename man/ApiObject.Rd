@@ -12,16 +12,16 @@ Converts boto dicts of 'UpperCamelCase' names to dicts into/from a Python object
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{ApiObject$new()}}
-\item \href{#method-from_paws}{\code{ApiObject$from_paws()}}
-\item \href{#method-to_paws}{\code{ApiObject$to_paws()}}
-\item \href{#method-format}{\code{ApiObject$format()}}
-\item \href{#method-clone}{\code{ApiObject$clone()}}
+\item \href{#method-ApiObject-new}{\code{ApiObject$new()}}
+\item \href{#method-ApiObject-from_paws}{\code{ApiObject$from_paws()}}
+\item \href{#method-ApiObject-to_paws}{\code{ApiObject$to_paws()}}
+\item \href{#method-ApiObject-format}{\code{ApiObject$format()}}
+\item \href{#method-ApiObject-clone}{\code{ApiObject$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-ApiObject-new"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiObject-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize ApiObject class
 \subsection{Usage}{
@@ -37,8 +37,8 @@ Initialize ApiObject class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-from_paws"></a>}}
-\if{latex}{\out{\hypertarget{method-from_paws}{}}}
+\if{html}{\out{<a id="method-ApiObject-from_paws"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiObject-from_paws}{}}}
 \subsection{Method \code{from_paws()}}{
 Construct an instance of this ApiObject from a boto response.
 \subsection{Usage}{
@@ -56,8 +56,8 @@ Construct an instance of this ApiObject from a boto response.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-to_paws"></a>}}
-\if{latex}{\out{\hypertarget{method-to_paws}{}}}
+\if{html}{\out{<a id="method-ApiObject-to_paws"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiObject-to_paws}{}}}
 \subsection{Method \code{to_paws()}}{
 Convert an object to a paws representation.
 \subsection{Usage}{
@@ -73,8 +73,8 @@ Convert an object to a paws representation.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-format"></a>}}
-\if{latex}{\out{\hypertarget{method-format}{}}}
+\if{html}{\out{<a id="method-ApiObject-format"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiObject-format}{}}}
 \subsection{Method \code{format()}}{
 Return a string representation of this ApiObject.
 \subsection{Usage}{
@@ -83,8 +83,8 @@ Return a string representation of this ApiObject.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-ApiObject-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiObject-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

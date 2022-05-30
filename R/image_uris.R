@@ -34,9 +34,27 @@ ImageUris = R6Class("ImageUris",
     #' @param distribution (dict): A dictionary with information on how to run distributed training
     #'              (default: None).
     #' @param base_framework_version (str):
+    #' @param training_compiler_config (:class:`~sagemaker.training_compiler.TrainingCompilerConfig`):
+    #'              A configuration class for the SageMaker Training Compiler
+    #'              (default: None).
+    #' @param model_id (str): The JumpStart model ID for which to retrieve the image URI
+    #'              (default: None).
+    #' @param model_version (str): The version of the JumpStart model for which to retrieve the
+    #'              image URI (default: None).
+    #' @param tolerate_vulnerable_model (bool): ``True`` if vulnerable versions of model specifications
+    #'              should be tolerated without an exception raised. If ``False``, raises an exception if
+    #'              the script used by this version of the model has dependencies with known security
+    #'              vulnerabilities. (Default: False).
+    #' @param tolerate_deprecated_model (bool): True if deprecated versions of model specifications
+    #'              should be tolerated without an exception raised. If False, raises an exception
+    #'              if the version of the model is deprecated. (Default: False).
+    #' @param sdk_version (str): the version of python-sdk that will be used in the image retrieval.
+    #'              (default: None).
+    #' @param inference_tool (str): the tool that will be used to aid in the inference.
+    #'              Valid values: "neuron, None" (default: None).
     #' @return str: the ECR URI for the corresponding SageMaker Docker image.
     retrieve = function(framework,
-                        region=NULL,
+                        region,
                         version=NULL,
                         py_version=NULL,
                         instance_type=NULL,
@@ -44,12 +62,21 @@ ImageUris = R6Class("ImageUris",
                         image_scope=NULL,
                         container_version=NULL,
                         distribution=NULL,
-                        base_framework_version=NULL){
+                        base_framework_version=NULL,
+                        training_compiler_config=NULL,
+                        model_id=NULL,
+                        model_version=NULL,
+                        tolerate_vulnerable_model=FALSE,
+                        tolerate_deprecated_model=FALSE,
+                        sdk_version=NULL,
+                        inference_tool=NULL){
       config = private$.config_for_framework_and_scope(framework, image_scope, accelerator_type)
 
       original_version = version
       version = private$.validate_version_and_set_if_needed(version, config, framework)
-      version_config = config[["versions"]][[private$.version_for_config(version, config)]]
+      # Read dictionary key "" as position instead due to how jsonlite reads in jsons
+      version_config = private$.version_for_config(version, config)
+      version_config = config[["versions"]][[(if (identical(version_config, "")) 1L else version_config)]]
 
       if(framework == private$HUGGING_FACE_FRAMEWORK){
         if (!islistempty(version_config[["version_aliases"]])){
@@ -150,7 +177,7 @@ ImageUris = R6Class("ImageUris",
         image_scope = available_scopes[[1]]
       }
 
-      if(islistempty(image_scope) && "scope" %in% names(config) && any(unique(available_scopes) %in% list("training", "inference"))){
+      if (islistempty(image_scope) && "scope" %in% names(config) && any(unique(available_scopes) %in% list("training", "inference"))){
         LOGGER$info(
           "Same images used for training and inference. Defaulting to image scope: %s.",
           available_scopes[[1]])
@@ -181,8 +208,8 @@ ImageUris = R6Class("ImageUris",
         if (!is.na(version) && version != available_versions[[1]])
           LOGGER$warn("%s Ignoring framework/algorithm version: %s.", log_message, version)
         if (is.na(version)){
-          LOGGER$info(log_message)}
-
+          LOGGER$info(log_message)
+        }
         return(available_versions[[1]])
       }
 
@@ -346,3 +373,4 @@ config_for_framework = function(framework){
 
   return(read_json(fname))
 }
+

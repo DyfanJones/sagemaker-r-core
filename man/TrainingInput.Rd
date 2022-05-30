@@ -16,14 +16,14 @@ Amazon SageMaker channel configurations for S3 data sources.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{TrainingInput$new()}}
-\item \href{#method-format}{\code{TrainingInput$format()}}
-\item \href{#method-clone}{\code{TrainingInput$clone()}}
+\item \href{#method-TrainingInput-new}{\code{TrainingInput$new()}}
+\item \href{#method-TrainingInput-format}{\code{TrainingInput$format()}}
+\item \href{#method-TrainingInput-clone}{\code{TrainingInput$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-TrainingInput-new"></a>}}
+\if{latex}{\out{\hypertarget{method-TrainingInput-new}{}}}
 \subsection{Method \code{new()}}{
 See AWS documentation on the ``CreateTrainingJob`` API for more details on the parameters.
 \subsection{Usage}{
@@ -89,8 +89,8 @@ https://docs.aws.amazon.com/sagemaker/latest/dg/API_ShuffleConfig.html}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-format"></a>}}
-\if{latex}{\out{\hypertarget{method-format}{}}}
+\if{html}{\out{<a id="method-TrainingInput-format"></a>}}
+\if{latex}{\out{\hypertarget{method-TrainingInput-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -99,8 +99,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-TrainingInput-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-TrainingInput-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

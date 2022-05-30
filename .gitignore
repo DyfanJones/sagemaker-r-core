@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 # Ignore mac files
 .DS_Store
+
+# Ignore vscode
+.vscode

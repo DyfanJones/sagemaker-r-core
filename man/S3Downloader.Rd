@@ -9,16 +9,16 @@ Contains static methods for downloading directories or files from S3.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-download}{\code{S3Downloader$download()}}
-\item \href{#method-read_file}{\code{S3Downloader$read_file()}}
-\item \href{#method-list}{\code{S3Downloader$list()}}
-\item \href{#method-format}{\code{S3Downloader$format()}}
-\item \href{#method-clone}{\code{S3Downloader$clone()}}
+\item \href{#method-S3Downloader-download}{\code{S3Downloader$download()}}
+\item \href{#method-S3Downloader-read_file}{\code{S3Downloader$read_file()}}
+\item \href{#method-S3Downloader-list}{\code{S3Downloader$list()}}
+\item \href{#method-S3Downloader-format}{\code{S3Downloader$format()}}
+\item \href{#method-S3Downloader-clone}{\code{S3Downloader$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-download"></a>}}
-\if{latex}{\out{\hypertarget{method-download}{}}}
+\if{html}{\out{<a id="method-S3Downloader-download"></a>}}
+\if{latex}{\out{\hypertarget{method-S3Downloader-download}{}}}
 \subsection{Method \code{download()}}{
 Static method that downloads a given S3 uri to the local machine.
 \subsection{Usage}{
@@ -48,8 +48,8 @@ using the default AWS configuration chain.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-read_file"></a>}}
-\if{latex}{\out{\hypertarget{method-read_file}{}}}
+\if{html}{\out{<a id="method-S3Downloader-read_file"></a>}}
+\if{latex}{\out{\hypertarget{method-S3Downloader-read_file}{}}}
 \subsection{Method \code{read_file()}}{
 Static method that returns the contents of an s3 uri file body as a string.
 \subsection{Usage}{
@@ -71,8 +71,8 @@ str: The body of the file.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-list"></a>}}
-\if{latex}{\out{\hypertarget{method-list}{}}}
+\if{html}{\out{<a id="method-S3Downloader-list"></a>}}
+\if{latex}{\out{\hypertarget{method-S3Downloader-list}{}}}
 \subsection{Method \code{list()}}{
 Static method that lists the contents of an S3 uri.
 \subsection{Usage}{
@@ -94,8 +94,8 @@ generates one if not provided.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-format"></a>}}
-\if{latex}{\out{\hypertarget{method-format}{}}}
+\if{html}{\out{<a id="method-S3Downloader-format"></a>}}
+\if{latex}{\out{\hypertarget{method-S3Downloader-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -104,8 +104,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-S3Downloader-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-S3Downloader-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

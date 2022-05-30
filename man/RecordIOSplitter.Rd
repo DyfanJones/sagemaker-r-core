@@ -12,19 +12,19 @@ Not useful for string content.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-split}{\code{RecordIOSplitter$split()}}
-\item \href{#method-clone}{\code{RecordIOSplitter$clone()}}
+\item \href{#method-RecordIOSplitter-split}{\code{RecordIOSplitter$split()}}
+\item \href{#method-RecordIOSplitter-clone}{\code{RecordIOSplitter$clone()}}
 }
 }
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-split"></a>}}
-\if{latex}{\out{\hypertarget{method-split}{}}}
+\if{html}{\out{<a id="method-RecordIOSplitter-split"></a>}}
+\if{latex}{\out{\hypertarget{method-RecordIOSplitter-split}{}}}
 \subsection{Method \code{split()}}{
 Split a file into records using a specific strategy
              This RecordIOSplitter splits the data into individual RecordIO
@@ -46,8 +46,8 @@ generator for the individual records that were split from
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-RecordIOSplitter-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-RecordIOSplitter-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

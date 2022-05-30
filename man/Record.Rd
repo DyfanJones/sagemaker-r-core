@@ -12,23 +12,23 @@ A boto based Active Record class based on convention of CRUD operations.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Record$new()}}
-\item \href{#method-with_paws}{\code{Record$with_paws()}}
-\item \href{#method-clone}{\code{Record$clone()}}
+\item \href{#method-Record-new}{\code{Record$new()}}
+\item \href{#method-Record-with_paws}{\code{Record$with_paws()}}
+\item \href{#method-Record-clone}{\code{Record$clone()}}
 }
 }
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="ApiObject" data-id="format">}\href{../../sagemaker.core/html/ApiObject.html#method-format}{\code{sagemaker.core::ApiObject$format()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="ApiObject" data-id="from_paws">}\href{../../sagemaker.core/html/ApiObject.html#method-from_paws}{\code{sagemaker.core::ApiObject$from_paws()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="ApiObject" data-id="to_paws">}\href{../../sagemaker.core/html/ApiObject.html#method-to_paws}{\code{sagemaker.core::ApiObject$to_paws()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="ApiObject" data-id="format"><a href='../../sagemaker.core/html/ApiObject.html#method-ApiObject-format'><code>sagemaker.core::ApiObject$format()</code></a></li>
+<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="ApiObject" data-id="from_paws"><a href='../../sagemaker.core/html/ApiObject.html#method-ApiObject-from_paws'><code>sagemaker.core::ApiObject$from_paws()</code></a></li>
+<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="ApiObject" data-id="to_paws"><a href='../../sagemaker.core/html/ApiObject.html#method-ApiObject-to_paws'><code>sagemaker.core::ApiObject$to_paws()</code></a></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Record-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Record-new}{}}}
 \subsection{Method \code{new()}}{
 Init Record.
 \subsection{Usage}{
@@ -49,8 +49,8 @@ using the default AWS configuration chain.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-with_paws"></a>}}
-\if{latex}{\out{\hypertarget{method-with_paws}{}}}
+\if{html}{\out{<a id="method-Record-with_paws"></a>}}
+\if{latex}{\out{\hypertarget{method-Record-with_paws}{}}}
 \subsection{Method \code{with_paws()}}{
 Update this ApiObject with a paws response.
 \subsection{Usage}{
@@ -66,8 +66,8 @@ Update this ApiObject with a paws response.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Record-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Record-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

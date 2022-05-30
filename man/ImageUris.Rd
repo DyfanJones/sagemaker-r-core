@@ -9,20 +9,20 @@ Class to create and format sagemaker docker images stored in ECR
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-retrieve}{\code{ImageUris$retrieve()}}
-\item \href{#method-format}{\code{ImageUris$format()}}
-\item \href{#method-clone}{\code{ImageUris$clone()}}
+\item \href{#method-ImageUris-retrieve}{\code{ImageUris$retrieve()}}
+\item \href{#method-ImageUris-format}{\code{ImageUris$format()}}
+\item \href{#method-ImageUris-clone}{\code{ImageUris$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-retrieve"></a>}}
-\if{latex}{\out{\hypertarget{method-retrieve}{}}}
+\if{html}{\out{<a id="method-ImageUris-retrieve"></a>}}
+\if{latex}{\out{\hypertarget{method-ImageUris-retrieve}{}}}
 \subsection{Method \code{retrieve()}}{
 Retrieves the ECR URI for the Docker image matching the given arguments of inbuilt AWS Sagemaker models.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ImageUris$retrieve(
   framework,
-  region = NULL,
+  region,
   version = NULL,
   py_version = NULL,
   instance_type = NULL,
@@ -30,7 +30,14 @@ Retrieves the ECR URI for the Docker image matching the given arguments of inbui
   image_scope = NULL,
   container_version = NULL,
   distribution = NULL,
-  base_framework_version = NULL
+  base_framework_version = NULL,
+  training_compiler_config = NULL,
+  model_id = NULL,
+  model_version = NULL,
+  tolerate_vulnerable_model = FALSE,
+  tolerate_deprecated_model = FALSE,
+  sdk_version = NULL,
+  inference_tool = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -64,6 +71,31 @@ Valid values: "training", "inference", "eia". If ``accelerator_type`` is set,
 (default: None).}
 
 \item{\code{base_framework_version}}{(str):}
+
+\item{\code{training_compiler_config}}{(:class:`~sagemaker.training_compiler.TrainingCompilerConfig`):
+A configuration class for the SageMaker Training Compiler
+(default: None).}
+
+\item{\code{model_id}}{(str): The JumpStart model ID for which to retrieve the image URI
+(default: None).}
+
+\item{\code{model_version}}{(str): The version of the JumpStart model for which to retrieve the
+image URI (default: None).}
+
+\item{\code{tolerate_vulnerable_model}}{(bool): ``True`` if vulnerable versions of model specifications
+should be tolerated without an exception raised. If ``False``, raises an exception if
+the script used by this version of the model has dependencies with known security
+vulnerabilities. (Default: False).}
+
+\item{\code{tolerate_deprecated_model}}{(bool): True if deprecated versions of model specifications
+should be tolerated without an exception raised. If False, raises an exception
+if the version of the model is deprecated. (Default: False).}
+
+\item{\code{sdk_version}}{(str): the version of python-sdk that will be used in the image retrieval.
+(default: None).}
+
+\item{\code{inference_tool}}{(str): the tool that will be used to aid in the inference.
+Valid values: "neuron, None" (default: None).}
 }
 \if{html}{\out{</div>}}
 }
@@ -72,8 +104,8 @@ str: the ECR URI for the corresponding SageMaker Docker image.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-format"></a>}}
-\if{latex}{\out{\hypertarget{method-format}{}}}
+\if{html}{\out{<a id="method-ImageUris-format"></a>}}
+\if{latex}{\out{\hypertarget{method-ImageUris-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -82,8 +114,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-ImageUris-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-ImageUris-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

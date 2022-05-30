@@ -9,16 +9,16 @@ Class to convert lists to Paws api calls.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-to_camel_case}{\code{PawsFunctions$to_camel_case()}}
-\item \href{#method-to_snake_case}{\code{PawsFunctions$to_snake_case()}}
-\item \href{#method-from_paws}{\code{PawsFunctions$from_paws()}}
-\item \href{#method-to_paws}{\code{PawsFunctions$to_paws()}}
-\item \href{#method-clone}{\code{PawsFunctions$clone()}}
+\item \href{#method-PawsFunctions-to_camel_case}{\code{PawsFunctions$to_camel_case()}}
+\item \href{#method-PawsFunctions-to_snake_case}{\code{PawsFunctions$to_snake_case()}}
+\item \href{#method-PawsFunctions-from_paws}{\code{PawsFunctions$from_paws()}}
+\item \href{#method-PawsFunctions-to_paws}{\code{PawsFunctions$to_paws()}}
+\item \href{#method-PawsFunctions-clone}{\code{PawsFunctions$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-to_camel_case"></a>}}
-\if{latex}{\out{\hypertarget{method-to_camel_case}{}}}
+\if{html}{\out{<a id="method-PawsFunctions-to_camel_case"></a>}}
+\if{latex}{\out{\hypertarget{method-PawsFunctions-to_camel_case}{}}}
 \subsection{Method \code{to_camel_case()}}{
 Convert a snake case string to camel case.
 \subsection{Usage}{
@@ -37,8 +37,8 @@ Convert a snake case string to camel case.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-to_snake_case"></a>}}
-\if{latex}{\out{\hypertarget{method-to_snake_case}{}}}
+\if{html}{\out{<a id="method-PawsFunctions-to_snake_case"></a>}}
+\if{latex}{\out{\hypertarget{method-PawsFunctions-to_snake_case}{}}}
 \subsection{Method \code{to_snake_case()}}{
 Convert a camel case string to snake case.
 \subsection{Usage}{
@@ -57,8 +57,8 @@ Convert a camel case string to snake case.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-from_paws"></a>}}
-\if{latex}{\out{\hypertarget{method-from_paws}{}}}
+\if{html}{\out{<a id="method-PawsFunctions-from_paws"></a>}}
+\if{latex}{\out{\hypertarget{method-PawsFunctions-from_paws}{}}}
 \subsection{Method \code{from_paws()}}{
 Convert an UpperCamelCase paws response to a snake case representation.
 \subsection{Usage}{
@@ -89,8 +89,8 @@ list: Paws response in snake case.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-to_paws"></a>}}
-\if{latex}{\out{\hypertarget{method-to_paws}{}}}
+\if{html}{\out{<a id="method-PawsFunctions-to_paws"></a>}}
+\if{latex}{\out{\hypertarget{method-PawsFunctions-to_paws}{}}}
 \subsection{Method \code{to_paws()}}{
 Convert a dict of of snake case names to values into a paws UpperCamelCase representation.
 \subsection{Usage}{
@@ -120,8 +120,8 @@ mapped element is a collection or singleton.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-PawsFunctions-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-PawsFunctions-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

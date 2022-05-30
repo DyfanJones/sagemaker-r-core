@@ -12,14 +12,14 @@ DataSource class
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-get_file_list}{\code{DataSource$get_file_list()}}
-\item \href{#method-get_root_dir}{\code{DataSource$get_root_dir()}}
-\item \href{#method-clone}{\code{DataSource$clone()}}
+\item \href{#method-DataSource-get_file_list}{\code{DataSource$get_file_list()}}
+\item \href{#method-DataSource-get_root_dir}{\code{DataSource$get_root_dir()}}
+\item \href{#method-DataSource-clone}{\code{DataSource$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get_file_list"></a>}}
-\if{latex}{\out{\hypertarget{method-get_file_list}{}}}
+\if{html}{\out{<a id="method-DataSource-get_file_list"></a>}}
+\if{latex}{\out{\hypertarget{method-DataSource-get_file_list}{}}}
 \subsection{Method \code{get_file_list()}}{
 Retrieve the list of absolute paths to all the files in this data source.
 \subsection{Usage}{
@@ -31,8 +31,8 @@ List[str]: List of absolute paths.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get_root_dir"></a>}}
-\if{latex}{\out{\hypertarget{method-get_root_dir}{}}}
+\if{html}{\out{<a id="method-DataSource-get_root_dir"></a>}}
+\if{latex}{\out{\hypertarget{method-DataSource-get_root_dir}{}}}
 \subsection{Method \code{get_root_dir()}}{
 Retrieve the absolute path to the root directory of this data source.
 \subsection{Usage}{
@@ -44,8 +44,8 @@ str: absolute path to the root directory of this data source.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-DataSource-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-DataSource-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

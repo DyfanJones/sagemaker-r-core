@@ -1,3 +1,4 @@
 [submodule "vendor/sagemaker-python-sdk"]
 	path = vendor/sagemaker-python-sdk
+	branch = master
 	url = https://github.com/aws/sagemaker-python-sdk
