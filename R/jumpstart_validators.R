@@ -19,10 +19,10 @@
 # Raises:
 #   JumpStartHyperparametersError: If the hyperparameter is not formatted correctly,
 # according to its specs in the model metadata.
-.validate_hyperparamter = function(hyperparameter_name,
-                                   hyperparameter_value,
-                                   hyperparameter_specs){
-  hyperparameter_spec = filter(Negate(is.null), lapply(
+.validate_hyperparameter = function(hyperparameter_name,
+                                    hyperparameter_value,
+                                    hyperparameter_specs){
+  hyperparameter_spec = Filter(Negate(is.null), lapply(
     hyperparameter_specs, function(spec){
     if(spec$name == hyperparameter_name) spec
   }))
@@ -61,7 +61,7 @@
         "Expecting text valued hyperparameter to have string type."
       )
 
-    if (hasattr(hyperparameter_spec, "options")){
+    if (!is.null(hyperparameter_spec$options)){
       if (!(hyperparameter_value %in% hyperparameter_spec$options))
           JumpStartHyperparametersError$new(
             sprintf("Hyperparameter '%s' must have one of the following ", hyperparameter_name),
@@ -98,7 +98,7 @@
     }
   } else if (hyperparameter_spec$type %in% c(VariableTypes$INT, VariableTypes$FLOAT)){
     tryCatch({
-      numeric_hyperparam_value = float(hyperparameter_value)
+      numeric_hyperparam_value = as.numeric(hyperparameter_value)
     }, error = function(e){
       JumpStartHyperparametersError$new(
         sprintf("Hyperparameter '%s' must be numeric type ", hyperparameter_name),
@@ -177,11 +177,12 @@ validate_hyperparameters = function(model_id,
   )
   hyperparameters_specs = model_specs$hyperparameters
 
-  if (validation_mode == HyperparameterValidationMode.VALIDATE_PROVIDED){
+  if (validation_mode == HyperparameterValidationMode$VALIDATE_PROVIDED){
     for (hyperparam_name in names(hyperparameters)){
+      hyperparam_value = hyperparam_value[[hyperparam_name]]
       .validate_hyperparameter(hyperparam_name, hyperparameters[[hyperparam_value]], hyperparameters_specs)
     }
-  } else if (validation_mode == HyperparameterValidationMode.VALIDATE_ALGORITHM){
+  } else if (validation_mode == HyperparameterValidationMode$VALIDATE_ALGORITHM){
     for (hyperparam in hyperparameters_specs){
       if (hyperparam$scope == VariableScope$ALGORITHM){
         if (!(hyperparam$name %in% hyperparameters)){
@@ -194,11 +195,11 @@ validate_hyperparameters = function(model_id,
         )
       }
     }
-  } else if (validation_mode == HyperparameterValidationMode.VALIDATE_ALL) {
+  } else if (validation_mode == HyperparameterValidationMode$VALIDATE_ALL) {
     for (hyperparam in hyperparameters_specs) {
       if (!(hyperparam$name %in% hyperparameters)) {
         JumpStartHyperparametersError$new(
-          srprintf("Cannot find hyperparameter for '%s'.", hyperparam$name)
+          sprintf("Cannot find hyperparameter for '%s'.", hyperparam$name)
         )
       }
       .validate_hyperparameter(

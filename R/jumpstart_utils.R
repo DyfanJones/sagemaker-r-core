@@ -1,15 +1,16 @@
 # NOTE: This code has been modified from AWS Sagemaker Python:
 # https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/jumpstart/utils.py
 
-#' @include r_utils.R
 #' @include jumpstart_constants.R
 #' @include jumpstart_enums.R
 #' @include jumpstart_accessors.R
 #' @include jumpstart_exceptions.R
 #' @include jumpstart_types.R
 #' @include s3.R
+#' @include r_utils.R
 
 #' @import R6
+#' @importFrom utils packageVersion
 
 #' @title Returns formatted string indicating where JumpStart is launched.
 #' @export
@@ -21,7 +22,7 @@ get_jumpstart_launched_regions_message = function(){
     return(sprintf("JumpStart is available in %s region.", region))
   }
   sorted_regions = sort(as.character(JUMPSTART_REGION_NAME_SET))
-  if (len(JUMPSTART_REGION_NAME_SET) == 2)
+  if (length(JUMPSTART_REGION_NAME_SET) == 2)
     return (sprintf("JumpStart is available in %s and {sorted_regions[1]} regions.", sorted_regions[1],))
 
   return(sprintf("JumpStart is available in %s regions.", paste(sorted_regions, collapse = ", and ")))
@@ -55,13 +56,14 @@ get_jumpstart_content_bucket = function(region){
 #' @param manifest : Placeholder
 #' @export
 get_formatted_manifest = function(manifest){
-  lapply(
-    manifest, function(header){
-      c(
-        JumpStartVersionedModelId$new(header_obj$model_id, header_obj$version),
-        header_obj
-      )
-  })
+  manifest_dict = list()
+  for (header in manifest) {
+    header_obj = JumpStartModelHeader$new(header)
+    manifest_dict[[
+      JumpStartVersionedModelId$new(header_obj$model_id, header_obj$version)
+    ]] = header_obj
+  }
+  return(manifest_dict)
 }
 
 #' @title Returns sagemaker library version.
@@ -169,9 +171,10 @@ add_single_jumpstart_tag = function(uri,
 #' @param uris (Optional[str]): URI to test for association with JumpStart.
 #' @export
 get_jumpstart_base_name_if_jumpstart_model = function(uris){
-  for (uri in uris)
+  for (uri in uris) {
     if (is_jumpstart_model_uri(uri))
-    return(JUMPSTART_RESOURCE_BASE_NAME)
+      return(JUMPSTART_RESOURCE_BASE_NAME)
+  }
   return(NULL)
 }
 
@@ -192,7 +195,7 @@ add_jumpstart_tags = function(tags=NULL,
                               inference_model_uri=NULL,
                               inference_script_uri=NULL,
                               training_model_uri=NULL,
-                              training_scrip_uri=NULL){
+                              training_script_uri=NULL){
   if (!is.null(inference_model_uri)){
     tags = add_single_jumpstart_tag(
       inference_model_uri, JumpStartTag$INFERENCE_MODEL_URI, tags

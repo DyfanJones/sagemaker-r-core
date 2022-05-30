@@ -9,7 +9,7 @@ add_jumpstart_tags(
   inference_model_uri = NULL,
   inference_script_uri = NULL,
   training_model_uri = NULL,
-  training_scrip_uri = NULL
+  training_script_uri = NULL
 )
 }
 \arguments{

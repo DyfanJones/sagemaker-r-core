@@ -13,9 +13,9 @@
 
 # Performs comparison of sdk specs paths, in order to sort them.
 # Args:
-#   model_version_1 (Tuple[str, str]): The first model ID and version tuple to compare.
+# model_version_1 (Tuple[str, str]): The first model ID and version tuple to compare.
 # model_version_2 (Tuple[str, str]): The second model ID and version tuple to compare.
-.compare_model_version_tuples = function(modeL_version_1 = NULL,
+.compare_model_version_tuples = function(model_version_1 = NULL,
                                          model_version_2 = NULL){
   if (is.null(model_version_1) || is.null(model_version_2)){
     if (!is.null(model_version_2))
@@ -73,7 +73,7 @@
                                                       model_filters){
   for (model_filter in model_filters){
     if (names(model_filter) %in% manifest_specs_cached_values) {
-      cached_model_value = manifest_specs_cached_values[[model_filter.key]]
+      cached_model_value = manifest_specs_cached_values[[model_filter$key]]
       evaluated_expression = evaluate_filter_expression(
         model_filter, cached_model_value
       )
@@ -107,7 +107,8 @@ extract_framework_task_model = function(model_id){
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
 #'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
 #' @export
-list_jumpstart_tasks = function(){
+list_jumpstart_tasks = function(filter = Constant$new(BooleanValues$`TRUE`),
+                                region = JUMPSTART_DEFAULT_REGION_NAME()){
   tasks = lapply(
     .generate_jumpstart_model_versions(filter=filter, region=region),
     function(ll){
@@ -142,9 +143,9 @@ list_jumpstart_frameworks = function(filter = Constant$new(BooleanValues$`TRUE`)
 #'              either an ``Operator`` type filter (e.g. ``And("task == ic", "framework == pytorch")``),
 #'              or simply a string filter which will get serialized into an Identity filter.
 #'              (e.g. ``"task == ic"``). If this argument is not supplied, all scripts will be listed.
-#'              (Default: Constant(BooleanValues$TRUE)).
+#'              (Default: \code{Constant(BooleanValues$`TRUE`)}).
 #' @param region (str): Optional. The AWS region from which to retrieve JumpStart metadata regarding
-#'              models. (Default: JUMPSTART_DEFAULT_REGION_NAME()).
+#'              models. (Default: \code{JUMPSTART_DEFAULT_REGION_NAME()}).
 #' @export
 list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
                                   region = JUMPSTART_DEFAULT_REGION_NAME()){
@@ -152,6 +153,24 @@ list_jumpstart_scripts = function(filter = Constant$new(BooleanValues$`TRUE`),
       (is.character(filter) && tolower(filter) == tolower(BooleanValues$`TRUE`))){
     jsss = as.list(JumpStartScriptScope)
     return(jsss[order(names(jsss))])
+  }
+
+
+  scripts = list()
+  for (ll in .generate_jumpstart_model_versions(filter=filter, region=region)) {
+    scripts[length(scripts) + 1 ] = JumpStartScriptScope$INFERENCE
+    model_specs = JumpStartModelsAccessor$get_model_specs(
+      region=region,
+      model_id=ll$model_id,
+      version=ll$version
+    )
+    if (model_specs$training_supported)
+      scripts[length(scripts) + 1 ] = JumpStartScriptScope$TRAINING
+
+    scripts = unique(scripts)
+
+    if (identical(scripts, unname(unlist(JumpStartScriptScope))))
+      break
   }
 }
 

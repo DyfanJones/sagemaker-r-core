@@ -4,7 +4,10 @@
 \alias{list_jumpstart_tasks}
 \title{List tasks for JumpStart, and optionally apply filters to result.}
 \usage{
-list_jumpstart_tasks()
+list_jumpstart_tasks(
+  filter = Constant$new(BooleanValues$`TRUE`),
+  region = JUMPSTART_DEFAULT_REGION_NAME()
+)
 }
 \arguments{
 \item{filter}{(Union[Operator, str]): Optional. The filter to apply to list tasks. This can be
