@@ -3,7 +3,7 @@
 
 #' @import R6
 #' @import paws
-#' @importFrom utils getFromNamespace
+#' @importFrom utils getFromNamespace modifyList
 
 #' @title PawsSession Class create connection to AWS utilizing paws.
 #' @family Session
