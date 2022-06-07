@@ -5,6 +5,7 @@
 #' @include r_utils.R
 #' @include image_uris.R
 #' @include error.R
+#' @include workflow_utils.R
 
 #' @import lgr
 #' @importFrom fs is_file
@@ -41,8 +42,42 @@ SM_DATAPARALLEL_SUPPORTED_INSTANCE_TYPES = c(
   "local_gpu"
 )
 SM_DATAPARALLEL_SUPPORTED_FRAMEWORK_VERSIONS = list(
-  "tensorflow"=list("2.3", "2.3.1", "2.3.2", "2.4", "2.4.1"),
-  "pytorch"=list("1.6", "1.6.0", "1.7", "1.7.1", "1.8", "1.8.0", "1.8.1")
+  "tensorflow"=list(
+    "2.3",
+    "2.3.1",
+    "2.3.2",
+    "2.4",
+    "2.4.1",
+    "2.4.3",
+    "2.5",
+    "2.5.0",
+    "2.5.1",
+    "2.6",
+    "2.6.0",
+    "2.6.2",
+    "2.6.3",
+    "2.7",
+    "2.7.1",
+    "2.8",
+    "2.8.0"
+  ),
+  "pytorch"=list(
+    "1.6",
+    "1.6.0",
+    "1.7",
+    "1.7.1",
+    "1.8",
+    "1.8.0",
+    "1.8.1",
+    "1.9",
+    "1.9.0",
+    "1.9.1",
+    "1.10",
+    "1.10.0",
+    "1.10.2",
+    "1.11",
+    "1.11.0"
+  )
 )
 SMDISTRIBUTED_SUPPORTED_STRATEGIES = c("dataparallel", "modelparallel")
 
@@ -53,7 +88,9 @@ SMDISTRIBUTED_SUPPORTED_STRATEGIES = c("dataparallel", "modelparallel")
 validate_source_dir <- function(script, directory){
   if (is.character(directory)){
     if (!fs::is_file(file.path(directory, script))){
-      ValueError$new(sprintf('No file named "%s" was found in directory "%s".',script, directory))
+      ValueError$new(sprintf(
+        'No file named "%s" was found in directory "%s".',script, directory
+      ))
     }
   }
   return(TRUE)
@@ -89,7 +126,8 @@ validate_mp_config <- function(config){
   validate_in <- function(key, vals){
     if (!(config[[key]] %in% vals))
       ValueError$new(sprintf("%s must be a value in: [%s].",
-                   key, paste(vals, collapse = ", ")))
+        key, paste(vals, collapse = ", ")
+      ))
   }
 
   validate_bool <- function(keys){
@@ -100,12 +138,18 @@ validate_mp_config <- function(config){
   validate_in("placement_strategy", c("spread", "cluster"))
   validate_in("optimize", c("speed", "memory"))
 
-  for (key in c("microbatches", "partitions"))
+  for (key in c("microbatches", "partitions", "active_microbatches")){
     validate_positive(key)
-
-  for (key in c("auto_partition", "contiguous", "load_partition", "horovod", "ddp"))
+  }
+  for (key in c(
+    "auto_partition",
+    "contiguous",
+    "load_partition",
+    "horovod",
+    "ddp",
+    "deterministic_server")) {
     validate_bool(key)
-
+  }
   if ("partition_file" %in% names(config) &&
       !inherits(config$partition_file, "character"))
     ValueError$new("'partition_file' must be a character.")
@@ -159,6 +203,9 @@ validate_mp_config <- function(config){
 #'              copied into /opt/ml/lib
 #' @param kms_key (str): Optional. KMS key ID used to upload objects to the bucket
 #'              (default: None).
+#' @param settings (sagemaker.session_settings.SessionSettings): Optional. The settings
+#'              of the SageMaker ``Session``, can be used to override the default encryption
+#'              behavior (default: None).
 #' @return sagemaker.fw_utils.UserCode: An object with the S3 bucket and key (S3 prefix) and
 #'               script name.
 #' @export
@@ -168,7 +215,8 @@ tar_and_upload_dir <- function(sagemaker_session,
                                script,
                                directory=NULL,
                                dependencies=NULL,
-                               kms_key=NULL){
+                               kms_key=NULL,
+                               settings = NULL){
   if (!is.null(directory) && startsWith(tolower(directory),"s3://")){
     UploadedCode$s3_prefix=directory
     UploadedCode$script_name= basename(script)
@@ -178,6 +226,7 @@ tar_and_upload_dir <- function(sagemaker_session,
   dependencies = dependencies %||% list()
   key = sprintf("%s/sourcedir.tar.gz",s3_key_prefix)
   tmp = tempfile(fileext = .TAR_SOURCE_FILENAME)
+  encrypt_artifact = if (is.null(settings)) TRUE else settings$encrypt_repacked_artifacts
 
   tryCatch({
     source_files = unlist(c(.list_files_to_compress(script, directory), dependencies))
@@ -186,6 +235,9 @@ tar_and_upload_dir <- function(sagemaker_session,
   if (!is.null(kms_key)) {
     ServerSideEncryption = "aws:kms"
     SSEKMSKeyId =  kms_key
+  } else if (encrypt_artifact) {
+    ServerSideEncryption = "aws:kms"
+    SSEKMSKeyId =  NULL
   } else {
     ServerSideEncryption = NULL
     SSEKMSKeyId =  NULL
@@ -288,10 +340,13 @@ framework_version_from_tag <- function(image_tag){
 #' @return str: the key prefix to be used in uploading code
 #' @export
 model_code_key_prefix <- function(code_location_key_prefix, model_name, image){
-  training_job_name = name_from_image(image)
+  name_from_image = sprintf("/model_code/%s", as.integer(Sys.time()))
+  if (!is_pipeline_variable(image))
+    name_from_image = name_from_image(image)
   return(paste0(
     Filter(Negate(is.null),
-    list(code_location_key_prefix, model_name %||% training_job_name)), collapse = "/"))
+    list(code_location_key_prefix, model_name %||% name_from_image)), collapse = "/")
+  )
 }
 
 #' @title Warn the user that training will not fully leverage all the GPU cores
@@ -304,9 +359,14 @@ model_code_key_prefix <- function(code_location_key_prefix, model_name, image){
 #'              (Defaults to None if distributed training is not enabled.).
 #' @export
 warn_if_parameter_server_with_multi_gpu <- function(training_instance_type, distribution){
-  if (training_instance_type == "local" || is.null(distribution))
+  if (training_instance_type == "local" || is.null(distribution)){
     return(invisible(NULL))
-
+  }
+  if (is_pipeline_variable(training_instance_type)){
+    # The training_instance_type is not available in compile time.
+    # Rather, it's given in Pipeline execution time
+    return(NULL)
+  }
   is_multi_gpu_instance = (
     (training_instance_type == "local_gpu" ||
        startsWith(split_str(training_instance_type,  "\\.")[[2]],"p")) &&
@@ -347,7 +407,11 @@ validate_smdistributed <- function(instance_type,
     # Distribution strategy other than smdistributed is selected
     return(NULL)
   }
-
+  if (is_pipeline_variable(instance_type)){
+    # The instance_type is not available in compile time.
+    # Rather, it's given in Pipeline execution time
+    return(NULL)
+  }
   # distribution contains smdistributed
   smdistributed = distribution$smdistributed
   if (!is_list_named(smdistributed))
@@ -435,6 +499,15 @@ validate_smdistributed <- function(instance_type,
     ValueError$new(err_msg)
 }
 
+#' @title Raise warning for deprecated python versions
+#' @param framework (str): model framework
+#' @param latest_supported_version (str): latest supported version
+#' @export
+python_deprecation_warning <- function(framework, latest_supported_version){
+  return(sprintf(PYTHON_2_DEPRECATION_WARNING,
+                 latest_supported_version, framework, framework, framework))
+}
+
 #' @title Returns boolean indicating whether the region supports Amazon SageMaker Debugger.
 #' @param region_name (str): Name of the region to check against.
 #' @return bool: Whether or not the region supports Amazon SageMaker Debugger.
@@ -465,14 +538,4 @@ validate_version_or_image_args <- function(framework_version, py_version, image_
       "`framework_version` or `py_version` was NULL, yet `image_uri` was also NULL.",
       " Either specify both `framework_version` and `py_version`, or specify `image_uri`."
     )
-}
-
-
-#' @title Raise warning for deprecated python versions
-#' @param framework (str): model framework
-#' @param latest_supported_version (str): latest supported version
-#' @export
-python_deprecation_warning <- function(framework, latest_supported_version){
-  return(sprintf(PYTHON_2_DEPRECATION_WARNING,
-                 latest_supported_version, framework, framework, framework))
 }
