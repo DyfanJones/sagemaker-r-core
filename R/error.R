@@ -66,6 +66,12 @@ UnexpectedStatusError = R6Class("UnexpectedStatusError",
 
 #' @rdname SagemakerError
 #' @export
+CapacityError = R6Class("CapacityError",
+  inherit = UnexpectedStatusError
+)
+
+#' @rdname SagemakerError
+#' @export
 RuntimeError = R6Class("RuntimeError", inherit = SagemakerError)
 
 #' @rdname SagemakerError
