@@ -15,19 +15,19 @@ Raise this exception only if the scope of attributes accessed in the specificati
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-VulnerableJumpStartModelError-new}{\code{VulnerableJumpStartModelError$new()}}
-\item \href{#method-VulnerableJumpStartModelError-clone}{\code{VulnerableJumpStartModelError$clone()}}
+\item \href{#method-new}{\code{VulnerableJumpStartModelError$new()}}
+\item \href{#method-clone}{\code{VulnerableJumpStartModelError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-VulnerableJumpStartModelError-new"></a>}}
-\if{latex}{\out{\hypertarget{method-VulnerableJumpStartModelError-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Instantiates VulnerableJumpStartModelError exception.
 \subsection{Usage}{
@@ -60,8 +60,8 @@ model. (Default: None).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-VulnerableJumpStartModelError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-VulnerableJumpStartModelError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

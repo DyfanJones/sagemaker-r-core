@@ -14,22 +14,22 @@ Identity operator class for filtering JumpStart content.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-Identity-new}{\code{Identity$new()}}
-\item \href{#method-Identity-eval}{\code{Identity$eval()}}
-\item \href{#method-Identity-clone}{\code{Identity$clone()}}
+\item \href{#method-new}{\code{Identity$new()}}
+\item \href{#method-eval}{\code{Identity$eval()}}
+\item \href{#method-clone}{\code{Identity$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Operand" data-id="format"><a href='../../sagemaker.core/html/Operand.html#method-Operand-format'><code>sagemaker.core::Operand$format()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Operand" data-id="validate_operand"><a href='../../sagemaker.core/html/Operand.html#method-Operand-validate_operand'><code>sagemaker.core::Operand$validate_operand()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Operand" data-id="format">}\href{../../sagemaker.core/html/Operand.html#method-format}{\code{sagemaker.core::Operand$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Operand" data-id="validate_operand">}\href{../../sagemaker.core/html/Operand.html#method-validate_operand}{\code{sagemaker.core::Operand$validate_operand()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Identity-new"></a>}}
-\if{latex}{\out{\hypertarget{method-Identity-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Instantiates Identity object.
 \subsection{Usage}{
@@ -45,8 +45,8 @@ Instantiates Identity object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Identity-eval"></a>}}
-\if{latex}{\out{\hypertarget{method-Identity-eval}{}}}
+\if{html}{\out{<a id="method-eval"></a>}}
+\if{latex}{\out{\hypertarget{method-eval}{}}}
 \subsection{Method \code{eval()}}{
 Evaluates operator.
 \subsection{Usage}{
@@ -55,8 +55,8 @@ Evaluates operator.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Identity-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-Identity-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

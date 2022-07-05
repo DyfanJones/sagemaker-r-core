@@ -19,13 +19,13 @@ Amazon SageMaker channel configuration for FILE data sources, used in local mode
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-file_input-new}{\code{file_input$new()}}
-\item \href{#method-file_input-clone}{\code{file_input$clone()}}
+\item \href{#method-new}{\code{file_input$new()}}
+\item \href{#method-clone}{\code{file_input$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-file_input-new"></a>}}
-\if{latex}{\out{\hypertarget{method-file_input-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a definition for input data used by an SageMaker training job in local mode.
 \subsection{Usage}{
@@ -43,8 +43,8 @@ Create a definition for input data used by an SageMaker training job in local mo
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-file_input-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-file_input-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

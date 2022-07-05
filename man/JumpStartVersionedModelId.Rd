@@ -12,20 +12,20 @@ Data class for versioned model IDs.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartVersionedModelId-new}{\code{JumpStartVersionedModelId$new()}}
-\item \href{#method-JumpStartVersionedModelId-clone}{\code{JumpStartVersionedModelId$clone()}}
+\item \href{#method-new}{\code{JumpStartVersionedModelId$new()}}
+\item \href{#method-clone}{\code{JumpStartVersionedModelId$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format"><a href='../../sagemaker.core/html/JumpStartDataHolderType.html#method-JumpStartDataHolderType-format'><code>sagemaker.core::JumpStartDataHolderType$format()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format">}\href{../../sagemaker.core/html/JumpStartDataHolderType.html#method-format}{\code{sagemaker.core::JumpStartDataHolderType$format()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartVersionedModelId-new"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartVersionedModelId-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Instantiates JumpStartVersionedModelId object.
 \subsection{Usage}{
@@ -43,8 +43,8 @@ Instantiates JumpStartVersionedModelId object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartVersionedModelId-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartVersionedModelId-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

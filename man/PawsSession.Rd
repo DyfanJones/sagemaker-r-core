@@ -35,15 +35,15 @@ Other Session:
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-PawsSession-new}{\code{PawsSession$new()}}
-\item \href{#method-PawsSession-client}{\code{PawsSession$client()}}
-\item \href{#method-PawsSession-format}{\code{PawsSession$format()}}
-\item \href{#method-PawsSession-clone}{\code{PawsSession$clone()}}
+\item \href{#method-new}{\code{PawsSession$new()}}
+\item \href{#method-client}{\code{PawsSession$client()}}
+\item \href{#method-format}{\code{PawsSession$format()}}
+\item \href{#method-clone}{\code{PawsSession$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-PawsSession-new"></a>}}
-\if{latex}{\out{\hypertarget{method-PawsSession-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize PawsSession class
 \subsection{Usage}{
@@ -79,8 +79,8 @@ Initialize PawsSession class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-PawsSession-client"></a>}}
-\if{latex}{\out{\hypertarget{method-PawsSession-client}{}}}
+\if{html}{\out{<a id="method-client"></a>}}
+\if{latex}{\out{\hypertarget{method-client}{}}}
 \subsection{Method \code{client()}}{
 Create a low-level service client by name.
 \subsection{Usage}{
@@ -99,8 +99,8 @@ A list of available services can be found \url{https://paws-r.github.io/docs/}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-PawsSession-format"></a>}}
-\if{latex}{\out{\hypertarget{method-PawsSession-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -109,8 +109,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-PawsSession-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-PawsSession-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -15,22 +15,22 @@ An operator in this case corresponds to an operand that is also an operation.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-Operator-new}{\code{Operator$new()}}
-\item \href{#method-Operator-eval}{\code{Operator$eval()}}
-\item \href{#method-Operator-clone}{\code{Operator$clone()}}
+\item \href{#method-new}{\code{Operator$new()}}
+\item \href{#method-eval}{\code{Operator$eval()}}
+\item \href{#method-clone}{\code{Operator$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Operand" data-id="format"><a href='../../sagemaker.core/html/Operand.html#method-Operand-format'><code>sagemaker.core::Operand$format()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Operand" data-id="validate_operand"><a href='../../sagemaker.core/html/Operand.html#method-Operand-validate_operand'><code>sagemaker.core::Operand$validate_operand()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Operand" data-id="format">}\href{../../sagemaker.core/html/Operand.html#method-format}{\code{sagemaker.core::Operand$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Operand" data-id="validate_operand">}\href{../../sagemaker.core/html/Operand.html#method-validate_operand}{\code{sagemaker.core::Operand$validate_operand()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Operator-new"></a>}}
-\if{latex}{\out{\hypertarget{method-Operator-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes ``Operator`` instance.
 \subsection{Usage}{
@@ -53,8 +53,8 @@ Initializes ``Operator`` instance.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Operator-eval"></a>}}
-\if{latex}{\out{\hypertarget{method-Operator-eval}{}}}
+\if{html}{\out{<a id="method-eval"></a>}}
+\if{latex}{\out{\hypertarget{method-eval}{}}}
 \subsection{Method \code{eval()}}{
 Evaluates operator.
 \subsection{Usage}{
@@ -63,8 +63,8 @@ Evaluates operator.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Operator-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-Operator-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

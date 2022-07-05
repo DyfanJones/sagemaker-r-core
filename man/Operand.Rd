@@ -18,16 +18,16 @@ Operand class for filtering JumpStart content.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-Operand-new}{\code{Operand$new()}}
-\item \href{#method-Operand-validate_operand}{\code{Operand$validate_operand()}}
-\item \href{#method-Operand-eval}{\code{Operand$eval()}}
-\item \href{#method-Operand-format}{\code{Operand$format()}}
-\item \href{#method-Operand-clone}{\code{Operand$clone()}}
+\item \href{#method-new}{\code{Operand$new()}}
+\item \href{#method-validate_operand}{\code{Operand$validate_operand()}}
+\item \href{#method-eval}{\code{Operand$eval()}}
+\item \href{#method-format}{\code{Operand$format()}}
+\item \href{#method-clone}{\code{Operand$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Operand-new"></a>}}
-\if{latex}{\out{\hypertarget{method-Operand-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize Operand Class
 \subsection{Usage}{
@@ -45,8 +45,8 @@ Initialize Operand Class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Operand-validate_operand"></a>}}
-\if{latex}{\out{\hypertarget{method-Operand-validate_operand}{}}}
+\if{html}{\out{<a id="method-validate_operand"></a>}}
+\if{latex}{\out{\hypertarget{method-validate_operand}{}}}
 \subsection{Method \code{validate_operand()}}{
 Validate operand and return ``Operand`` object.
 \subsection{Usage}{
@@ -62,8 +62,8 @@ Validate operand and return ``Operand`` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Operand-eval"></a>}}
-\if{latex}{\out{\hypertarget{method-Operand-eval}{}}}
+\if{html}{\out{<a id="method-eval"></a>}}
+\if{latex}{\out{\hypertarget{method-eval}{}}}
 \subsection{Method \code{eval()}}{
 Evaluates operand.
 \subsection{Usage}{
@@ -72,8 +72,8 @@ Evaluates operand.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Operand-format"></a>}}
-\if{latex}{\out{\hypertarget{method-Operand-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -82,8 +82,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Operand-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-Operand-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

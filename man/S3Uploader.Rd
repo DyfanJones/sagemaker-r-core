@@ -9,15 +9,15 @@ Contains static methods for uploading directories or files to S3
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-S3Uploader-upload}{\code{S3Uploader$upload()}}
-\item \href{#method-S3Uploader-upload_string_as_file_body}{\code{S3Uploader$upload_string_as_file_body()}}
-\item \href{#method-S3Uploader-format}{\code{S3Uploader$format()}}
-\item \href{#method-S3Uploader-clone}{\code{S3Uploader$clone()}}
+\item \href{#method-upload}{\code{S3Uploader$upload()}}
+\item \href{#method-upload_string_as_file_body}{\code{S3Uploader$upload_string_as_file_body()}}
+\item \href{#method-format}{\code{S3Uploader$format()}}
+\item \href{#method-clone}{\code{S3Uploader$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-S3Uploader-upload"></a>}}
-\if{latex}{\out{\hypertarget{method-S3Uploader-upload}{}}}
+\if{html}{\out{<a id="method-upload"></a>}}
+\if{latex}{\out{\hypertarget{method-upload}{}}}
 \subsection{Method \code{upload()}}{
 Static method that uploads a given file or directory to S3.
 \subsection{Usage}{
@@ -51,8 +51,8 @@ The S3 uri of the uploaded file(s).
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-S3Uploader-upload_string_as_file_body"></a>}}
-\if{latex}{\out{\hypertarget{method-S3Uploader-upload_string_as_file_body}{}}}
+\if{html}{\out{<a id="method-upload_string_as_file_body"></a>}}
+\if{latex}{\out{\hypertarget{method-upload_string_as_file_body}{}}}
 \subsection{Method \code{upload_string_as_file_body()}}{
 Static method that uploads a given file or directory to S3.
 \subsection{Usage}{
@@ -83,8 +83,8 @@ str: The S3 uri of the uploaded file(s).
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-S3Uploader-format"></a>}}
-\if{latex}{\out{\hypertarget{method-S3Uploader-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -93,8 +93,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-S3Uploader-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-S3Uploader-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

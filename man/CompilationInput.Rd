@@ -39,14 +39,14 @@ Create a class containing all the parameters.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-CompilationInput-new}{\code{CompilationInput$new()}}
-\item \href{#method-CompilationInput-format}{\code{CompilationInput$format()}}
-\item \href{#method-CompilationInput-clone}{\code{CompilationInput$clone()}}
+\item \href{#method-new}{\code{CompilationInput$new()}}
+\item \href{#method-format}{\code{CompilationInput$format()}}
+\item \href{#method-clone}{\code{CompilationInput$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-CompilationInput-new"></a>}}
-\if{latex}{\out{\hypertarget{method-CompilationInput-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize CompilationInput class
 \subsection{Usage}{
@@ -121,8 +121,8 @@ Compiler Options are TargetPlatform / target_instance_family specific. See
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-CompilationInput-format"></a>}}
-\if{latex}{\out{\hypertarget{method-CompilationInput-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -131,8 +131,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-CompilationInput-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-CompilationInput-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

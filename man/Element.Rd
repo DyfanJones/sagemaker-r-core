@@ -10,13 +10,13 @@ This object stores the value itself as well as a timestamp so that this
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-Element-new}{\code{Element$new()}}
-\item \href{#method-Element-clone}{\code{Element$clone()}}
+\item \href{#method-new}{\code{Element$new()}}
+\item \href{#method-clone}{\code{Element$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Element-new"></a>}}
-\if{latex}{\out{\hypertarget{method-Element-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize an ``Element`` instance for ``LRUCache``.
 \subsection{Usage}{
@@ -34,8 +34,8 @@ Initialize an ``Element`` instance for ``LRUCache``.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Element-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-Element-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -14,19 +14,19 @@ Exception raised for bad hyperparameters of a JumpStart model.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartHyperparametersError-clone}{\code{JumpStartHyperparametersError$clone()}}
+\item \href{#method-clone}{\code{JumpStartHyperparametersError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartHyperparametersError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartHyperparametersError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

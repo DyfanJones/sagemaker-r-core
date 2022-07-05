@@ -19,14 +19,14 @@ A Sagemaker File System ``DataSource``.}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-FileSystemInput-new}{\code{FileSystemInput$new()}}
-\item \href{#method-FileSystemInput-format}{\code{FileSystemInput$format()}}
-\item \href{#method-FileSystemInput-clone}{\code{FileSystemInput$clone()}}
+\item \href{#method-new}{\code{FileSystemInput$new()}}
+\item \href{#method-format}{\code{FileSystemInput$format()}}
+\item \href{#method-clone}{\code{FileSystemInput$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FileSystemInput-new"></a>}}
-\if{latex}{\out{\hypertarget{method-FileSystemInput-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new file system input used by an SageMaker training job.
 \subsection{Usage}{
@@ -61,8 +61,8 @@ Valid values: 'ro' or 'rw'. Defaults to 'ro'.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FileSystemInput-format"></a>}}
-\if{latex}{\out{\hypertarget{method-FileSystemInput-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -71,8 +71,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FileSystemInput-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-FileSystemInput-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

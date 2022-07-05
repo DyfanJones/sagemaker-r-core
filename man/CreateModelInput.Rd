@@ -19,14 +19,14 @@ A class containing parameters which can be used to create a SageMaker Model
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-CreateModelInput-new}{\code{CreateModelInput$new()}}
-\item \href{#method-CreateModelInput-format}{\code{CreateModelInput$format()}}
-\item \href{#method-CreateModelInput-clone}{\code{CreateModelInput$clone()}}
+\item \href{#method-new}{\code{CreateModelInput$new()}}
+\item \href{#method-format}{\code{CreateModelInput$format()}}
+\item \href{#method-clone}{\code{CreateModelInput$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-CreateModelInput-new"></a>}}
-\if{latex}{\out{\hypertarget{method-CreateModelInput-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize CreateModelInput class
 \subsection{Usage}{
@@ -44,8 +44,8 @@ Initialize CreateModelInput class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-CreateModelInput-format"></a>}}
-\if{latex}{\out{\hypertarget{method-CreateModelInput-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -54,8 +54,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-CreateModelInput-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-CreateModelInput-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

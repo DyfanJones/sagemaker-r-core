@@ -9,14 +9,14 @@ Static class for storing the SageMaker settings.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-SageMakerSettings-set_sagemaker_version}{\code{.SageMakerSettings$set_sagemaker_version()}}
-\item \href{#method-SageMakerSettings-get_sagemaker_version}{\code{.SageMakerSettings$get_sagemaker_version()}}
-\item \href{#method-SageMakerSettings-clone}{\code{.SageMakerSettings$clone()}}
+\item \href{#method-set_sagemaker_version}{\code{.SageMakerSettings$set_sagemaker_version()}}
+\item \href{#method-get_sagemaker_version}{\code{.SageMakerSettings$get_sagemaker_version()}}
+\item \href{#method-clone}{\code{.SageMakerSettings$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SageMakerSettings-set_sagemaker_version"></a>}}
-\if{latex}{\out{\hypertarget{method-SageMakerSettings-set_sagemaker_version}{}}}
+\if{html}{\out{<a id="method-set_sagemaker_version"></a>}}
+\if{latex}{\out{\hypertarget{method-set_sagemaker_version}{}}}
 \subsection{Method \code{set_sagemaker_version()}}{
 Set SageMaker version.
 \subsection{Usage}{
@@ -32,8 +32,8 @@ Set SageMaker version.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SageMakerSettings-get_sagemaker_version"></a>}}
-\if{latex}{\out{\hypertarget{method-SageMakerSettings-get_sagemaker_version}{}}}
+\if{html}{\out{<a id="method-get_sagemaker_version"></a>}}
+\if{latex}{\out{\hypertarget{method-get_sagemaker_version}{}}}
 \subsection{Method \code{get_sagemaker_version()}}{
 Return SageMaker version.
 \subsection{Usage}{
@@ -42,8 +42,8 @@ Return SageMaker version.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SageMakerSettings-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-SageMakerSettings-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

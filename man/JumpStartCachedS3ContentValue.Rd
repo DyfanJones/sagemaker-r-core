@@ -12,20 +12,20 @@ Data class for the s3 cached content values.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartCachedS3ContentValue-new}{\code{JumpStartCachedS3ContentValue$new()}}
-\item \href{#method-JumpStartCachedS3ContentValue-clone}{\code{JumpStartCachedS3ContentValue$clone()}}
+\item \href{#method-new}{\code{JumpStartCachedS3ContentValue$new()}}
+\item \href{#method-clone}{\code{JumpStartCachedS3ContentValue$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format"><a href='../../sagemaker.core/html/JumpStartDataHolderType.html#method-JumpStartDataHolderType-format'><code>sagemaker.core::JumpStartDataHolderType$format()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format">}\href{../../sagemaker.core/html/JumpStartDataHolderType.html#method-format}{\code{sagemaker.core::JumpStartDataHolderType$format()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartCachedS3ContentValue-new"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartCachedS3ContentValue-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Instantiates JumpStartCachedS3ContentValue object.
 \subsection{Usage}{
@@ -45,8 +45,8 @@ versioned model IDs to specs.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartCachedS3ContentValue-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartCachedS3ContentValue-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

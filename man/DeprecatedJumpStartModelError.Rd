@@ -16,19 +16,19 @@ A deprecated specification for a JumpStart model does not mean the whole model i
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-DeprecatedJumpStartModelError-new}{\code{DeprecatedJumpStartModelError$new()}}
-\item \href{#method-DeprecatedJumpStartModelError-clone}{\code{DeprecatedJumpStartModelError$clone()}}
+\item \href{#method-new}{\code{DeprecatedJumpStartModelError$new()}}
+\item \href{#method-clone}{\code{DeprecatedJumpStartModelError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-DeprecatedJumpStartModelError-new"></a>}}
-\if{latex}{\out{\hypertarget{method-DeprecatedJumpStartModelError-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Instantiates DeprecatedJumpStartModelError exception.
 \subsection{Usage}{
@@ -54,8 +54,8 @@ Instantiates DeprecatedJumpStartModelError exception.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-DeprecatedJumpStartModelError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-DeprecatedJumpStartModelError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

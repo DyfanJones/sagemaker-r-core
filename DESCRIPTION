@@ -30,7 +30,7 @@ Suggests:
     readr
 License: Apache License (>= 2.0)
 Encoding: UTF-8
-RoxygenNote: 7.2.0
+RoxygenNote: 7.1.1
 Collate: 
     'amazon_record_pb2.R'
     'amazon_common.R'
@@ -62,6 +62,7 @@ Collate:
     's3.R'
     'local_utils.R'
     'local_data.R'
+    'session_settings.R'
     'pkg_variables.R'
     'studio.R'
     'vpc_utils.R'
@@ -71,5 +72,4 @@ Collate:
     'local_image.R'
     'local_session.R'
     'local_entities.R'
-    'session_settings.R'
     'zzz.R'

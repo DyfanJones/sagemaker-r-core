@@ -14,20 +14,20 @@ For a given filter string "task == ic", the key corresponds to
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-ModelFilter-new}{\code{ModelFilter$new()}}
-\item \href{#method-ModelFilter-clone}{\code{ModelFilter$clone()}}
+\item \href{#method-new}{\code{ModelFilter$new()}}
+\item \href{#method-clone}{\code{ModelFilter$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format"><a href='../../sagemaker.core/html/JumpStartDataHolderType.html#method-JumpStartDataHolderType-format'><code>sagemaker.core::JumpStartDataHolderType$format()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format">}\href{../../sagemaker.core/html/JumpStartDataHolderType.html#method-format}{\code{sagemaker.core::JumpStartDataHolderType$format()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ModelFilter-new"></a>}}
-\if{latex}{\out{\hypertarget{method-ModelFilter-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Instantiates ``ModelFilter`` object.
 \subsection{Usage}{
@@ -47,8 +47,8 @@ Instantiates ``ModelFilter`` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ModelFilter-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-ModelFilter-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

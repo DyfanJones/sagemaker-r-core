@@ -12,13 +12,13 @@ Allows objects to be added to dicts and sets,
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartDataHolderType-format}{\code{JumpStartDataHolderType$format()}}
-\item \href{#method-JumpStartDataHolderType-clone}{\code{JumpStartDataHolderType$clone()}}
+\item \href{#method-format}{\code{JumpStartDataHolderType$format()}}
+\item \href{#method-clone}{\code{JumpStartDataHolderType$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartDataHolderType-format"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartDataHolderType-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 Returns ``__repr__`` string of object.
 \subsection{Usage}{
@@ -27,8 +27,8 @@ Returns ``__repr__`` string of object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartDataHolderType-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartDataHolderType-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

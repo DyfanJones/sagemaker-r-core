@@ -9,15 +9,15 @@ Class to create and format sagemaker docker images stored in ECR
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-ImageUris-retrieve}{\code{ImageUris$retrieve()}}
-\item \href{#method-ImageUris-get_training_image_uri}{\code{ImageUris$get_training_image_uri()}}
-\item \href{#method-ImageUris-format}{\code{ImageUris$format()}}
-\item \href{#method-ImageUris-clone}{\code{ImageUris$clone()}}
+\item \href{#method-retrieve}{\code{ImageUris$retrieve()}}
+\item \href{#method-get_training_image_uri}{\code{ImageUris$get_training_image_uri()}}
+\item \href{#method-format}{\code{ImageUris$format()}}
+\item \href{#method-clone}{\code{ImageUris$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ImageUris-retrieve"></a>}}
-\if{latex}{\out{\hypertarget{method-ImageUris-retrieve}{}}}
+\if{html}{\out{<a id="method-retrieve"></a>}}
+\if{latex}{\out{\hypertarget{method-retrieve}{}}}
 \subsection{Method \code{retrieve()}}{
 Retrieves the ECR URI for the Docker image matching the given arguments of inbuilt AWS Sagemaker models.
 \subsection{Usage}{
@@ -110,8 +110,8 @@ str: the ECR URI for the corresponding SageMaker Docker image.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ImageUris-get_training_image_uri"></a>}}
-\if{latex}{\out{\hypertarget{method-ImageUris-get_training_image_uri}{}}}
+\if{html}{\out{<a id="method-get_training_image_uri"></a>}}
+\if{latex}{\out{\hypertarget{method-get_training_image_uri}{}}}
 \subsection{Method \code{get_training_image_uri()}}{
 Retrieves the image URI for training.
 \subsection{Usage}{
@@ -163,8 +163,8 @@ str: The image URI string.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ImageUris-format"></a>}}
-\if{latex}{\out{\hypertarget{method-ImageUris-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -173,8 +173,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ImageUris-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-ImageUris-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

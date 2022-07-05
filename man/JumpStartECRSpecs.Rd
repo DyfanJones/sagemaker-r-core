@@ -14,22 +14,22 @@ Data class for JumpStart ECR specs.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartECRSpecs-new}{\code{JumpStartECRSpecs$new()}}
-\item \href{#method-JumpStartECRSpecs-from_json}{\code{JumpStartECRSpecs$from_json()}}
-\item \href{#method-JumpStartECRSpecs-to_json}{\code{JumpStartECRSpecs$to_json()}}
-\item \href{#method-JumpStartECRSpecs-clone}{\code{JumpStartECRSpecs$clone()}}
+\item \href{#method-new}{\code{JumpStartECRSpecs$new()}}
+\item \href{#method-from_json}{\code{JumpStartECRSpecs$from_json()}}
+\item \href{#method-to_json}{\code{JumpStartECRSpecs$to_json()}}
+\item \href{#method-clone}{\code{JumpStartECRSpecs$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format"><a href='../../sagemaker.core/html/JumpStartDataHolderType.html#method-JumpStartDataHolderType-format'><code>sagemaker.core::JumpStartDataHolderType$format()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format">}\href{../../sagemaker.core/html/JumpStartDataHolderType.html#method-format}{\code{sagemaker.core::JumpStartDataHolderType$format()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartECRSpecs-new"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartECRSpecs-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes a JumpStartECRSpecs object from its json representation.
 \subsection{Usage}{
@@ -45,8 +45,8 @@ Initializes a JumpStartECRSpecs object from its json representation.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartECRSpecs-from_json"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartECRSpecs-from_json}{}}}
+\if{html}{\out{<a id="method-from_json"></a>}}
+\if{latex}{\out{\hypertarget{method-from_json}{}}}
 \subsection{Method \code{from_json()}}{
 Sets fields in object based on json.
 \subsection{Usage}{
@@ -62,8 +62,8 @@ Sets fields in object based on json.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartECRSpecs-to_json"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartECRSpecs-to_json}{}}}
+\if{html}{\out{<a id="method-to_json"></a>}}
+\if{latex}{\out{\hypertarget{method-to_json}{}}}
 \subsection{Method \code{to_json()}}{
 Returns json representation of JumpStartECRSpecs object in list format.
 \subsection{Usage}{
@@ -72,8 +72,8 @@ Returns json representation of JumpStartECRSpecs object in list format.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartECRSpecs-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartECRSpecs-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

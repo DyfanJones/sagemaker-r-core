@@ -12,19 +12,19 @@ Does not split records, essentially reads the whole file.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-NoneSplitter-split}{\code{NoneSplitter$split()}}
-\item \href{#method-NoneSplitter-clone}{\code{NoneSplitter$clone()}}
+\item \href{#method-split}{\code{NoneSplitter$split()}}
+\item \href{#method-clone}{\code{NoneSplitter$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-NoneSplitter-split"></a>}}
-\if{latex}{\out{\hypertarget{method-NoneSplitter-split}{}}}
+\if{html}{\out{<a id="method-split"></a>}}
+\if{latex}{\out{\hypertarget{method-split}{}}}
 \subsection{Method \code{split()}}{
 Split a file into records using a specific strategy.
              For this NoneSplitter there is no actual split happening and the file
@@ -46,8 +46,8 @@ generator for the individual records that were split from
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-NoneSplitter-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-NoneSplitter-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

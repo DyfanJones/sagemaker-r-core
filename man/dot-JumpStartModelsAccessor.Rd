@@ -9,17 +9,17 @@ Static class for storing the JumpStart models cache.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartModelsAccessor-get_model_header}{\code{.JumpStartModelsAccessor$get_model_header()}}
-\item \href{#method-JumpStartModelsAccessor-get_model_specs}{\code{.JumpStartModelsAccessor$get_model_specs()}}
-\item \href{#method-JumpStartModelsAccessor-set_cache_kwargs}{\code{.JumpStartModelsAccessor$set_cache_kwargs()}}
-\item \href{#method-JumpStartModelsAccessor-reset_cache}{\code{.JumpStartModelsAccessor$reset_cache()}}
-\item \href{#method-JumpStartModelsAccessor-get_manifest}{\code{.JumpStartModelsAccessor$get_manifest()}}
-\item \href{#method-JumpStartModelsAccessor-clone}{\code{.JumpStartModelsAccessor$clone()}}
+\item \href{#method-get_model_header}{\code{.JumpStartModelsAccessor$get_model_header()}}
+\item \href{#method-get_model_specs}{\code{.JumpStartModelsAccessor$get_model_specs()}}
+\item \href{#method-set_cache_kwargs}{\code{.JumpStartModelsAccessor$set_cache_kwargs()}}
+\item \href{#method-reset_cache}{\code{.JumpStartModelsAccessor$reset_cache()}}
+\item \href{#method-get_manifest}{\code{.JumpStartModelsAccessor$get_manifest()}}
+\item \href{#method-clone}{\code{.JumpStartModelsAccessor$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsAccessor-get_model_header"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsAccessor-get_model_header}{}}}
+\if{html}{\out{<a id="method-get_model_header"></a>}}
+\if{latex}{\out{\hypertarget{method-get_model_header}{}}}
 \subsection{Method \code{get_model_header()}}{
 Returns model header from JumpStart models cache.
 \subsection{Usage}{
@@ -39,8 +39,8 @@ Returns model header from JumpStart models cache.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsAccessor-get_model_specs"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsAccessor-get_model_specs}{}}}
+\if{html}{\out{<a id="method-get_model_specs"></a>}}
+\if{latex}{\out{\hypertarget{method-get_model_specs}{}}}
 \subsection{Method \code{get_model_specs()}}{
 Returns model specs from JumpStart models cache.
 \subsection{Usage}{
@@ -60,8 +60,8 @@ Returns model specs from JumpStart models cache.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsAccessor-set_cache_kwargs"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsAccessor-set_cache_kwargs}{}}}
+\if{html}{\out{<a id="method-set_cache_kwargs"></a>}}
+\if{latex}{\out{\hypertarget{method-set_cache_kwargs}{}}}
 \subsection{Method \code{set_cache_kwargs()}}{
 Sets cache kwargs, clears the cache.
 \subsection{Usage}{
@@ -79,8 +79,8 @@ Sets cache kwargs, clears the cache.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsAccessor-reset_cache"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsAccessor-reset_cache}{}}}
+\if{html}{\out{<a id="method-reset_cache"></a>}}
+\if{latex}{\out{\hypertarget{method-reset_cache}{}}}
 \subsection{Method \code{reset_cache()}}{
 Resets cache, optionally allowing cache kwargs to be passed to the new cache.
 \subsection{Usage}{
@@ -98,8 +98,8 @@ Resets cache, optionally allowing cache kwargs to be passed to the new cache.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsAccessor-get_manifest"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsAccessor-get_manifest}{}}}
+\if{html}{\out{<a id="method-get_manifest"></a>}}
+\if{latex}{\out{\hypertarget{method-get_manifest}{}}}
 \subsection{Method \code{get_manifest()}}{
 Return entire JumpStart models manifest.
 \subsection{Usage}{
@@ -119,8 +119,8 @@ Return entire JumpStart models manifest.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsAccessor-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsAccessor-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -10,23 +10,23 @@ The manifest and specs associated with JumpStart models provide the information 
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartModelsCache-new}{\code{JumpStartModelsCache$new()}}
-\item \href{#method-JumpStartModelsCache-set_region}{\code{JumpStartModelsCache$set_region()}}
-\item \href{#method-JumpStartModelsCache-get_region}{\code{JumpStartModelsCache$get_region()}}
-\item \href{#method-JumpStartModelsCache-set_manifest_file_s3_key}{\code{JumpStartModelsCache$set_manifest_file_s3_key()}}
-\item \href{#method-JumpStartModelsCache-get_manifest_file_s3_key}{\code{JumpStartModelsCache$get_manifest_file_s3_key()}}
-\item \href{#method-JumpStartModelsCache-set_s3_bucket_name}{\code{JumpStartModelsCache$set_s3_bucket_name()}}
-\item \href{#method-JumpStartModelsCache-get_bucket}{\code{JumpStartModelsCache$get_bucket()}}
-\item \href{#method-JumpStartModelsCache-get_manifest}{\code{JumpStartModelsCache$get_manifest()}}
-\item \href{#method-JumpStartModelsCache-get_header}{\code{JumpStartModelsCache$get_header()}}
-\item \href{#method-JumpStartModelsCache-get_specs}{\code{JumpStartModelsCache$get_specs()}}
-\item \href{#method-JumpStartModelsCache-clear}{\code{JumpStartModelsCache$clear()}}
-\item \href{#method-JumpStartModelsCache-clone}{\code{JumpStartModelsCache$clone()}}
+\item \href{#method-new}{\code{JumpStartModelsCache$new()}}
+\item \href{#method-set_region}{\code{JumpStartModelsCache$set_region()}}
+\item \href{#method-get_region}{\code{JumpStartModelsCache$get_region()}}
+\item \href{#method-set_manifest_file_s3_key}{\code{JumpStartModelsCache$set_manifest_file_s3_key()}}
+\item \href{#method-get_manifest_file_s3_key}{\code{JumpStartModelsCache$get_manifest_file_s3_key()}}
+\item \href{#method-set_s3_bucket_name}{\code{JumpStartModelsCache$set_s3_bucket_name()}}
+\item \href{#method-get_bucket}{\code{JumpStartModelsCache$get_bucket()}}
+\item \href{#method-get_manifest}{\code{JumpStartModelsCache$get_manifest()}}
+\item \href{#method-get_header}{\code{JumpStartModelsCache$get_header()}}
+\item \href{#method-get_specs}{\code{JumpStartModelsCache$get_specs()}}
+\item \href{#method-clear}{\code{JumpStartModelsCache$clear()}}
+\item \href{#method-clone}{\code{JumpStartModelsCache$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-new"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize a ``JumpStartModelsCache`` instance.
 \subsection{Usage}{
@@ -70,8 +70,8 @@ Default: JumpStart-hosted content bucket for region.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-set_region"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-set_region}{}}}
+\if{html}{\out{<a id="method-set_region"></a>}}
+\if{latex}{\out{\hypertarget{method-set_region}{}}}
 \subsection{Method \code{set_region()}}{
 Set region for cache. Clears cache after new region is set.
 \subsection{Usage}{
@@ -87,8 +87,8 @@ Set region for cache. Clears cache after new region is set.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-get_region"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-get_region}{}}}
+\if{html}{\out{<a id="method-get_region"></a>}}
+\if{latex}{\out{\hypertarget{method-get_region}{}}}
 \subsection{Method \code{get_region()}}{
 Return region for cache.
 \subsection{Usage}{
@@ -97,8 +97,8 @@ Return region for cache.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-set_manifest_file_s3_key"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-set_manifest_file_s3_key}{}}}
+\if{html}{\out{<a id="method-set_manifest_file_s3_key"></a>}}
+\if{latex}{\out{\hypertarget{method-set_manifest_file_s3_key}{}}}
 \subsection{Method \code{set_manifest_file_s3_key()}}{
 Set manifest file s3 key. Clears cache after new key is set.
 \subsection{Usage}{
@@ -114,8 +114,8 @@ Set manifest file s3 key. Clears cache after new key is set.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-get_manifest_file_s3_key"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-get_manifest_file_s3_key}{}}}
+\if{html}{\out{<a id="method-get_manifest_file_s3_key"></a>}}
+\if{latex}{\out{\hypertarget{method-get_manifest_file_s3_key}{}}}
 \subsection{Method \code{get_manifest_file_s3_key()}}{
 Return manifest file s3 key for cache.
 \subsection{Usage}{
@@ -124,8 +124,8 @@ Return manifest file s3 key for cache.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-set_s3_bucket_name"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-set_s3_bucket_name}{}}}
+\if{html}{\out{<a id="method-set_s3_bucket_name"></a>}}
+\if{latex}{\out{\hypertarget{method-set_s3_bucket_name}{}}}
 \subsection{Method \code{set_s3_bucket_name()}}{
 Set s3 bucket used for cache.
 \subsection{Usage}{
@@ -141,8 +141,8 @@ Set s3 bucket used for cache.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-get_bucket"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-get_bucket}{}}}
+\if{html}{\out{<a id="method-get_bucket"></a>}}
+\if{latex}{\out{\hypertarget{method-get_bucket}{}}}
 \subsection{Method \code{get_bucket()}}{
 Return bucket used for cache.
 \subsection{Usage}{
@@ -151,8 +151,8 @@ Return bucket used for cache.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-get_manifest"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-get_manifest}{}}}
+\if{html}{\out{<a id="method-get_manifest"></a>}}
+\if{latex}{\out{\hypertarget{method-get_manifest}{}}}
 \subsection{Method \code{get_manifest()}}{
 Return entire JumpStart models manifest.
 \subsection{Usage}{
@@ -161,8 +161,8 @@ Return entire JumpStart models manifest.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-get_header"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-get_header}{}}}
+\if{html}{\out{<a id="method-get_header"></a>}}
+\if{latex}{\out{\hypertarget{method-get_header}{}}}
 \subsection{Method \code{get_header()}}{
 Return header for a given JumpStart model ID and semantic version.
 \subsection{Usage}{
@@ -181,8 +181,8 @@ header.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-get_specs"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-get_specs}{}}}
+\if{html}{\out{<a id="method-get_specs"></a>}}
+\if{latex}{\out{\hypertarget{method-get_specs}{}}}
 \subsection{Method \code{get_specs()}}{
 Return specs for a given JumpStart model ID and semantic version.
 \subsection{Usage}{
@@ -201,8 +201,8 @@ specs.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-clear"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-clear}{}}}
+\if{html}{\out{<a id="method-clear"></a>}}
+\if{latex}{\out{\hypertarget{method-clear}{}}}
 \subsection{Method \code{clear()}}{
 Clears the model ID/version and s3 cache.
 \subsection{Usage}{
@@ -211,8 +211,8 @@ Clears the model ID/version and s3 cache.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelsCache-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelsCache-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

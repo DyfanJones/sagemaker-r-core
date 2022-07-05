@@ -12,21 +12,21 @@ Represents a data source within the local filesystem.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-LocalFileDataSource-new}{\code{LocalFileDataSource$new()}}
-\item \href{#method-LocalFileDataSource-get_file_list}{\code{LocalFileDataSource$get_file_list()}}
-\item \href{#method-LocalFileDataSource-get_root_dir}{\code{LocalFileDataSource$get_root_dir()}}
-\item \href{#method-LocalFileDataSource-clone}{\code{LocalFileDataSource$clone()}}
+\item \href{#method-new}{\code{LocalFileDataSource$new()}}
+\item \href{#method-get_file_list}{\code{LocalFileDataSource$get_file_list()}}
+\item \href{#method-get_root_dir}{\code{LocalFileDataSource$get_root_dir()}}
+\item \href{#method-clone}{\code{LocalFileDataSource$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LocalFileDataSource-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LocalFileDataSource-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize LocalFileDataSource class
 \subsection{Usage}{
@@ -42,8 +42,8 @@ Initialize LocalFileDataSource class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LocalFileDataSource-get_file_list"></a>}}
-\if{latex}{\out{\hypertarget{method-LocalFileDataSource-get_file_list}{}}}
+\if{html}{\out{<a id="method-get_file_list"></a>}}
+\if{latex}{\out{\hypertarget{method-get_file_list}{}}}
 \subsection{Method \code{get_file_list()}}{
 Retrieve the list of absolute paths to all the files in this data source.
 \subsection{Usage}{
@@ -55,8 +55,8 @@ List[str] List of absolute paths.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LocalFileDataSource-get_root_dir"></a>}}
-\if{latex}{\out{\hypertarget{method-LocalFileDataSource-get_root_dir}{}}}
+\if{html}{\out{<a id="method-get_root_dir"></a>}}
+\if{latex}{\out{\hypertarget{method-get_root_dir}{}}}
 \subsection{Method \code{get_root_dir()}}{
 Retrieve the absolute path to the root directory of this data source.
 \subsection{Usage}{
@@ -68,8 +68,8 @@ str: absolute path to the root directory of this data source.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LocalFileDataSource-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-LocalFileDataSource-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

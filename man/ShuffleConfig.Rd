@@ -18,14 +18,14 @@ For configuring channel shuffling using a seed
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-ShuffleConfig-new}{\code{ShuffleConfig$new()}}
-\item \href{#method-ShuffleConfig-format}{\code{ShuffleConfig$format()}}
-\item \href{#method-ShuffleConfig-clone}{\code{ShuffleConfig$clone()}}
+\item \href{#method-new}{\code{ShuffleConfig$new()}}
+\item \href{#method-format}{\code{ShuffleConfig$format()}}
+\item \href{#method-clone}{\code{ShuffleConfig$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ShuffleConfig-new"></a>}}
-\if{latex}{\out{\hypertarget{method-ShuffleConfig-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a ShuffleConfig.
 \subsection{Usage}{
@@ -41,8 +41,8 @@ Create a ShuffleConfig.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ShuffleConfig-format"></a>}}
-\if{latex}{\out{\hypertarget{method-ShuffleConfig-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -51,8 +51,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ShuffleConfig-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-ShuffleConfig-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

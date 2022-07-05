@@ -18,14 +18,14 @@ Optional container class for settings to apply to a SageMaker session.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-SessionSettings-new}{\code{SessionSettings$new()}}
-\item \href{#method-SessionSettings-format}{\code{SessionSettings$format()}}
-\item \href{#method-SessionSettings-clone}{\code{SessionSettings$clone()}}
+\item \href{#method-new}{\code{SessionSettings$new()}}
+\item \href{#method-format}{\code{SessionSettings$format()}}
+\item \href{#method-clone}{\code{SessionSettings$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SessionSettings-new"></a>}}
-\if{latex}{\out{\hypertarget{method-SessionSettings-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize the ``SessionSettings`` of a SageMaker ``Session``.
 \subsection{Usage}{
@@ -43,8 +43,8 @@ is not provided (Default: \code{TRUE}).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SessionSettings-format"></a>}}
-\if{latex}{\out{\hypertarget{method-SessionSettings-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 Format class
 \subsection{Usage}{
@@ -53,8 +53,8 @@ Format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SessionSettings-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-SessionSettings-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

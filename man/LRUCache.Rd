@@ -19,16 +19,16 @@ LRU caches remove items in a FIFO manner, such that the oldest
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-LRUCache-new}{\code{LRUCache$new()}}
-\item \href{#method-LRUCache-clear}{\code{LRUCache$clear()}}
-\item \href{#method-LRUCache-get}{\code{LRUCache$get()}}
-\item \href{#method-LRUCache-put}{\code{LRUCache$put()}}
-\item \href{#method-LRUCache-clone}{\code{LRUCache$clone()}}
+\item \href{#method-new}{\code{LRUCache$new()}}
+\item \href{#method-clear}{\code{LRUCache$clear()}}
+\item \href{#method-get}{\code{LRUCache$get()}}
+\item \href{#method-put}{\code{LRUCache$put()}}
+\item \href{#method-clone}{\code{LRUCache$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LRUCache-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LRUCache-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize an ``LRUCache`` instance.
 \subsection{Usage}{
@@ -52,8 +52,8 @@ is not found in the cache, or a key has expired.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LRUCache-clear"></a>}}
-\if{latex}{\out{\hypertarget{method-LRUCache-clear}{}}}
+\if{html}{\out{<a id="method-clear"></a>}}
+\if{latex}{\out{\hypertarget{method-clear}{}}}
 \subsection{Method \code{clear()}}{
 Deletes all elements from the cache.
 \subsection{Usage}{
@@ -62,8 +62,8 @@ Deletes all elements from the cache.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LRUCache-get"></a>}}
-\if{latex}{\out{\hypertarget{method-LRUCache-get}{}}}
+\if{html}{\out{<a id="method-get"></a>}}
+\if{latex}{\out{\hypertarget{method-get}{}}}
 \subsection{Method \code{get()}}{
 Returns value corresponding to key in cache.
 \subsection{Usage}{
@@ -82,8 +82,8 @@ it's stale or not in cache. Default: True.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LRUCache-put"></a>}}
-\if{latex}{\out{\hypertarget{method-LRUCache-put}{}}}
+\if{html}{\out{<a id="method-put"></a>}}
+\if{latex}{\out{\hypertarget{method-put}{}}}
 \subsection{Method \code{put()}}{
 Adds key to cache using ``retrieval_function``.
              If value is provided, this is used instead. If the key is already in cache,
@@ -104,8 +104,8 @@ Adds key to cache using ``retrieval_function``.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LRUCache-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-LRUCache-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

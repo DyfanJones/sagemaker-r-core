@@ -14,22 +14,22 @@ Data class JumpStart model header.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartModelHeader-new}{\code{JumpStartModelHeader$new()}}
-\item \href{#method-JumpStartModelHeader-to_json}{\code{JumpStartModelHeader$to_json()}}
-\item \href{#method-JumpStartModelHeader-from_json}{\code{JumpStartModelHeader$from_json()}}
-\item \href{#method-JumpStartModelHeader-clone}{\code{JumpStartModelHeader$clone()}}
+\item \href{#method-new}{\code{JumpStartModelHeader$new()}}
+\item \href{#method-to_json}{\code{JumpStartModelHeader$to_json()}}
+\item \href{#method-from_json}{\code{JumpStartModelHeader$from_json()}}
+\item \href{#method-clone}{\code{JumpStartModelHeader$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format"><a href='../../sagemaker.core/html/JumpStartDataHolderType.html#method-JumpStartDataHolderType-format'><code>sagemaker.core::JumpStartDataHolderType$format()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format">}\href{../../sagemaker.core/html/JumpStartDataHolderType.html#method-format}{\code{sagemaker.core::JumpStartDataHolderType$format()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelHeader-new"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelHeader-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes a JumpStartModelHeader object from its json representation.
 \subsection{Usage}{
@@ -45,8 +45,8 @@ Initializes a JumpStartModelHeader object from its json representation.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelHeader-to_json"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelHeader-to_json}{}}}
+\if{html}{\out{<a id="method-to_json"></a>}}
+\if{latex}{\out{\hypertarget{method-to_json}{}}}
 \subsection{Method \code{to_json()}}{
 Returns json representation of JumpStartModelHeader object in list format.
 \subsection{Usage}{
@@ -55,8 +55,8 @@ Returns json representation of JumpStartModelHeader object in list format.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelHeader-from_json"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelHeader-from_json}{}}}
+\if{html}{\out{<a id="method-from_json"></a>}}
+\if{latex}{\out{\hypertarget{method-from_json}{}}}
 \subsection{Method \code{from_json()}}{
 Sets fields in object based on json of header.
 \subsection{Usage}{
@@ -72,8 +72,8 @@ Sets fields in object based on json of header.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartModelHeader-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartModelHeader-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

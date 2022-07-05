@@ -6,6 +6,7 @@
 \alias{ValueError}
 \alias{TypeError}
 \alias{UnexpectedStatusError}
+\alias{CapacityError}
 \alias{RuntimeError}
 \alias{AttributeError}
 \alias{DataNotFoundError}
@@ -19,13 +20,13 @@ Create Sagemaker error format.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-SagemakerError-new}{\code{SagemakerError$new()}}
-\item \href{#method-SagemakerError-clone}{\code{SagemakerError$clone()}}
+\item \href{#method-new}{\code{SagemakerError$new()}}
+\item \href{#method-clone}{\code{SagemakerError$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SagemakerError-new"></a>}}
-\if{latex}{\out{\hypertarget{method-SagemakerError-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize SagemakerError class
 \subsection{Usage}{
@@ -41,8 +42,8 @@ Initialize SagemakerError class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SagemakerError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-SagemakerError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -64,19 +65,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-NotImplementedError-clone}{\code{NotImplementedError$clone()}}
+\item \href{#method-clone}{\code{NotImplementedError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-NotImplementedError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-NotImplementedError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -98,19 +99,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-ValueError-clone}{\code{ValueError$clone()}}
+\item \href{#method-clone}{\code{ValueError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ValueError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-ValueError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -132,19 +133,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-TypeError-clone}{\code{TypeError$clone()}}
+\item \href{#method-clone}{\code{TypeError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-TypeError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-TypeError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -166,19 +167,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-UnexpectedStatusError-new}{\code{UnexpectedStatusError$new()}}
-\item \href{#method-UnexpectedStatusError-clone}{\code{UnexpectedStatusError$clone()}}
+\item \href{#method-new}{\code{UnexpectedStatusError$new()}}
+\item \href{#method-clone}{\code{UnexpectedStatusError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-UnexpectedStatusError-new"></a>}}
-\if{latex}{\out{\hypertarget{method-UnexpectedStatusError-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize UnexpectedStatusError class
 \subsection{Usage}{
@@ -198,12 +199,46 @@ Initialize UnexpectedStatusError class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-UnexpectedStatusError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-UnexpectedStatusError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{UnexpectedStatusError$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}
+\section{Super classes}{
+\code{\link[sagemaker.core:SagemakerError]{sagemaker.core::SagemakerError}} -> \code{\link[sagemaker.core:ValueError]{sagemaker.core::ValueError}} -> \code{\link[sagemaker.core:UnexpectedStatusError]{sagemaker.core::UnexpectedStatusError}} -> \code{CapacityError}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-clone}{\code{CapacityError$clone()}}
+}
+}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="UnexpectedStatusError" data-id="initialize">}\href{../../sagemaker.core/html/UnexpectedStatusError.html#method-initialize}{\code{sagemaker.core::UnexpectedStatusError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CapacityError$clone(deep = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -221,19 +256,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-RuntimeError-clone}{\code{RuntimeError$clone()}}
+\item \href{#method-clone}{\code{RuntimeError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-RuntimeError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-RuntimeError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -255,19 +290,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-AttributeError-clone}{\code{AttributeError$clone()}}
+\item \href{#method-clone}{\code{AttributeError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-AttributeError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-AttributeError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -289,19 +324,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-DataNotFoundError-clone}{\code{DataNotFoundError$clone()}}
+\item \href{#method-clone}{\code{DataNotFoundError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-DataNotFoundError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-DataNotFoundError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -323,19 +358,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-UnknownServiceError-clone}{\code{UnknownServiceError$clone()}}
+\item \href{#method-clone}{\code{UnknownServiceError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-UnknownServiceError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-UnknownServiceError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -357,19 +392,19 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-KeyError-clone}{\code{KeyError$clone()}}
+\item \href{#method-clone}{\code{KeyError$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize"><a href='../../sagemaker.core/html/SagemakerError.html#method-SagemakerError-initialize'><code>sagemaker.core::SagemakerError$initialize()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="SagemakerError" data-id="initialize">}\href{../../sagemaker.core/html/SagemakerError.html#method-initialize}{\code{sagemaker.core::SagemakerError$initialize()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-KeyError-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-KeyError-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

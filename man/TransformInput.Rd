@@ -33,14 +33,14 @@ Create a class containing all the parameters.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-TransformInput-new}{\code{TransformInput$new()}}
-\item \href{#method-TransformInput-format}{\code{TransformInput$format()}}
-\item \href{#method-TransformInput-clone}{\code{TransformInput$clone()}}
+\item \href{#method-new}{\code{TransformInput$new()}}
+\item \href{#method-format}{\code{TransformInput$format()}}
+\item \href{#method-clone}{\code{TransformInput$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-TransformInput-new"></a>}}
-\if{latex}{\out{\hypertarget{method-TransformInput-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize TransformInput class
 \subsection{Usage}{
@@ -82,8 +82,8 @@ Initialize TransformInput class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-TransformInput-format"></a>}}
-\if{latex}{\out{\hypertarget{method-TransformInput-format}{}}}
+\if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 format class
 \subsection{Usage}{
@@ -92,8 +92,8 @@ format class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-TransformInput-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-TransformInput-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

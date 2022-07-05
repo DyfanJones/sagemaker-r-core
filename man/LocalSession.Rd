@@ -20,93 +20,94 @@ Other Session:
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-LocalSession-new}{\code{LocalSession$new()}}
-\item \href{#method-LocalSession-logs_for_job}{\code{LocalSession$logs_for_job()}}
-\item \href{#method-LocalSession-clone}{\code{LocalSession$clone()}}
+\item \href{#method-new}{\code{LocalSession$new()}}
+\item \href{#method-logs_for_job}{\code{LocalSession$logs_for_job()}}
+\item \href{#method-clone}{\code{LocalSession$clone()}}
 }
 }
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="account_id"><a href='../../sagemaker.core/html/Session.html#method-Session-account_id'><code>sagemaker.core::Session$account_id()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="auto_ml"><a href='../../sagemaker.core/html/Session.html#method-Session-auto_ml'><code>sagemaker.core::Session$auto_ml()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="compile_model"><a href='../../sagemaker.core/html/Session.html#method-Session-compile_model'><code>sagemaker.core::Session$compile_model()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_endpoint"><a href='../../sagemaker.core/html/Session.html#method-Session-create_endpoint'><code>sagemaker.core::Session$create_endpoint()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_endpoint_config"><a href='../../sagemaker.core/html/Session.html#method-Session-create_endpoint_config'><code>sagemaker.core::Session$create_endpoint_config()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_endpoint_config_from_existing"><a href='../../sagemaker.core/html/Session.html#method-Session-create_endpoint_config_from_existing'><code>sagemaker.core::Session$create_endpoint_config_from_existing()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_feature_group"><a href='../../sagemaker.core/html/Session.html#method-Session-create_feature_group'><code>sagemaker.core::Session$create_feature_group()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_model"><a href='../../sagemaker.core/html/Session.html#method-Session-create_model'><code>sagemaker.core::Session$create_model()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_model_from_job"><a href='../../sagemaker.core/html/Session.html#method-Session-create_model_from_job'><code>sagemaker.core::Session$create_model_from_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_model_package_from_algorithm"><a href='../../sagemaker.core/html/Session.html#method-Session-create_model_package_from_algorithm'><code>sagemaker.core::Session$create_model_package_from_algorithm()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_model_package_from_containers"><a href='../../sagemaker.core/html/Session.html#method-Session-create_model_package_from_containers'><code>sagemaker.core::Session$create_model_package_from_containers()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_monitoring_schedule"><a href='../../sagemaker.core/html/Session.html#method-Session-create_monitoring_schedule'><code>sagemaker.core::Session$create_monitoring_schedule()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_tuning_job"><a href='../../sagemaker.core/html/Session.html#method-Session-create_tuning_job'><code>sagemaker.core::Session$create_tuning_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="default_bucket"><a href='../../sagemaker.core/html/Session.html#method-Session-default_bucket'><code>sagemaker.core::Session$default_bucket()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_endpoint"><a href='../../sagemaker.core/html/Session.html#method-Session-delete_endpoint'><code>sagemaker.core::Session$delete_endpoint()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_endpoint_config"><a href='../../sagemaker.core/html/Session.html#method-Session-delete_endpoint_config'><code>sagemaker.core::Session$delete_endpoint_config()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_feature_group"><a href='../../sagemaker.core/html/Session.html#method-Session-delete_feature_group'><code>sagemaker.core::Session$delete_feature_group()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_model"><a href='../../sagemaker.core/html/Session.html#method-Session-delete_model'><code>sagemaker.core::Session$delete_model()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_monitoring_schedule"><a href='../../sagemaker.core/html/Session.html#method-Session-delete_monitoring_schedule'><code>sagemaker.core::Session$delete_monitoring_schedule()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_auto_ml_job"><a href='../../sagemaker.core/html/Session.html#method-Session-describe_auto_ml_job'><code>sagemaker.core::Session$describe_auto_ml_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_feature_group"><a href='../../sagemaker.core/html/Session.html#method-Session-describe_feature_group'><code>sagemaker.core::Session$describe_feature_group()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_model"><a href='../../sagemaker.core/html/Session.html#method-Session-describe_model'><code>sagemaker.core::Session$describe_model()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_monitoring_schedule"><a href='../../sagemaker.core/html/Session.html#method-Session-describe_monitoring_schedule'><code>sagemaker.core::Session$describe_monitoring_schedule()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_processing_job"><a href='../../sagemaker.core/html/Session.html#method-Session-describe_processing_job'><code>sagemaker.core::Session$describe_processing_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_training_job"><a href='../../sagemaker.core/html/Session.html#method-Session-describe_training_job'><code>sagemaker.core::Session$describe_training_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_transform_job"><a href='../../sagemaker.core/html/Session.html#method-Session-describe_transform_job'><code>sagemaker.core::Session$describe_transform_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_tuning_job"><a href='../../sagemaker.core/html/Session.html#method-Session-describe_tuning_job'><code>sagemaker.core::Session$describe_tuning_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="download_athena_query_result"><a href='../../sagemaker.core/html/Session.html#method-Session-download_athena_query_result'><code>sagemaker.core::Session$download_athena_query_result()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="download_data"><a href='../../sagemaker.core/html/Session.html#method-Session-download_data'><code>sagemaker.core::Session$download_data()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="endpoint_from_job"><a href='../../sagemaker.core/html/Session.html#method-Session-endpoint_from_job'><code>sagemaker.core::Session$endpoint_from_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="endpoint_from_model_data"><a href='../../sagemaker.core/html/Session.html#method-Session-endpoint_from_model_data'><code>sagemaker.core::Session$endpoint_from_model_data()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="endpoint_from_production_variants"><a href='../../sagemaker.core/html/Session.html#method-Session-endpoint_from_production_variants'><code>sagemaker.core::Session$endpoint_from_production_variants()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="expand_role"><a href='../../sagemaker.core/html/Session.html#method-Session-expand_role'><code>sagemaker.core::Session$expand_role()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="format"><a href='../../sagemaker.core/html/Session.html#method-Session-format'><code>sagemaker.core::Session$format()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="get_caller_identity_arn"><a href='../../sagemaker.core/html/Session.html#method-Session-get_caller_identity_arn'><code>sagemaker.core::Session$get_caller_identity_arn()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="get_query_execution"><a href='../../sagemaker.core/html/Session.html#method-Session-get_query_execution'><code>sagemaker.core::Session$get_query_execution()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="help"><a href='../../sagemaker.core/html/Session.html#method-Session-help'><code>sagemaker.core::Session$help()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_candidates"><a href='../../sagemaker.core/html/Session.html#method-Session-list_candidates'><code>sagemaker.core::Session$list_candidates()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_monitoring_executions"><a href='../../sagemaker.core/html/Session.html#method-Session-list_monitoring_executions'><code>sagemaker.core::Session$list_monitoring_executions()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_monitoring_schedules"><a href='../../sagemaker.core/html/Session.html#method-Session-list_monitoring_schedules'><code>sagemaker.core::Session$list_monitoring_schedules()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_s3_files"><a href='../../sagemaker.core/html/Session.html#method-Session-list_s3_files'><code>sagemaker.core::Session$list_s3_files()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_tags"><a href='../../sagemaker.core/html/Session.html#method-Session-list_tags'><code>sagemaker.core::Session$list_tags()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="logs_for_auto_ml_job"><a href='../../sagemaker.core/html/Session.html#method-Session-logs_for_auto_ml_job'><code>sagemaker.core::Session$logs_for_auto_ml_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="logs_for_processing_job"><a href='../../sagemaker.core/html/Session.html#method-Session-logs_for_processing_job'><code>sagemaker.core::Session$logs_for_processing_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="logs_for_transform_job"><a href='../../sagemaker.core/html/Session.html#method-Session-logs_for_transform_job'><code>sagemaker.core::Session$logs_for_transform_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="process"><a href='../../sagemaker.core/html/Session.html#method-Session-process'><code>sagemaker.core::Session$process()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="read_s3_file"><a href='../../sagemaker.core/html/Session.html#method-Session-read_s3_file'><code>sagemaker.core::Session$read_s3_file()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="start_monitoring_schedule"><a href='../../sagemaker.core/html/Session.html#method-Session-start_monitoring_schedule'><code>sagemaker.core::Session$start_monitoring_schedule()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="start_query_execution"><a href='../../sagemaker.core/html/Session.html#method-Session-start_query_execution'><code>sagemaker.core::Session$start_query_execution()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_monitoring_schedule"><a href='../../sagemaker.core/html/Session.html#method-Session-stop_monitoring_schedule'><code>sagemaker.core::Session$stop_monitoring_schedule()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_processing_job"><a href='../../sagemaker.core/html/Session.html#method-Session-stop_processing_job'><code>sagemaker.core::Session$stop_processing_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_training_job"><a href='../../sagemaker.core/html/Session.html#method-Session-stop_training_job'><code>sagemaker.core::Session$stop_training_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_transform_job"><a href='../../sagemaker.core/html/Session.html#method-Session-stop_transform_job'><code>sagemaker.core::Session$stop_transform_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_tuning_job"><a href='../../sagemaker.core/html/Session.html#method-Session-stop_tuning_job'><code>sagemaker.core::Session$stop_tuning_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="train"><a href='../../sagemaker.core/html/Session.html#method-Session-train'><code>sagemaker.core::Session$train()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="transform"><a href='../../sagemaker.core/html/Session.html#method-Session-transform'><code>sagemaker.core::Session$transform()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="tune"><a href='../../sagemaker.core/html/Session.html#method-Session-tune'><code>sagemaker.core::Session$tune()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="update_endpoint"><a href='../../sagemaker.core/html/Session.html#method-Session-update_endpoint'><code>sagemaker.core::Session$update_endpoint()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="update_monitoring_schedule"><a href='../../sagemaker.core/html/Session.html#method-Session-update_monitoring_schedule'><code>sagemaker.core::Session$update_monitoring_schedule()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="update_training_job"><a href='../../sagemaker.core/html/Session.html#method-Session-update_training_job'><code>sagemaker.core::Session$update_training_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="upload_data"><a href='../../sagemaker.core/html/Session.html#method-Session-upload_data'><code>sagemaker.core::Session$upload_data()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="upload_string_as_file_body"><a href='../../sagemaker.core/html/Session.html#method-Session-upload_string_as_file_body'><code>sagemaker.core::Session$upload_string_as_file_body()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_athena_query"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_athena_query'><code>sagemaker.core::Session$wait_for_athena_query()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_auto_ml_job"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_auto_ml_job'><code>sagemaker.core::Session$wait_for_auto_ml_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_compilation_job"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_compilation_job'><code>sagemaker.core::Session$wait_for_compilation_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_edge_packaging_job"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_edge_packaging_job'><code>sagemaker.core::Session$wait_for_edge_packaging_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_endpoint"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_endpoint'><code>sagemaker.core::Session$wait_for_endpoint()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_job"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_job'><code>sagemaker.core::Session$wait_for_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_model_package"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_model_package'><code>sagemaker.core::Session$wait_for_model_package()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_processing_job"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_processing_job'><code>sagemaker.core::Session$wait_for_processing_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_transform_job"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_transform_job'><code>sagemaker.core::Session$wait_for_transform_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_tuning_job"><a href='../../sagemaker.core/html/Session.html#method-Session-wait_for_tuning_job'><code>sagemaker.core::Session$wait_for_tuning_job()</code></a></li>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="was_processing_job_successful"><a href='../../sagemaker.core/html/Session.html#method-Session-was_processing_job_successful'><code>sagemaker.core::Session$was_processing_job_successful()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="account_id">}\href{../../sagemaker.core/html/Session.html#method-account_id}{\code{sagemaker.core::Session$account_id()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="auto_ml">}\href{../../sagemaker.core/html/Session.html#method-auto_ml}{\code{sagemaker.core::Session$auto_ml()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="compile_model">}\href{../../sagemaker.core/html/Session.html#method-compile_model}{\code{sagemaker.core::Session$compile_model()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_endpoint">}\href{../../sagemaker.core/html/Session.html#method-create_endpoint}{\code{sagemaker.core::Session$create_endpoint()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_endpoint_config">}\href{../../sagemaker.core/html/Session.html#method-create_endpoint_config}{\code{sagemaker.core::Session$create_endpoint_config()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_endpoint_config_from_existing">}\href{../../sagemaker.core/html/Session.html#method-create_endpoint_config_from_existing}{\code{sagemaker.core::Session$create_endpoint_config_from_existing()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_feature_group">}\href{../../sagemaker.core/html/Session.html#method-create_feature_group}{\code{sagemaker.core::Session$create_feature_group()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_model">}\href{../../sagemaker.core/html/Session.html#method-create_model}{\code{sagemaker.core::Session$create_model()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_model_from_job">}\href{../../sagemaker.core/html/Session.html#method-create_model_from_job}{\code{sagemaker.core::Session$create_model_from_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_model_package_from_algorithm">}\href{../../sagemaker.core/html/Session.html#method-create_model_package_from_algorithm}{\code{sagemaker.core::Session$create_model_package_from_algorithm()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_model_package_from_containers">}\href{../../sagemaker.core/html/Session.html#method-create_model_package_from_containers}{\code{sagemaker.core::Session$create_model_package_from_containers()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_monitoring_schedule">}\href{../../sagemaker.core/html/Session.html#method-create_monitoring_schedule}{\code{sagemaker.core::Session$create_monitoring_schedule()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="create_tuning_job">}\href{../../sagemaker.core/html/Session.html#method-create_tuning_job}{\code{sagemaker.core::Session$create_tuning_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="default_bucket">}\href{../../sagemaker.core/html/Session.html#method-default_bucket}{\code{sagemaker.core::Session$default_bucket()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_endpoint">}\href{../../sagemaker.core/html/Session.html#method-delete_endpoint}{\code{sagemaker.core::Session$delete_endpoint()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_endpoint_config">}\href{../../sagemaker.core/html/Session.html#method-delete_endpoint_config}{\code{sagemaker.core::Session$delete_endpoint_config()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_feature_group">}\href{../../sagemaker.core/html/Session.html#method-delete_feature_group}{\code{sagemaker.core::Session$delete_feature_group()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_model">}\href{../../sagemaker.core/html/Session.html#method-delete_model}{\code{sagemaker.core::Session$delete_model()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="delete_monitoring_schedule">}\href{../../sagemaker.core/html/Session.html#method-delete_monitoring_schedule}{\code{sagemaker.core::Session$delete_monitoring_schedule()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_auto_ml_job">}\href{../../sagemaker.core/html/Session.html#method-describe_auto_ml_job}{\code{sagemaker.core::Session$describe_auto_ml_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_feature_group">}\href{../../sagemaker.core/html/Session.html#method-describe_feature_group}{\code{sagemaker.core::Session$describe_feature_group()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_model">}\href{../../sagemaker.core/html/Session.html#method-describe_model}{\code{sagemaker.core::Session$describe_model()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_monitoring_schedule">}\href{../../sagemaker.core/html/Session.html#method-describe_monitoring_schedule}{\code{sagemaker.core::Session$describe_monitoring_schedule()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_processing_job">}\href{../../sagemaker.core/html/Session.html#method-describe_processing_job}{\code{sagemaker.core::Session$describe_processing_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_training_job">}\href{../../sagemaker.core/html/Session.html#method-describe_training_job}{\code{sagemaker.core::Session$describe_training_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_transform_job">}\href{../../sagemaker.core/html/Session.html#method-describe_transform_job}{\code{sagemaker.core::Session$describe_transform_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="describe_tuning_job">}\href{../../sagemaker.core/html/Session.html#method-describe_tuning_job}{\code{sagemaker.core::Session$describe_tuning_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="download_athena_query_result">}\href{../../sagemaker.core/html/Session.html#method-download_athena_query_result}{\code{sagemaker.core::Session$download_athena_query_result()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="download_data">}\href{../../sagemaker.core/html/Session.html#method-download_data}{\code{sagemaker.core::Session$download_data()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="endpoint_from_job">}\href{../../sagemaker.core/html/Session.html#method-endpoint_from_job}{\code{sagemaker.core::Session$endpoint_from_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="endpoint_from_model_data">}\href{../../sagemaker.core/html/Session.html#method-endpoint_from_model_data}{\code{sagemaker.core::Session$endpoint_from_model_data()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="endpoint_from_production_variants">}\href{../../sagemaker.core/html/Session.html#method-endpoint_from_production_variants}{\code{sagemaker.core::Session$endpoint_from_production_variants()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="expand_role">}\href{../../sagemaker.core/html/Session.html#method-expand_role}{\code{sagemaker.core::Session$expand_role()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="format">}\href{../../sagemaker.core/html/Session.html#method-format}{\code{sagemaker.core::Session$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="get_caller_identity_arn">}\href{../../sagemaker.core/html/Session.html#method-get_caller_identity_arn}{\code{sagemaker.core::Session$get_caller_identity_arn()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="get_query_execution">}\href{../../sagemaker.core/html/Session.html#method-get_query_execution}{\code{sagemaker.core::Session$get_query_execution()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="help">}\href{../../sagemaker.core/html/Session.html#method-help}{\code{sagemaker.core::Session$help()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_candidates">}\href{../../sagemaker.core/html/Session.html#method-list_candidates}{\code{sagemaker.core::Session$list_candidates()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_monitoring_executions">}\href{../../sagemaker.core/html/Session.html#method-list_monitoring_executions}{\code{sagemaker.core::Session$list_monitoring_executions()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_monitoring_schedules">}\href{../../sagemaker.core/html/Session.html#method-list_monitoring_schedules}{\code{sagemaker.core::Session$list_monitoring_schedules()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_s3_files">}\href{../../sagemaker.core/html/Session.html#method-list_s3_files}{\code{sagemaker.core::Session$list_s3_files()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="list_tags">}\href{../../sagemaker.core/html/Session.html#method-list_tags}{\code{sagemaker.core::Session$list_tags()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="logs_for_auto_ml_job">}\href{../../sagemaker.core/html/Session.html#method-logs_for_auto_ml_job}{\code{sagemaker.core::Session$logs_for_auto_ml_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="logs_for_processing_job">}\href{../../sagemaker.core/html/Session.html#method-logs_for_processing_job}{\code{sagemaker.core::Session$logs_for_processing_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="logs_for_transform_job">}\href{../../sagemaker.core/html/Session.html#method-logs_for_transform_job}{\code{sagemaker.core::Session$logs_for_transform_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="package_model_for_edge">}\href{../../sagemaker.core/html/Session.html#method-package_model_for_edge}{\code{sagemaker.core::Session$package_model_for_edge()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="process">}\href{../../sagemaker.core/html/Session.html#method-process}{\code{sagemaker.core::Session$process()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="read_s3_file">}\href{../../sagemaker.core/html/Session.html#method-read_s3_file}{\code{sagemaker.core::Session$read_s3_file()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="start_monitoring_schedule">}\href{../../sagemaker.core/html/Session.html#method-start_monitoring_schedule}{\code{sagemaker.core::Session$start_monitoring_schedule()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="start_query_execution">}\href{../../sagemaker.core/html/Session.html#method-start_query_execution}{\code{sagemaker.core::Session$start_query_execution()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_monitoring_schedule">}\href{../../sagemaker.core/html/Session.html#method-stop_monitoring_schedule}{\code{sagemaker.core::Session$stop_monitoring_schedule()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_processing_job">}\href{../../sagemaker.core/html/Session.html#method-stop_processing_job}{\code{sagemaker.core::Session$stop_processing_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_training_job">}\href{../../sagemaker.core/html/Session.html#method-stop_training_job}{\code{sagemaker.core::Session$stop_training_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_transform_job">}\href{../../sagemaker.core/html/Session.html#method-stop_transform_job}{\code{sagemaker.core::Session$stop_transform_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="stop_tuning_job">}\href{../../sagemaker.core/html/Session.html#method-stop_tuning_job}{\code{sagemaker.core::Session$stop_tuning_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="train">}\href{../../sagemaker.core/html/Session.html#method-train}{\code{sagemaker.core::Session$train()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="transform">}\href{../../sagemaker.core/html/Session.html#method-transform}{\code{sagemaker.core::Session$transform()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="tune">}\href{../../sagemaker.core/html/Session.html#method-tune}{\code{sagemaker.core::Session$tune()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="update_endpoint">}\href{../../sagemaker.core/html/Session.html#method-update_endpoint}{\code{sagemaker.core::Session$update_endpoint()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="update_monitoring_schedule">}\href{../../sagemaker.core/html/Session.html#method-update_monitoring_schedule}{\code{sagemaker.core::Session$update_monitoring_schedule()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="update_training_job">}\href{../../sagemaker.core/html/Session.html#method-update_training_job}{\code{sagemaker.core::Session$update_training_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="upload_data">}\href{../../sagemaker.core/html/Session.html#method-upload_data}{\code{sagemaker.core::Session$upload_data()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="upload_string_as_file_body">}\href{../../sagemaker.core/html/Session.html#method-upload_string_as_file_body}{\code{sagemaker.core::Session$upload_string_as_file_body()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_athena_query">}\href{../../sagemaker.core/html/Session.html#method-wait_for_athena_query}{\code{sagemaker.core::Session$wait_for_athena_query()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_auto_ml_job">}\href{../../sagemaker.core/html/Session.html#method-wait_for_auto_ml_job}{\code{sagemaker.core::Session$wait_for_auto_ml_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_compilation_job">}\href{../../sagemaker.core/html/Session.html#method-wait_for_compilation_job}{\code{sagemaker.core::Session$wait_for_compilation_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_edge_packaging_job">}\href{../../sagemaker.core/html/Session.html#method-wait_for_edge_packaging_job}{\code{sagemaker.core::Session$wait_for_edge_packaging_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_endpoint">}\href{../../sagemaker.core/html/Session.html#method-wait_for_endpoint}{\code{sagemaker.core::Session$wait_for_endpoint()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_job">}\href{../../sagemaker.core/html/Session.html#method-wait_for_job}{\code{sagemaker.core::Session$wait_for_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_model_package">}\href{../../sagemaker.core/html/Session.html#method-wait_for_model_package}{\code{sagemaker.core::Session$wait_for_model_package()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_processing_job">}\href{../../sagemaker.core/html/Session.html#method-wait_for_processing_job}{\code{sagemaker.core::Session$wait_for_processing_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_transform_job">}\href{../../sagemaker.core/html/Session.html#method-wait_for_transform_job}{\code{sagemaker.core::Session$wait_for_transform_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="wait_for_tuning_job">}\href{../../sagemaker.core/html/Session.html#method-wait_for_tuning_job}{\code{sagemaker.core::Session$wait_for_tuning_job()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="Session" data-id="was_processing_job_successful">}\href{../../sagemaker.core/html/Session.html#method-was_processing_job_successful}{\code{sagemaker.core::Session$was_processing_job_successful()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LocalSession-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LocalSession-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 This class provides alternative Local Mode implementations for the functionality of
              :class:`~sagemaker.session.Session`.
@@ -134,8 +135,8 @@ some SDK features (default: False).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LocalSession-logs_for_job"></a>}}
-\if{latex}{\out{\hypertarget{method-LocalSession-logs_for_job}{}}}
+\if{html}{\out{<a id="method-logs_for_job"></a>}}
+\if{latex}{\out{\hypertarget{method-logs_for_job}{}}}
 \subsection{Method \code{logs_for_job()}}{
 A no-op method meant to override the sagemaker client.
 \subsection{Usage}{
@@ -157,8 +158,8 @@ A no-op method meant to override the sagemaker client.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LocalSession-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-LocalSession-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

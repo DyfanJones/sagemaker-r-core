@@ -12,22 +12,22 @@ Data class for JumpStart environment variable definitions in the hosting contain
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-JumpStartEnvironmentVariable-new}{\code{JumpStartEnvironmentVariable$new()}}
-\item \href{#method-JumpStartEnvironmentVariable-from_json}{\code{JumpStartEnvironmentVariable$from_json()}}
-\item \href{#method-JumpStartEnvironmentVariable-to_json}{\code{JumpStartEnvironmentVariable$to_json()}}
-\item \href{#method-JumpStartEnvironmentVariable-clone}{\code{JumpStartEnvironmentVariable$clone()}}
+\item \href{#method-new}{\code{JumpStartEnvironmentVariable$new()}}
+\item \href{#method-from_json}{\code{JumpStartEnvironmentVariable$from_json()}}
+\item \href{#method-to_json}{\code{JumpStartEnvironmentVariable$to_json()}}
+\item \href{#method-clone}{\code{JumpStartEnvironmentVariable$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-<li><span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format"><a href='../../sagemaker.core/html/JumpStartDataHolderType.html#method-JumpStartDataHolderType-format'><code>sagemaker.core::JumpStartDataHolderType$format()</code></a></li>
-</ul>
-</details>
-}}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="sagemaker.core" data-topic="JumpStartDataHolderType" data-id="format">}\href{../../sagemaker.core/html/JumpStartDataHolderType.html#method-format}{\code{sagemaker.core::JumpStartDataHolderType$format()}}\out{</span>}
+}
+\out{</details>}
+}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartEnvironmentVariable-new"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartEnvironmentVariable-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes a JumpStartEnvironmentVariable object from its json representation.
 \subsection{Usage}{
@@ -43,8 +43,8 @@ Initializes a JumpStartEnvironmentVariable object from its json representation.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartEnvironmentVariable-from_json"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartEnvironmentVariable-from_json}{}}}
+\if{html}{\out{<a id="method-from_json"></a>}}
+\if{latex}{\out{\hypertarget{method-from_json}{}}}
 \subsection{Method \code{from_json()}}{
 Sets fields in object based on json.
 \subsection{Usage}{
@@ -60,8 +60,8 @@ Sets fields in object based on json.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartEnvironmentVariable-to_json"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartEnvironmentVariable-to_json}{}}}
+\if{html}{\out{<a id="method-to_json"></a>}}
+\if{latex}{\out{\hypertarget{method-to_json}{}}}
 \subsection{Method \code{to_json()}}{
 Returns json representation of JumpStartEnvironmentVariable object.
 \subsection{Usage}{
@@ -70,8 +70,8 @@ Returns json representation of JumpStartEnvironmentVariable object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-JumpStartEnvironmentVariable-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-JumpStartEnvironmentVariable-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -11,7 +11,8 @@ tar_and_upload_dir(
   script,
   directory = NULL,
   dependencies = NULL,
-  kms_key = NULL
+  kms_key = NULL,
+  settings = NULL
 )
 }
 \arguments{
@@ -32,6 +33,10 @@ copied into /opt/ml/lib}
 
 \item{kms_key}{(str): Optional. KMS key ID used to upload objects to the bucket
 (default: None).}
+
+\item{settings}{(sagemaker.session_settings.SessionSettings): Optional. The settings
+of the SageMaker ``Session``, can be used to override the default encryption
+behavior (default: None).}
 }
 \value{
 sagemaker.fw_utils.UserCode: An object with the S3 bucket and key (S3 prefix) and

@@ -12,14 +12,14 @@ BatchStrategy class
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-BatchStrategy-new}{\code{BatchStrategy$new()}}
-\item \href{#method-BatchStrategy-pad}{\code{BatchStrategy$pad()}}
-\item \href{#method-BatchStrategy-clone}{\code{BatchStrategy$clone()}}
+\item \href{#method-new}{\code{BatchStrategy$new()}}
+\item \href{#method-pad}{\code{BatchStrategy$pad()}}
+\item \href{#method-clone}{\code{BatchStrategy$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-BatchStrategy-new"></a>}}
-\if{latex}{\out{\hypertarget{method-BatchStrategy-new}{}}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a Batch Strategy Instance
 \subsection{Usage}{
@@ -36,8 +36,8 @@ the data before batching.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-BatchStrategy-pad"></a>}}
-\if{latex}{\out{\hypertarget{method-BatchStrategy-pad}{}}}
+\if{html}{\out{<a id="method-pad"></a>}}
+\if{latex}{\out{\hypertarget{method-pad}{}}}
 \subsection{Method \code{pad()}}{
 Group together as many records as possible to fit in the specified size.
 \subsection{Usage}{
@@ -59,8 +59,8 @@ generator of records
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-BatchStrategy-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-BatchStrategy-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

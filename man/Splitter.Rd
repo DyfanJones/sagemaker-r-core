@@ -12,13 +12,13 @@ Splitter class
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-Splitter-split}{\code{Splitter$split()}}
-\item \href{#method-Splitter-clone}{\code{Splitter$clone()}}
+\item \href{#method-split}{\code{Splitter$split()}}
+\item \href{#method-clone}{\code{Splitter$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Splitter-split"></a>}}
-\if{latex}{\out{\hypertarget{method-Splitter-split}{}}}
+\if{html}{\out{<a id="method-split"></a>}}
+\if{latex}{\out{\hypertarget{method-split}{}}}
 \subsection{Method \code{split()}}{
 Split a file into records using a specific strategy
 \subsection{Usage}{
@@ -37,8 +37,8 @@ generator for the individual records that were split from the file
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Splitter-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-Splitter-clone}{}}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
