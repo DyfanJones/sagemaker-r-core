@@ -6,7 +6,9 @@
 #' @include paws_session.R
 #' @include vpc_utils.R
 #' @include studio.R
+#' @include input.R
 #' @include pkg_variables.R
+#' @include session_settings.R
 
 #' @import R6
 #' @import jsonlite
@@ -24,11 +26,13 @@ NOTEBOOK_METADATA_FILE <- "/opt/ml/metadata/resource-metadata.json"
   "STOPPING"= "Stopping",
   "STARTING"= "Starting")
 
-LogState <- list(STARTING = 1,
-                 WAIT_IN_PROGRESS = 2,
-                 TAILING = 3,
-                 JOB_COMPLETE = 4,
-                 COMPLETE = 5)
+LogState <- list(
+  STARTING = 1,
+  WAIT_IN_PROGRESS = 2,
+  TAILING = 3,
+  JOB_COMPLETE = 4,
+  COMPLETE = 5
+)
 
 #' @title Sagemaker Session Class
 #' @family Session
@@ -59,14 +63,19 @@ Session = R6Class("Session",
     #'              :func:\code{default_bucket}).
     #'              If not provided, a default bucket will be created based on the following format:
     #'              "sagemaker-{region}-{aws-account-id}". Example: "sagemaker-my-custom-bucket".
+    #' @param settings (SessionSettings): Optional. Set of optional parameters to apply to the session.
     initialize = function(paws_session = NULL,
                           sagemaker_client = NULL,
                           sagemaker_runtime_client = NULL,
-                          default_bucket = NULL) {
+                          # TODO: feature store: request paws sdk to update it's api.
+                          # sagemaker_featurestore_runtime_client = NULL,
+                          default_bucket = NULL,
+                          settings = SessionSettings$new()) {
       private$.default_bucket_name_override = default_bucket
       self$s3 = NULL
       self$config = NULL
       self$lambda_client = NULL
+      self$settings = settings
 
       private$.initialize(
         paws_session=paws_session,
@@ -163,7 +172,7 @@ Session = R6Class("Session",
     #' @param ... (any): Optional extra arguments that may be passed to the
     #'              download operation. Please refer to the ExtraArgs parameter in the boto3
     #'              documentation here:
-    #'              https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-download-file.html
+    #'              \url{https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-download-file.html}
     #' @return
     #' NULL invisibly
     download_data = function(path, bucket, key_prefix = "", ...){
@@ -173,11 +182,14 @@ Session = R6Class("Session",
 
       # Loop through the contents of the bucket, 1,000 objects at a time. Gathering all keys into
       # a "keys" list.
+      i <- 1
+      keys = list()
       while(!identical(params$ContinuationToken, character(0))){
         response = do.call(self$s3$list_objects_v2, params)
         # For each object, save its key or directory.
-        keys = c(keys, sapply(response$Contents, function(x) x$Key))
-        params$ContinuationToken = response$ContinuationToken
+        params$ContinuationToken = response$NextContinuationToken
+        keys[[i]] <- sapply(response$Contents, function(x) x$Key)
+        i <<- i + 1
       }
 
       # For each object key, create the directory on the local machine if needed, and then
@@ -1043,6 +1055,43 @@ Session = R6Class("Session",
       return(do.call(self$sagemaker$create_compilation_job, compilation_job_request))
     },
 
+    #' @description Create an Amazon SageMaker Edge packaging job.
+    #' @param output_model_config (dict): Identifies the Amazon S3 location where you want Amazon
+    #'              SageMaker Edge to save the results of edge packaging job
+    #' @param role (str): An AWS IAM role (either name or full ARN). The Amazon SageMaker Edge
+    #'              edge packaging jobs use this role to access model artifacts. You must grant
+    #'              sufficient permissions to this role.
+    #' @param job_name (str): Name of the edge packaging job being created.
+    #' @param compilation_job_name (str): Name of the compilation job being created.
+    #' @param model_name (str): The name of the model.
+    #' @param model_version (str): The version of the model.
+    #' @param resource_key (str): KMS key to encrypt the disk used to package the job
+    #' @param tags (list[dict]): List of tags for labeling a compile model job. For more, see
+    #'              \url{https://docs.aws.amazon.com/sagemaker/latest/dg/API_Tag.html}.
+    package_model_for_edge = function(output_model_config,
+                                      role,
+                                      job_name,
+                                      compilation_job_name,
+                                      model_name,
+                                      model_version,
+                                      resource_key,
+                                      tags = NULL){
+      edge_packaging_job_request = list(
+        "OutputConfig"=output_model_config,
+        "RoleArn"=role,
+        "ModelName"=model_name,
+        "ModelVersion"=model_version,
+        "EdgePackagingJobName"=job_name,
+        "CompilationJobName"=compilation_job_name
+      )
+
+      edge_packaging_job_request[["Tags"]] = tags
+      edge_packaging_job_request[["ResourceKey"]] = resource_key
+
+      LOGGER$info("Creating edge-packaging-job with name: %s", job_name)
+      do.call(self$sagemaker$create_edge_packaging_job, edge_packaging_job_request)
+    },
+
     #' @description Create an Amazon SageMaker hyperparameter tuning job
     #' @param job_name (str): Name of the tuning job being created.
     #' @param strategy (str): Strategy to be used for hyperparameter estimations.
@@ -1078,7 +1127,7 @@ Session = R6Class("Session",
     #'              to this role.
     #' @param input_config (list): A list of Channel objects. Each channel is a named input source.
     #'              Please refer to the format details described:
-    #'              https://botocore.readthedocs.io/en/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job
+    #'              \url{https://botocore.readthedocs.io/en/latest/reference/services/sagemaker.html}
     #' @param output_config (dict): The S3 URI where you want to store the training results and
     #'              optional KMS key ID.
     #' @param resource_config (dict): Contains values for ResourceConfig:
@@ -1207,10 +1256,15 @@ Session = R6Class("Session",
                                  warm_start_config=NULL,
                                  tags=NULL){
       if (is.null(training_config) && is.null(training_config_list)){
-        ValueError$new("Either training_config or training_config_list should be provided.")}
+        ValueError$new(
+          "Either training_config or training_config_list should be provided."
+        )
+      }
       if (!is.null(training_config) && !is.null(training_config_list)){
-        ValueError$new("Only one of training_config and training_config_list should be provided.")}
-
+        ValueError$new(
+          "Only one of training_config and training_config_list should be provided."
+        )
+      }
       tune_request = private$.get_tuning_request(
         job_name=job_name,
         tuning_config=tuning_config,
@@ -1248,7 +1302,10 @@ Session = R6Class("Session",
           if(identical(error_code, "ValidationException")) {
             LOGGER$info("Tuning job: %s is alread stopped or not running.", name)
           } else {
-            LOGGER$error("Error occurred while attempting to stop tuning job: %s. Please try again.", name)
+            LOGGER$error(
+              "Error occurred while attempting to stop tuning job: %s. Please try again.",
+              name
+            )
             stop(e)
           }
       })
@@ -1481,6 +1538,11 @@ Session = R6Class("Session",
     #'              or "PendingManualApproval" (default: "PendingManualApproval").
     #' @param description (str): Model Package description (default: None).
     #' @param drift_check_baselines (DriftCheckBaselines): DriftCheckBaselines object (default: None).
+    #' @param customer_metadata_properties (dict[str, str]): A dictionary of key-value paired
+    #'              metadata properties (default: None).
+    #' @param validation_specification PLACEHOLDER
+    #' @param domain (str): Domain values can be "COMPUTER_VISION", "NATURAL_LANGUAGE_PROCESSING",
+    #'              "MACHINE_LEARNING" (default: None).
     create_model_package_from_containers = function(containers=NULL,
                                                     content_types=NULL,
                                                     response_types=NULL,
@@ -1493,7 +1555,10 @@ Session = R6Class("Session",
                                                     marketplace_cert=FALSE,
                                                     approval_status="PendingManualApproval",
                                                     description=NULL,
-                                                    drift_check_baselines=NULL){
+                                                    drift_check_baselines=NULL,
+                                                    customer_metadata_properties=NULL,
+                                                    validation_specification=NULL,
+                                                    domain=NULL){
       request = private$.get_create_model_package_request(
         model_package_name,
         model_package_group_name,
@@ -1507,8 +1572,26 @@ Session = R6Class("Session",
         marketplace_cert,
         approval_status,
         description,
-        drift_check_baselines
+        drift_check_baselines=drift_check_baselines,
+        customer_metadata_properties=customer_metadata_properties,
+        validation_specification=validation_specification,
+        domain=domain
       )
+      if(!is.null(model_package_group_name)) {
+        tryCatch({
+          self$sagemaker$describe_model_package_group(
+            ModelPackageGroupName=request$ModelPackageGroupName
+          )
+        }, error = function(e){
+          self$sagemaker$create_model_package_group(
+            ModelPackageGroupName=request$ModelPackageGroupName
+          )
+        })
+      }
+      # Currently not supported in paws
+      request$DriftCheckBaselines = NULL
+      request$CustomerMetadataProperties = NULL
+      request$Domain = NULL
       return(do.call(self$sagemaker$create_model_package, request))
     },
 
@@ -1526,6 +1609,13 @@ Session = R6Class("Session",
         reason = desc$FailureReason
         message = sprintf("Error creating model package %s: %s Reason: %s",
           model_package_name, status, reason)
+        if(grepl("CapacityError", reason)){
+          CapacityError$new(
+            message=message,
+            allowed_statuses="InService",
+            actual_status=status
+          )
+        }
         UnexpectedStatusError$new(
           message,
           allowed_statuses="Completed",
@@ -1695,9 +1785,9 @@ Session = R6Class("Session",
                                endpoint_config_name,
                                wait=TRUE){
       if (!.deployment_entity_exists(self$sagemaker$describe_endpoint(EndpointName=endpoint_name))){
-        ValueError$new(
-          sprintf("Endpoint with name '%s' does not exist; please use an existing endpoint name",
-                  endpoint_name)
+        ValueError$new(sprintf(
+          "Endpoint with name '%s' does not exist; please use an existing endpoint name",
+          endpoint_name)
         )
       }
       self$sagemaker$update_endpoint(
@@ -1869,6 +1959,14 @@ Session = R6Class("Session",
       if(status != "InService"){
         reason = desc$FailureReason
         message = sprintf("Error hosting endpoint %s: %s. Reason: %s.", endpoint, status, reason)
+
+        if (grepl("CapacityError", reason)){
+          CapacityError$new(
+            message=message,
+            allowed_statuses="InService",
+            actual_status=status
+          )
+        }
         UnexpectedStatusError$new(
           message,
           allowed_statuses="InService",
@@ -1995,9 +2093,10 @@ Session = R6Class("Session",
       model_vpc_config = vpc_sanitize(model_vpc_config)
 
       if (.deployment_entity_exists(self$sagemaker$describe_endpoint(EndpointName=name))){
-        ValueError$new(
-          sprintf('Endpoint with name "%s" already exists; please pick a different name.',name)
-        )
+        ValueError$new(sprintf(
+          'Endpoint with name "%s" already exists; please pick a different name.',
+          name
+        ))
       }
       if (!.deployment_entity_exists(self$sagemaker$describe_model(ModelName=name))){
         primary_container = container_def(
@@ -2388,6 +2487,8 @@ Session = R6Class("Session",
       return(do.call(self$sagemaker$describe_feature_group, kwargs))
     },
 
+    # TODO: put_record when paws sdk been updated
+
     #' @description Start Athena query execution.
     #' @param catalog (str): name of the data catalog.
     #' @param database (str): name of the data catalog database.
@@ -2425,22 +2526,22 @@ Session = R6Class("Session",
     #' @param poll (int): time interval to poll get_query_execution API.
     wait_for_athena_query = function(query_execution_id,
                                      poll=5){
-    query_state = (
-      self$get_query_execution(query_execution_id=query_execution_id)[[
-        "QueryExecution"]][["Status"]][["State"]]
-    )
-    while (!(query_state %in% c("SUCCEEDED", "FAILED"))){
-      LOGGER$info("Query %s is being executed.", query_execution_id)
-      Sys.sleep(poll)
       query_state = (
         self$get_query_execution(query_execution_id=query_execution_id)[[
           "QueryExecution"]][["Status"]][["State"]]
       )
-    }
-    if (query_state == "SUCCEEDED")
-      LOGGER$info("Query %s successfully executed.", query_execution_id)
-    else
-      LOGGER$error("Failed to execute query %s.", query_execution_id)
+      while (!(query_state %in% c("SUCCEEDED", "FAILED"))){
+        LOGGER$info("Query %s is being executed.", query_execution_id)
+        Sys.sleep(poll)
+        query_state = (
+          self$get_query_execution(query_execution_id=query_execution_id)[[
+            "QueryExecution"]][["Status"]][["State"]]
+        )
+      }
+      if (query_state == "SUCCEEDED")
+        LOGGER$info("Query %s successfully executed.", query_execution_id)
+      else
+        LOGGER$error("Failed to execute query %s.", query_execution_id)
     },
 
     #' @description Download query result file from S3.
@@ -2493,7 +2594,8 @@ Session = R6Class("Session",
 
       if (is.null(self$paws_session$region_name))
           ValueError$new(
-            "Must setup local AWS configuration with a region supported by SageMaker.")
+            "Must setup local AWS configuration with a region supported by SageMaker."
+          )
 
       self$sagemaker = sagemaker_client %||% self$paws_session$client("sagemaker")
       self$sagemaker_runtime = sagemaker_runtime_client %||% self$paws_session$client("sagemakerruntime")
@@ -3134,6 +3236,13 @@ Session = R6Class("Session",
         reason = desc$FailureReason
         job_type = gsub("JobStatus", " job", status_key_name)
         message = sprintf("Error for %s %s: %s. Reason: %s", job_type, job, status, reason)
+        if(grepl("CapacityError", reason)){
+          CapacityError$new(
+            message=message,
+            allowed_statuses=c("Completed", "Stopped"),
+            actual_status=status
+          )
+        }
         UnexpectedStatusError$new(
           message,
           allowed_statuses=c("Completed", "Stopped"),
@@ -3296,6 +3405,10 @@ Session = R6Class("Session",
     # or "PendingManualApproval" (default: "PendingManualApproval").
     # description (str): Model Package description (default: None).
     # drift_check_baselines (DriftCheckBaselines): DriftCheckBaselines object (default: None)
+    # customer_metadata_properties (dict[str, str]): A dictionary of key-value paired
+    # metadata properties (default: None).
+    # domain (str): Domain values can be "COMPUTER_VISION", "NATURAL_LANGUAGE_PROCESSING",
+    # "MACHINE_LEARNING" (default: None).
     .get_create_model_package_request = function(model_package_name=NULL,
                                                  model_package_group_name=NULL,
                                                  containers=NULL,
@@ -3308,7 +3421,10 @@ Session = R6Class("Session",
                                                  marketplace_cert=FALSE,
                                                  approval_status="PendingManualApproval",
                                                  description=NULL,
-                                                 drift_check_baselines=NULL){
+                                                 drift_check_baselines=NULL,
+                                                 customer_metadata_properties=NULL,
+                                                 validation_specification=NULL,
+                                                 domain=NULL){
       if (!is.null(model_package_name) && !is.null(model_package_group_name))
         ValueError$new(
           "model_package_name and model_package_group_name cannot be present at the ",
@@ -3319,9 +3435,11 @@ Session = R6Class("Session",
       request_dict$ModelPackageGroupName = model_package_group_name
       request_dict$ModelPackageDescription = description
       request_dict$ModelMetrics = model_metrics
-      # Currently Paws doesn't support DriftCheckBaselines
-      # request_dict$DriftCheckBaselines = drift_check_baselines
+      request_dict$DriftCheckBaselines = drift_check_baselines
       request_dict$MetadataProperties = metadata_properties
+      request_dict$CustomerMetadataProperties = customer_metadata_properties
+      request_dict$ValidationSpecification = validation_specification
+      request_dict$Domain = domain
       if (!is.null(containers)){
         if (!all(!is.null(content_types) && !is.null(response_types) &&
               !is.null(inference_instances) && !is.null(transform_instances))){
